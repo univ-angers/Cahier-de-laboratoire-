@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 public class RestrictionFilter implements Filter {
     public static final String ACCES_CONNEXION  = "/connexion";
+    public static final String ACCES_PAGEPRINCIPALE  = "/restreint/pagePrincipale.jsp";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
 
     public void init( FilterConfig config ) throws ServletException {
@@ -44,7 +45,9 @@ public class RestrictionFilter implements Filter {
             request.getRequestDispatcher( ACCES_CONNEXION ).forward( request, response );
         } else {
             /* Affichage de la page restreinte */
+        	//request.getRequestDispatcher( ACCES_PAGEPRINCIPALE ).forward( request, response );
             chain.doFilter( request, response );
+            
         }
     }
 
