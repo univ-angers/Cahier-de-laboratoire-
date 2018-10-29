@@ -1,32 +1,27 @@
 
 //Fonction de connexion
-//https could be nice
-function connexion(name, mdp){
+$.getScript("inc/js/Scripts/Popup/Popup.js");
 
-//    $.ajax({
-//        url: "caaca",
-//        type: 'POST',
-//        data:{email:name, motdepasse:mdp},
-//        success: function (data) {
-//        	console.log(data);
-//            return true;
-//        },
-//        error:function(data) {
-//            console.log("Fail");
-//            return false;
-//        }
-//   });
-
-//result=false
-//
-//	$.ajax({url: "Connexion", type: 'GET', async: false, 
-//	        success: function(result){
-//	            // Fill the grid dynamically using result
-//	        	return true;
-//	        },
-//	        error: function(data) {
-//	            return false;
-//	        } 
-//	});
-//}
+function connexion(popupName,name, mdp){
+	 $.ajax({
+         type : 'POST',
+         url : "connexion",
+         data : {email:name,motdepasse:mdp},
+         dataType : "text",                        
+         success : function(r) {
+        	 console.log(r);
+        	if (r){
+        		popupSuccess(popupName,"Successfully Connected");
+        		$("#"+popupName).fadeTo("slow",1);
+        		$("#"+popupName).delay(1000).fadeTo("slow", 0);
+        		
+        		}
+        	else {
+        		popupFailure(popupName,"Password or Identifant incorrect")
+        		$("#"+popupName).fadeTo("slow",1);
+        	}
+         }
+     });
+	 
 }
+
