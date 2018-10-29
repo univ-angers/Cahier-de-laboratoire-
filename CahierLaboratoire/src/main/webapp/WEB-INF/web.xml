@@ -35,7 +35,7 @@
 	
 	
 
-	
+
 	<filter>
 	        <filter-name>RestrictionFilter</filter-name>
 	        <filter-class>com.groupe6.filters.RestrictionFilter</filter-class>
@@ -76,6 +76,10 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    
+    	<listener>
+		<listener-class>com.groupe6.config.InitialisationDaoFactory</listener-class>
+	</listener>
 	
 	
 	
