@@ -141,7 +141,13 @@
 					<h6 class="my-0 font-weight-normal ">Projet_5 Mycose de cyril
 						lepinette</h6>
 				</div>
-				<div class="card-body">Le Lorem Ipsum est simplement du faux
+				<div class="card-body">
+				Nom : ${sessionScope.sessionUtilisateur.nom}</br>
+				Prénom : ${sessionScope.sessionUtilisateur.prenom}</br>
+				Email : ${sessionScope.sessionUtilisateur.email}</br>
+				MDP : ${sessionScope.sessionUtilisateur.motdepasse}</br>
+				ADMIN : ${sessionScope.sessionUtilisateur.isadmin}</br>
+				</br>Le Lorem Ipsum est simplement du faux
 					texte employé dans la composition et la mise en page avant
 					impression. Le Lorem Ipsum est le faux texte standard de
 					l'imprimerie depuis les années 1500, quand un imprimeur anonyme

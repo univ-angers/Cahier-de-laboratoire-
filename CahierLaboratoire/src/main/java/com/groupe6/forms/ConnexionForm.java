@@ -37,8 +37,8 @@ public final class ConnexionForm {
 		String email = getValeurChamp(request, CHAMP_EMAIL);
 		String motDePasse = getValeurChamp(request, CHAMP_PASS);
 		
-		System.out.println("email recuper�"+email);
-		System.out.println("Mot de passe recuper�"+motDePasse);
+		System.out.println("email recupere: "+email);
+		System.out.println("Mot de passe recupere: "+motDePasse);
 		
 		Utilisateur utilisateur = new Utilisateur();
 
@@ -65,7 +65,7 @@ public final class ConnexionForm {
 			passwordEncryptor.setAlgorithm(ALGO_CHIFFREMENT);
 			passwordEncryptor.setPlainDigest(true);
 			String motDePasseChiffre = passwordEncryptor.encryptPassword(motDePasse);
-			System.out.println(motDePasseChiffre);
+			System.out.println("Chiffrement: " +motDePasseChiffre);
 			utilisateur.setMotdepasse(motDePasseChiffre);
 			if(!utilisateur_bdd.getMotdepasse().equals(utilisateur.getMotdepasse())){
 				throw new Exception("Mauvais mot de passe");
@@ -77,6 +77,9 @@ public final class ConnexionForm {
 		/* Initialisation du résultat global de la validation. */
 		if (erreurs.isEmpty()) {
 			resultat = "Succès de la connexion.";
+			utilisateur.setIsadmin(utilisateur_bdd.getIsadmin());
+			utilisateur.setNom(utilisateur_bdd.getNom());
+			utilisateur.setPrenom(utilisateur_bdd.getPrenom());
 		} else {
 			
 			resultat = "Échec de la connexion.";
