@@ -2,13 +2,16 @@
 
 
 ## Inscription / Connexion
-L'application est restreinte. Il faut obligatoirement être enregistré. 
+L'application est restreinte. Il faut obligatoirement être enregistré.  
 
-http://localhost:8080/CahierLaboratoire/inscription
-
-http://localhost:8080/CahierLaboratoire/connexion
-
-L'accès à la page principale se fait automatiquement à la suite de la connexion
+1. Connexion  : http://localhost:8080/CahierLaboratoire/connexion
+    - Administrateur : 
+        - Mail : a@a.a
+        - Mot de passe : admin
+    - Utilisateur : 
+        - Mail : n@n.n
+        - Mot de passe : normal
+2. Inscription nouvel utilisateur : http://localhost:8080/CahierLaboratoire/inscription
 
 ## Spring
 Un test de Spring est disponible après connexion à l'adresse: 
