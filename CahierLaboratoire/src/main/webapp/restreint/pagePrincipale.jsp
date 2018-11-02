@@ -16,7 +16,8 @@
 <!-- Theme included stylesheets -->
 <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
-<link href="<c:url value="/inc/css/quillCustomSize.css"/>" rel="stylesheet">
+<link href="<c:url value="/inc/css/quillCustomSize.css"/>"
+	rel="stylesheet">
 
 <!-- Bootstrap core CSS -->
 <link href="<c:url value="/inc/css/bootstrap.css"/>" rel="stylesheet">
@@ -55,7 +56,7 @@
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Dropdown </a>
+					aria-expanded="true"> Dropdown </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="#">Action</a> <a
 							class="dropdown-item" href="#">Another action</a>
@@ -71,13 +72,16 @@
 
 		</div>
 	</nav>
-	<div class="row w-100" style="top: 15%; position: absolute">
+	<div class="row w-100" style="top: 10%; position: absolute">
 		<div class="col ">
+			<button id="buttonIdTag" type="button" class="btn btn-info w-100" style="margin-bottom: 5%;"  >
+				+ Ajouter tag 
+			</button>
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h4 class="my-0 font-weight-normal ">Tags</h4>
+					<h4 class="my-0 font-weight-normal ">Tags </h4>
 				</div>
-				<div class="card-body">
+				<div id="taglist"class="card-body">
 					<a href="#" class="badge badge-primary">Test</a> <a href="#"
 						class="badge badge-success">Success</a> <a href="#"
 						class="badge badge-danger">Danger</a> <a href="#"
@@ -139,16 +143,15 @@
 		</div>
 		<div class="col-10">
 
-<%-- 			<div id="billet-1" class="card mb-4 shadow-sm">
+			 			<div id="billet-1" class="card mb-4 shadow-sm">
 				<div class="card-header">
 
 					<h6 class="my-0 font-weight-normal d-inline">Projet_5 Mycose
 						de cyrillepinette</h6>
-					<button type="button" class="btn btn-dark d-inline float-right buttonQuill">
+					<button id="buttonAddtag" type="button" class="btn btn-dark d-inline float-right buttonQuill">
 						<img id="testquill" src="<c:url value="/inc/assets/edit1.svg"/>"
 							alt="" width="25" height="25">
 					</button>
-
 
 				</div>
 				<div class="card-body">
@@ -176,9 +179,9 @@
 						<div id="editor-container"></div>
 					</div>
 				</div>
-			</div> --%>
+			</div> 
 
-		<%-- 	<div class="card mb-4 shadow-sm">
+			<%-- 	<div class="card mb-4 shadow-sm">
 				<div class="card-header">
 					<h6 class="my-0 font-weight-normal d-inline">Projet_5 Mycose
 						de cyrillepinette</h6>
@@ -233,12 +236,17 @@
 <!-- <footer>
 	<p class="mt-5 mb-5 text-muted">Univ. Angers&copy; 2018-2019</p>
 </footer> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="<c:url value="/inc/js/Scripts/Popup/Popup.js"/>"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Popup/Popup.js"/>"></script>
 
 <!-- Main Quill library -->
 <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/Wysiwyg/wysiwyg.js"/>"></script>
+<script type="text/javascript"src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
+<script type="text/javascript"src="<c:url value="/inc/js/Scripts/Tags/addTag.js"/>"></script>
+<script type="text/javascript"src="<c:url value="/inc/js/Scripts/Popup/Popup.js"/>"></script>
 </html>
 
