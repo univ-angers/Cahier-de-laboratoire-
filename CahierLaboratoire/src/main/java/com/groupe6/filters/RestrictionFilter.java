@@ -2,6 +2,7 @@ package com.groupe6.filters;
 
 import java.io.IOException;
 
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -11,6 +12,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.groupe6.beans.Utilisateur;
 
 public class RestrictionFilter implements Filter {
     public static final String ACCES_CONNEXION  = "/connexion";
@@ -35,6 +38,8 @@ public class RestrictionFilter implements Filter {
 
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
+
+    	
 
         /**
          * Si l'objet utilisateur n'existe pas dans la session en cours, alors

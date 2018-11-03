@@ -52,7 +52,15 @@
 				<li class="nav-item active"><a class="nav-link" href="#">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+				
+
+				
+				<c:if test="${ sessionScope.sessionUtilisateur.isadmin== 1}">
+					<li class="nav-item"><a class="nav-link" href="/CahierLaboratoire/inscription">INSCRIPTION</a></li>
+				</c:if> 			 		
+
+				
+				
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
