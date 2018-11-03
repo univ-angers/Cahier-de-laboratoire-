@@ -1,4 +1,4 @@
-$.getScript("inc/js/Scripts/Popup/Popup.js");
+//$.getScript("inc/js/Scripts/Popup/Popup.js");
 
 
 function forgotPopup(name){
