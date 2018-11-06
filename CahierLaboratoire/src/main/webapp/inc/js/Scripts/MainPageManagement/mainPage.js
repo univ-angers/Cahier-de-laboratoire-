@@ -1,4 +1,6 @@
-
+var AllQuillObjects = [
+  ["id", 'objet']
+];
 $(document).ready(function() {
 
 	$("#buttonIdTag").click(function() {
@@ -12,6 +14,7 @@ $(document).ready(function() {
 	$( ".buttonQuill" ).click(function() {
 		strId=this.id.substring(0, this.id.length - 6);//on récupère l'id commun
 		quillEnable(strId);
+		//quill retourne l'objet et on l'ajout à la liste pour manipuler l'objet quand on veut
 		$(this).prop("disabled",true);
 		$("#"+strId+"save").prop("disabled",false);
 		console.log($(this));
