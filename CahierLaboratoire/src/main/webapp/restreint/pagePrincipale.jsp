@@ -30,6 +30,29 @@
 <link href="<c:url value="/inc/css/searchBar.css"/>" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500"
 	rel="stylesheet">
+	
+	
+	
+<script type="text/javascript">
+
+
+function exportPDF() {
+	var doc = new jsPDF()
+
+	doc.text('Hello world!', 10, 10)
+	    doc.fromHTML(  $('#data1').html(), 15, 15, {
+        'width': 170
+    });
+    doc.save('Export.pdf');
+
+	
+}
+
+
+
+	
+	
+</script>
 
 <title>Cahier de laboratoire</title>
 
@@ -75,7 +98,7 @@
 			</ul>
 			<input type="search" placeholder="Search">
 
-
+			
 			<button class="btn btn-danger navbar-btn" style="margin-left: 2%;">Déconnexion</button>
 
 		</div>
@@ -149,26 +172,25 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="col-10">
-
+		
 			 			<div id="billet-1" class="card mb-4 shadow-sm">
-				<div class="card-header">
+							<div class="card-header">
 
-					<h6 class="my-0 font-weight-normal d-inline">Projet_5 Mycose
-						de cyrillepinette</h6>
-					<button id="buttonAddtag" type="button" class="btn btn-dark d-inline float-right buttonQuill">
-						<img id="testquill" src="<c:url value="/inc/assets/edit1.svg"/>"
-							alt="" width="25" height="25">
-					</button>
+								<h6 class="my-0 font-weight-normal d-inline">Projet_5 Mycose de cyrillepinette</h6>
+								<button id="download-pdf" onclick="exportPDF()">DOWNLOAD PDF</button>	
+								<button id="buttonAddtag" type="button" class="btn btn-dark d-inline float-right buttonQuill">
+									<img id="testquill" src="<c:url value="/inc/assets/edit1.svg"/>"
+										alt="" width="25" height="25">
+								</button>
 
-				</div>
+							</div>
+				
+	
 				<div class="card-body">
-					Nom : ${sessionScope.sessionUtilisateur.nom} Prénom : <br>
-					${sessionScope.sessionUtilisateur.prenom} Email :<br>
-					${sessionScope.sessionUtilisateur.email} MDP :<br>
-					${sessionScope.sessionUtilisateur.motdepasse} ADMIN :<br>
-					${sessionScope.sessionUtilisateur.isadmin}<br>
-					<div id=" data1">
+					
+					<div id="data1">
 					 Le Lorem Ipsum est
 					simplement du faux texte employé dans la composition et la mise en
 					page avant impression. Le Lorem Ipsum est le faux texte standard de
@@ -189,7 +211,7 @@
 				</div>
 			</div> 
 
-			<%-- 	<div class="card mb-4 shadow-sm">
+			 	<div class="card mb-4 shadow-sm">
 				<div class="card-header">
 					<h6 class="my-0 font-weight-normal d-inline">Projet_5 Mycose
 						de cyrillepinette</h6>
@@ -233,7 +255,7 @@
 					passages du Lorem Ipsum, et, plus récemment, par son inclusion dans
 					des applications de mise en page de texte, comme Aldus PageMaker.</div>
 			</div>
- --%>
+
 		</div>
 		<footer class="footer w-100 text-center ">
 			<p class="mt-5 mb-5 text-muted">Univ. Angers&copy; 2018-2019</p>
@@ -256,5 +278,10 @@
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/Tags/addTag.js"/>"></script>
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/Popup/Popup.js"/>"></script>
+
+<!-- JSPDF Library  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" 
+integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" 
+crossorigin="anonymous"></script>
 </html>
 
