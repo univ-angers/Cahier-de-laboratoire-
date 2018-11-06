@@ -56,7 +56,7 @@
 
 				
 				<c:if test="${ sessionScope.sessionUtilisateur.isadmin== 1}">
-					<li class="nav-item"><a class="nav-link" href="/CahierLaboratoire/inscription">INSCRIPTION</a></li>
+					<li class="nav-item"><a class="nav-link" href="/CahierLaboratoire/inscription">Inscription</a></li>
 				</c:if> 			 		
 
 				
@@ -81,6 +81,7 @@
 		</div>
 	</nav>
 	<div class="row w-100" style="top: 10%; position: absolute">
+	
 		<div class="col ">
 			<button id="buttonIdTag" type="button" class="btn btn-info w-100" style="margin-bottom: 5%;"  >
 				+ Ajouter tag 
@@ -149,9 +150,9 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="col-10">
-
-			 			<div id="billet-1" class="card mb-4 shadow-sm">
+<%-- 			 		<div id="billet-1" class="card mb-4 shadow-sm">
 				<div class="card-header">
 
 					<h6 class="my-0 font-weight-normal d-inline">Projet_5 Mycose
@@ -187,7 +188,7 @@
 						<div id="editor-container"></div>
 					</div>
 				</div>
-			</div> 
+			</div> --%>
 
 			<%-- 	<div class="card mb-4 shadow-sm">
 				<div class="card-header">
@@ -253,6 +254,7 @@
 <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/Wysiwyg/wysiwyg.js"/>"></script>
+<script type="text/javascript"src="<c:url value="/inc/js/Scripts/Billet/GenerateBillet.js"/>"></script>
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/Tags/addTag.js"/>"></script>
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/Popup/Popup.js"/>"></script>

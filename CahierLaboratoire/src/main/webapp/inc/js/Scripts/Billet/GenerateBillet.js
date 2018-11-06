@@ -39,6 +39,31 @@
 
 
 
-function generateBillet(data){
-	
+function generateBillet(id,data){
+	$(".col-10").append(
+			'<div id="'+id+'" class="card mb-4 shadow-sm">'+
+				'<div class="card-header">'+
+					'<h6 class="my-0 font-weight-normal d-inline">Projet_5 Mycose de cyrillepinette </h6>'+
+					'<button type="button" id="'+id+'save" class="btn btn-dark d-inline float-right saveButton" style="margin-left:1%">'+
+					'<img id="testquill" src="../inc/assets/save.png" width="25" height="25"/>'+
+					'</button>'+
+					'<button type="button" id="'+id+'Modify" class="btn btn-dark d-inline float-right buttonQuill">'+
+						'<img id="testquill" src="../inc/assets/edit1.svg" width="25" height="25"/>'+
+					'</button>'+
+
+
+				'</div>'+
+				'<div class="card-body">'+
+					'<div id="'+id+'Content">'+
+					data+
+					'</div>'+
+					'<div id="'+id+'content-container">'+
+						'<div id="'+id+'toolbar-container"></div>'+
+						'<div id="'+id+'editor-container"></div>'+
+					'</div>'+
+				'</div>'+
+			'</div>')
+			
+			$("#"+id+"save").prop("disabled",true);
+			
 }
