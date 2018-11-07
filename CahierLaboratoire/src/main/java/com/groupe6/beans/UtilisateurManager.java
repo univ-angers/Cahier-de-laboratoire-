@@ -17,7 +17,7 @@ import com.mysql.jdbc.Util;
 
 import java.util.List;
 
-public class UtilisateurManager{
+public class UtilisateurManager {
     protected SessionFactory sessionFactory;
     
     protected void setup() {
@@ -36,17 +36,9 @@ public class UtilisateurManager{
     }
  
     protected void createUser(Utilisateur utilisateur) {
-        /*Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setEmail("monemail@gmail.com");
-        utilisateur.setMotDePasse("monmdp");
-        utilisateur.setNom("Jack");
-        utilisateur.setPrenom("Jean-Jacques");
-        */
-	    Session session = sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
 	    session.beginTransaction();
-	    
 	    session.save(utilisateur);
-	    
     	session.getTransaction().commit();
     	session.close();
     } 
@@ -56,12 +48,6 @@ public class UtilisateurManager{
         Utilisateur utilisateur = new Utilisateur();
         try {
         	utilisateur = session.get(Utilisateur.class, id);
-	        /*System.out.println("ID : " + utilisateur.getId());
-	        System.out.println("Nom : " + utilisateur.getNom());
-	        System.out.println("Prénom : " + utilisateur.getPrenom());
-	        System.out.println("Email : " + utilisateur.getEmail());
-	        System.out.println("Mot de passe : " + utilisateur.getMotDePasse());
-	        */
         	System.out.println(utilisateur.toString());
         } catch (NullPointerException npe) {
         	npe.printStackTrace();
@@ -87,14 +73,6 @@ public class UtilisateurManager{
 	}
  
     protected void updateUser(Utilisateur updateUser) {
-        /*Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setId(20);
-        utilisateur.setNom("MyName");
-        utilisateur.setPrenom("Jean-Jacques");
-        utilisateur.setEmail("myemailaddress@gmail.com");
-        utilisateur.setMotDePasse("mypassword");
-        */
-    	
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         
@@ -132,7 +110,7 @@ public class UtilisateurManager{
     	UtilisateurManager manager = new UtilisateurManager();
         manager.setup();
         //manager.create(utilisateur);
-        //Utilisateur getUser = manager.read(id)
+        //Utilisateur getUser = manager.read((long)20)
         manager.readAllUsers();
         //manager.delete(utilisateur)
         manager.exit();

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "utilisateur")
-public class Utilisateur {
+public class Utilisateur implements TableBD {
 	private Long id;
     private String email;
     private String motDePasse;
@@ -20,15 +20,6 @@ public class Utilisateur {
     public Utilisateur() {
     	
     }
-    
-    @Column(name = "isadmin")
-    public int getIsAdmin() {
-		return isAdmin;
-	}
-
-	public void setIsAdmin(int isAdmin) {
-		this.isAdmin = isAdmin;
-	}
 
 	public Utilisateur(String email, String motDePasse, String nom, String prenom) {
     	this.email = email;
@@ -82,6 +73,15 @@ public class Utilisateur {
 	@Column(name = "prenom")
 	public String getPrenom() {
 		return prenom;
+	}
+	
+	@Column(name = "isadmin")
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+	
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 	
 	@Override
