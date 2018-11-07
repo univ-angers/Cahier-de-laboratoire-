@@ -50,7 +50,7 @@ public final class InscriptionForm {
 			traiterPrenom(prenom, utilisateur);
 			traiterMotsDePasse(motDePasse, confirmation, utilisateur);
 			traiterEmail(email, utilisateur);
-			utilisateur.setIsadmin(isadmin);
+			utilisateur.setIsAdmin(isadmin);
 			
 			if (erreurs.isEmpty()) {
 				utilisateurDao.creer(utilisateur);
@@ -105,7 +105,7 @@ public final class InscriptionForm {
 		passwordEncryptor.setPlainDigest(true);
 		String motDePasseChiffre = passwordEncryptor.encryptPassword(motDePasse);
 		System.out.println("INSCRIPTION "+motDePasseChiffre);
-		utilisateur.setMotdepasse(motDePasseChiffre);
+		utilisateur.setMotDePasse(motDePasseChiffre);
 	}
 
 	/*

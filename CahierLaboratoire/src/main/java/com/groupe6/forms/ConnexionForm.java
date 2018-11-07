@@ -66,8 +66,8 @@ public final class ConnexionForm {
 			passwordEncryptor.setPlainDigest(true);
 			String motDePasseChiffre = passwordEncryptor.encryptPassword(motDePasse);
 			System.out.println("Chiffrement: " +motDePasseChiffre);
-			utilisateur.setMotdepasse(motDePasseChiffre);
-			if(!utilisateur_bdd.getMotdepasse().equals(utilisateur.getMotdepasse())){
+			utilisateur.setMotDePasse(motDePasseChiffre);
+			if(!utilisateur_bdd.getMotDePasse().equals(utilisateur.getMotDePasse())){
 				throw new Exception("Mauvais mot de passe");
 			}
 		} catch (Exception e) {
@@ -77,7 +77,7 @@ public final class ConnexionForm {
 		/* Initialisation du résultat global de la validation. */
 		if (erreurs.isEmpty()) {
 			resultat = "Succès de la connexion.";
-			utilisateur.setIsadmin(utilisateur_bdd.getIsadmin());
+			utilisateur.setIsAdmin(utilisateur_bdd.getIsAdmin());
 			utilisateur.setNom(utilisateur_bdd.getNom());
 			utilisateur.setPrenom(utilisateur_bdd.getPrenom());
 		} else {

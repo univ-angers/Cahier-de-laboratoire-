@@ -36,7 +36,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 			connexion = daoFactory.getConnection();
 			System.out.println(connexion.toString());
 			preparedStatement = initialisationRequetePreparee(connexion, SQL_INSERT, true, utilisateur.getNom() , utilisateur.getPrenom(), 
-					utilisateur.getMotdepasse(), utilisateur.getEmail(), utilisateur.getIsadmin());
+					utilisateur.getMotDePasse(), utilisateur.getEmail(), utilisateur.getIsAdmin());
 			int statut = preparedStatement.executeUpdate();
 			if (statut == 0) {
 				throw new DAOException("Échec de la création de l'utilisateur, aucune ligne ajoutée dans la table.");
@@ -97,9 +97,9 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		utilisateur.setId(resultSet.getLong("id"));
 		utilisateur.setNom(resultSet.getString("nom"));
 		utilisateur.setPrenom(resultSet.getString("prenom"));
-		utilisateur.setMotdepasse(resultSet.getString("motdepasse"));
+		utilisateur.setMotDePasse(resultSet.getString("motdepasse"));
 		utilisateur.setEmail(resultSet.getString("email"));
-		utilisateur.setIsadmin((resultSet.getString("isadmin").equals("1") ? 1 : 0 ));
+		utilisateur.setIsAdmin((resultSet.getString("isadmin").equals("1") ? 1 : 0 ));
 		return utilisateur;
 	}
 

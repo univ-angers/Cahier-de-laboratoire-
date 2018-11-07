@@ -34,7 +34,7 @@ public class InscriptionFilter implements Filter {
         
         Utilisateur utilisateur = (Utilisateur) (session.getAttribute("sessionUtilisateur"));
         
-        if(utilisateur != null && utilisateur.getIsadmin() == 0) {
+        if(utilisateur != null && utilisateur.getIsAdmin() == 0) {
  
             /* Redirection vers la page publique */
             request.getRequestDispatcher( REDIRECTION_PP ).forward( request, response );

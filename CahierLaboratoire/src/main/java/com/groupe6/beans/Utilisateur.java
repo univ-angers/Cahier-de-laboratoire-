@@ -1,61 +1,95 @@
 package com.groupe6.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "utilisateur")
 public class Utilisateur {
-
 	private Long id;
-	private String nom;
-	private String prenom;
-	private String motdepasse;
-	private String email;
-	private int isadmin;
+    private String email;
+    private String motDePasse;
+    private String nom;
+    private String prenom;
+    private int isAdmin;
+    
+    public Utilisateur() {
+    	
+    }
+    
+    @Column(name = "isadmin")
+    public int getIsAdmin() {
+		return isAdmin;
+	}
 
-	public Long getId() {
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public Utilisateur(String email, String motDePasse, String nom, String prenom) {
+    	this.email = email;
+    	this.motDePasse = motDePasse;
+    	this.nom = nom;
+    	this.prenom = prenom;
+    }
+ 
+    public void setEmail(String email) {
+    	this.email = email;
+    }
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
 		return id;
 	}
+    
+    public void setId(Long id) {
+    	this.id = id;
+    }
+    
+    @Column(name = "email")
+    public String getEmail() {
+	return email;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setMotDePasse(String motDePasse) {
+	this.motDePasse = motDePasse;
+    }
+    
+    @Column(name = "motDePasse")
+    public String getMotDePasse() {
+	return motDePasse;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public void setNom(String nom) {
+	this.nom = nom;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
+    @Column(name = "nom")
+    public String getNom() {
+	return nom;
+    }
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
-	public String getMotdepasse() {
-		return motdepasse;
+	@Column(name = "prenom")
+	public String getPrenom() {
+		return prenom;
 	}
-
-	public void setMotdepasse(String motdepasse) {
-		this.motdepasse = motdepasse;
+	
+	@Override
+	public String toString() {
+		String description = "Utilisateur " + getId() + "\n";
+		description += "Nom : " + getNom() + ", Prénom : " + getPrenom() + "\n";
+		description += "Email : " + getEmail() + ", MDP : " + getMotDePasse() + ", Admin " + getIsAdmin() + "\n";
+		return description;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public int getIsadmin() {
-		return isadmin;
-	}
-
-	public void setIsadmin(int isadmin) {
-		this.isadmin = isadmin;
-	}
-
-
 }
+//Modifier le fichier hibernate.cfg.xml pour la connexion à la base de données

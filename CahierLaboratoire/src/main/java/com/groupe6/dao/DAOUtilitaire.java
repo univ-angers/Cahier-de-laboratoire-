@@ -30,9 +30,9 @@ public class DAOUtilitaire {
 		utilisateur.setId(resultSet.getLong("id"));
 		utilisateur.setNom(resultSet.getString("nom"));
 		utilisateur.setPrenom(resultSet.getString("prenom"));
-		utilisateur.setMotdepasse(resultSet.getString("motdepasse"));
+		utilisateur.setMotDePasse(resultSet.getString("motdepasse"));
 		utilisateur.setEmail(resultSet.getString("email"));
-		utilisateur.setIsadmin((resultSet.getString("isadmin").equals("1") ? 1 : 0 ));
+		utilisateur.setIsAdmin((resultSet.getString("isadmin").equals("1") ? 1 : 0 ));
 		return utilisateur;
 	}
 	
