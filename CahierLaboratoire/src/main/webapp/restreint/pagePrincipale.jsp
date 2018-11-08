@@ -55,7 +55,7 @@
 				
 
 				
-				<c:if test="${ sessionScope.sessionUtilisateur.isadmin== 1}">
+				<c:if test="${ sessionScope.sessionUtilisateur.isAdmin== 1}">
 					<li class="nav-item"><a class="nav-link" href="/CahierLaboratoire/inscription">Inscription</a></li>
 				</c:if> 			 		
 

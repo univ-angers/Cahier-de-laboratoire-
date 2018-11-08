@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+ 
+ 
+	<display-name>Archetype Created Web Application</display-name>
+ 
+ 
+ 
+   <servlet>
+    <servlet-name>Inscription</servlet-name>
+    <servlet-class>com.groupe6.servlets.Inscription</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Connexion</servlet-name>
+    <servlet-class>com.groupe6.servlets.Connexion</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>Deconnexion</servlet-name>
+	<servlet-class>com.groupe6.servlets.Deconnexion</servlet-class>
+	</servlet>
+	
+	
+	<servlet-mapping>
+	    <servlet-name>Inscription</servlet-name>
+	    <url-pattern>/inscription</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>Connexion</servlet-name>
+	    <url-pattern>/connexion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Deconnexion</servlet-name>
+		<url-pattern>/deconnexion</url-pattern>
+	</servlet-mapping>
+	
+	
+
+
+	<filter>
+	        <filter-name>RestrictionFilter</filter-name>
+	        <filter-class>com.groupe6.filters.RestrictionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	        <filter-name>RestrictionFilter</filter-name>
+	        <url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	
+	<filter>
+	    <filter-name>Set Character Encoding</filter-name>
+	    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+	    <init-param>
+	        <param-name>encoding</param-name>
+	        <param-value>UTF-8</param-value>
+	    </init-param>
+	    <init-param>
+	        <param-name>ignore</param-name>
+	        <param-value>false</param-value>
+	    </init-param>
+	</filter>
+	<filter>
+		<description>
+		</description>
+		<display-name>InscriptionFilter</display-name>
+		<filter-name>InscriptionFilter</filter-name>
+		<filter-class>com.groupe6.filters.InscriptionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>Set Character Encoding</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>InscriptionFilter</filter-name>
+		<url-pattern>/inscription</url-pattern>
+	</filter-mapping>
+ 
+ 
+ 
+ 
+	
+	
+	<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    	<listener>
+		<listener-class>com.groupe6.config.InitialisationDaoFactory</listener-class>
+	</listener>
+	
+	
+	
+	<session-config>
+    	<session-timeout>1</session-timeout>
+  	</session-config>
+  
+  
+
+	
+	
+	
+</web-app>
