@@ -31,8 +31,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Applications/Developpement/Tomcat-9.0.12/lib/mysql-connector-java-5.1.47.jar"/>
-	<classpathentry kind="lib" path="/Applications/Developpement/Tomcat-9.0.12/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="/Users/Cyril_Musique/git/projetChu/CahierLaboratoire/src/main/webapp/WEB-INF/lib/jasypt-1.9.0.jar"/>
+	<classpathentry kind="lib" path="/home/etudiant/Documents/Master/concretisation_disciplinaire/git_travail/Cahier-de-laboratoire-/CahierLaboratoire/src/main/webapp/WEB-INF/lib/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
