@@ -4,6 +4,7 @@ package com.groupe6.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,10 +14,8 @@ import com.groupe6.dao.DAOFactory;
 import com.groupe6.dao.UtilisateurDao;
 import com.groupe6.forms.InscriptionForm;
 
+@WebServlet(urlPatterns="/inscription")
 public class Inscription extends HttpServlet {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	public static final String CONF_DAO_FACTORY = "daofactory";

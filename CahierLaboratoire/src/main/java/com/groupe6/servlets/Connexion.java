@@ -1,9 +1,8 @@
 package com.groupe6.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 
@@ -12,11 +11,8 @@ import com.groupe6.dao.DAOFactory;
 import com.groupe6.dao.UtilisateurDao;
 import com.groupe6.forms.ConnexionForm;
 
+@WebServlet( urlPatterns = "/connexion")
 public class Connexion extends HttpServlet {
-	/**
-	 * http://localhost:8080/pro/connexion
-	 * https://openclassrooms.com/fr/courses/626954-creez-votre-application-web-avec-java-ee/623220-tp-fil-rouge-etape-4
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public static final String CONF_DAO_FACTORY = "daofactory";
