@@ -11,10 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.jboss.jandex.TypeTarget.Usage;
-
-import com.mysql.jdbc.Util;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class UtilisateurManager {
@@ -63,7 +60,10 @@ public class UtilisateurManager {
     	Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
     	criteriaQuery.select(root);
     	Query query = session.createQuery(criteriaQuery);
-    	List<Utilisateur> results = query.getResultList();
+    	List<Utilisateur> results = new ArrayList<Utilisateur>();
+    	for (Object o : query.getResultList()) {
+			results.add((Utilisateur)o);
+		}
     	System.out.println("Nombre d'utilisateurs : " + results.size());
     	for (Utilisateur utilisateur : results) {
     		readUser(utilisateur.getId());
@@ -105,14 +105,14 @@ public class UtilisateurManager {
         session.close();
     }
     
-    public static void main(String[] args) {
-    	Utilisateur utilisateur = new Utilisateur("myemail@gmail.com","mypassword", "myName", "myFirstName");
-    	UtilisateurManager manager = new UtilisateurManager();
-        manager.setup();
-        //manager.create(utilisateur);
-        //Utilisateur getUser = manager.read((long)20)
-        manager.readAllUsers();
-        //manager.delete(utilisateur)
-        manager.exit();
-    }
+//    public static void main(String[] args) {
+//    	Utilisateur utilisateur = new Utilisateur("myemail@gmail.com","mypassword", "myName", "myFirstName");
+//    	UtilisateurManager manager = new UtilisateurManager();
+//        manager.setup();
+//        //manager.create(utilisateur);
+//        //Utilisateur getUser = manager.read((long)20)
+//        manager.readAllUsers();
+//        //manager.delete(utilisateur)
+//        manager.exit();
+//    }
 }
