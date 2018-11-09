@@ -1,7 +1,6 @@
 /home/etudiant/Documents/Master/concretisation_disciplinaire/projet/Cahier-de-laboratoire-/CahierLaboratoire/src/main/java/com/groupe6/beans/TableBD.java
 /home/etudiant/Documents/Master/concretisation_disciplinaire/projet/Cahier-de-laboratoire-/CahierLaboratoire/src/main/java/com/groupe6/filters/RestrictionFilter.java
 /home/etudiant/Documents/Master/concretisation_disciplinaire/projet/Cahier-de-laboratoire-/CahierLaboratoire/src/main/java/com/groupe6/forms/FormValidationException.java
-/home/etudiant/Documents/Master/concretisation_disciplinaire/projet/Cahier-de-laboratoire-/CahierLaboratoire/src/main/java/com/groupe6/servlets/Restriction.java
 /home/etudiant/Documents/Master/concretisation_disciplinaire/projet/Cahier-de-laboratoire-/CahierLaboratoire/src/main/java/com/groupe6/dao/UtilisateurDaoImpl.java
 /home/etudiant/Documents/Master/concretisation_disciplinaire/projet/Cahier-de-laboratoire-/CahierLaboratoire/src/main/java/com/groupe6/dao/DAOFactory.java
 /home/etudiant/Documents/Master/concretisation_disciplinaire/projet/Cahier-de-laboratoire-/CahierLaboratoire/src/main/java/com/groupe6/dao/UtilisateurDao.java
