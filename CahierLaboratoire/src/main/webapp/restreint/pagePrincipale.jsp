@@ -30,7 +30,26 @@
 <link href="<c:url value="/inc/css/searchBar.css"/>" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500"
 	rel="stylesheet">
+<script type="text/javascript">
 
+
+function exportPDF() {
+	var doc = new jsPDF()
+
+	doc.text('Hello world!', 10, 10)
+	    doc.fromHTML(  $('#data1').html(), 15, 15, {
+        'width': 170
+    });
+    doc.save('Export.pdf');
+
+	
+}
+
+
+
+	
+	
+</script>
 <title>Cahier de laboratoire</title>
 
 </head>
@@ -53,7 +72,6 @@
 						<span class="sr-only">(current)</span>
 				</a></li>
 				
-
 				
 				<c:if test="${ sessionScope.sessionUtilisateur.isAdmin== 1}">
 					<li class="nav-item"><a class="nav-link" href="/CahierLaboratoire/inscription">Inscription</a></li>
@@ -154,7 +172,7 @@
 		<div class="col-10">
 <%-- 			 		<div id="billet-1" class="card mb-4 shadow-sm">
 				<div class="card-header">
-
+<button id="download-pdf" onclick="exportPDF()">DOWNLOAD PDF</button>
 					<h6 class="my-0 font-weight-normal d-inline">Projet_5 Mycose
 						de cyrillepinette</h6>
 					<button id="buttonAddtag" type="button" class="btn btn-dark d-inline float-right buttonQuill">
@@ -258,5 +276,9 @@
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/Tags/addTag.js"/>"></script>
 <script type="text/javascript"src="<c:url value="/inc/js/Scripts/Popup/Popup.js"/>"></script>
+<!-- JSPDF Library  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" 
+integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" 
+crossorigin="anonymous"></script>
 </html>
 
