@@ -11,7 +11,12 @@
     <property name="connection.password">123456</property>
     <property name="show_sql">true</property>
         
+    <mapping class="com.groupe6.beans.Billet_Tag"/>
+    <mapping class="com.groupe6.beans.Billet"/>
+    <mapping class="com.groupe6.beans.Categorie"/>
+    <mapping class="com.groupe6.beans.Tag"/> 
     <mapping class="com.groupe6.beans.Utilisateur" />
+    <!-- Rajouter d'autres mapping class ? -->
      
   </session-factory>
 </hibernate-configuration>

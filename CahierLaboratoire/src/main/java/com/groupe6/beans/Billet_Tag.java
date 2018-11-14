@@ -2,6 +2,9 @@ package com.groupe6.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +20,9 @@ public class Billet_Tag implements TableBD {
 		this.idT = idT;
 	}
 
+	@Id
 	@Column (name = "id_b")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getIdB() {
 		return idB;
 	}
