@@ -9,9 +9,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "billet_tag")
-public class Billet_Tag implements TableBD {
+public class Billet_Tag {
 	private Long idB;
 	private Long idT;
+	
+	//Rajouter un champ identité idBT? ex: jointure n°x : billet 5 avec tag 36
 	
 	public Billet_Tag() {}
 	
@@ -46,5 +48,4 @@ public class Billet_Tag implements TableBD {
 		description += "Tag : " + getIdT() + "\n";
 		return description;
 	}
-	
 }

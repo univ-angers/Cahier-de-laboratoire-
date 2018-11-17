@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "utilisateur")
-public class Utilisateur implements TableBD {
+public class Utilisateur {
 	private Long id;
     private String email;
     private String motDePasse;

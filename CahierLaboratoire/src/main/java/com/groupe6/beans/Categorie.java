@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="categorie")
-public class Categorie implements TableBD {
+public class Categorie{
 	private Long idC;
 	private String nomCategorie;
 	
