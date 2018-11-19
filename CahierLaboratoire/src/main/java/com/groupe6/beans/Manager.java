@@ -1,6 +1,5 @@
 package com.groupe6.beans;
 
-import javax.persistence.Convert;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -13,15 +12,19 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import java.awt.Window.Type;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Manager {
     protected SessionFactory sessionFactory;
     
-/*    public Manager() {
+    /*
+     * Toujours appeler le constructeur, puis la méthode à utiliser, puis exit()
+     */
+    public Manager() {
     	setup();
-    }*/
+    }
     
     protected void setup() {
     	final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
@@ -40,7 +43,7 @@ public class Manager {
     }
 
     /*
-     * Général
+     * Général <-- NE PAS UTILISER POUR LE MOMENT...
      *
     public boolean create(BaseEntity tableBD) {
     	Session session = sessionFactory.openSession();
@@ -108,8 +111,7 @@ public class Manager {
         try {
 	        session.beginTransaction();
 		    session.save(utilisateur);
-		    session.save(new Tag(Long.valueOf(2),"Utilisateur " + utilisateur.getNom() + " " + utilisateur.getPrenom()));
-		    //OU createTag(new Tag(Long.valueOf(2),"Utilisateur " + utilisateur.getNom() + " " + utilisateur.getPrenom()));
+		    createTagForUser(Long.valueOf(2), utilisateur);
 	    	session.getTransaction().commit();
         } catch (Exception e) {
         	return false;
@@ -118,7 +120,18 @@ public class Manager {
     	return true;
     } 
     
-    public Utilisateur selectUserByID(Long id) {
+    private boolean createTagForUser(Long idC, Utilisateur utilisateur) {
+		try{
+			String categorie = selectCategoryByID(idC).getNomCategorie();
+			Tag tag = new Tag(idC, categorie + " " + utilisateur.getNom() + " " + utilisateur.getPrenom());
+			createTag(tag);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
+	public Utilisateur selectUserByID(Long id) {
         Session session = sessionFactory.openSession();
         Utilisateur utilisateur = new Utilisateur();
         try {
@@ -133,7 +146,7 @@ public class Manager {
     public Utilisateur selectUser(String email, String password) {
     	List<Utilisateur> listUsers = selectAllUsers();
     	for (Utilisateur user : listUsers) {
-			if(user.getEmail() == email && user.getMotDePasse() == password)
+			if(user.getEmail().equals(email) && user.getMotDePasse().equals(password))
 				return user;
 		}
     	return null;
@@ -154,18 +167,21 @@ public class Manager {
     	return results;
 	}
  
-	//Rajouter update du tag
     public boolean updateUser(Utilisateur updateUser, Utilisateur newUser) {
     	Session session = sessionFactory.openSession();
         try{
         	session.beginTransaction();
             Utilisateur user = (Utilisateur)session.get(Utilisateur.class, updateUser.getId()); 
+            Tag tag = selectTag(Long.valueOf(2), "Utilisateur " + user.getNom() + " " + user.getPrenom());
             user.setNom(newUser.getNom());
             user.setPrenom(newUser.getPrenom());
             user.setEmail(newUser.getEmail());
             user.setMotDePasse(newUser.getMotDePasse());
             user.setIsAdmin(newUser.getIsAdmin());            
             session.update(user); 
+            //Modification du tag lié à l'utilisateur
+            tag.setNomTag("Utilisateur " + user.getNom() + " " +  user.getPrenom());
+            session.update(tag);
             session.getTransaction().commit();
             return true;
          } catch (HibernateException e) {
@@ -178,24 +194,34 @@ public class Manager {
          }
     }
  
-    //Supprimer aussi le tag?
-    public void deleteUser(Utilisateur utilisateur) {
+    public boolean deleteUser(Utilisateur utilisateur) {
         Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        
-        session.delete(utilisateur);
-        
-        session.getTransaction().commit();
-        session.close();		
+        try{
+        	session.beginTransaction();
+	        session.delete(utilisateur);
+	        session.delete(selectTag(Long.valueOf(2),"Utilisateur " + utilisateur.getNom() + " " + utilisateur.getPrenom()));
+	        session.getTransaction().commit();
+	        return true;
+        } catch (HibernateException e) {
+        	if(session.getTransaction()!=null)
+        		session.getTransaction().rollback();
+        	e.printStackTrace();
+        	return false;
+		} finally {
+			session.close();
+		}
 	}
     
-    public void deleteAllUsers() {
+    public boolean deleteAllUsers() {
     	List<Utilisateur> listUtilisateurs = selectAllUsers();
     	for (Utilisateur utilisateur : listUtilisateurs) {
-			deleteUser(utilisateur);
+			if(!deleteUser(utilisateur))
+				return false;
 		}
+    	return true;
     }
 
+    
     /*
      * Catégorie
      */
@@ -214,20 +240,19 @@ public class Manager {
     
     public Categorie selectCategoryByID(Long id) {
         Session session = sessionFactory.openSession();
-        Categorie categorie = new Categorie();
         try {
-        	categorie = session.get(Categorie.class, id);
+        	return session.get(Categorie.class, id);
         } catch (NullPointerException npe) {
         	npe.printStackTrace();
         }
         session.close();
-        return categorie;
+        return null;
     }
     
     public Categorie selectCategory(String nomCategorie) {
     	List<Categorie> listCategories = selectAllCategories();
     	for (Categorie categorie : listCategories) {
-			if(categorie.getNomCategorie() == nomCategorie)
+			if(categorie.getNomCategorie().equals(nomCategorie))
 				return categorie;
 		}
     	return null;
@@ -248,7 +273,16 @@ public class Manager {
     	return results;
 	}
  
-	//Rajouter update du tag
+	public List<Categorie> selectAllCategoriesLike(String like){
+		List<Categorie> listCat = selectAllCategories();
+		List<Categorie> newListCat = new ArrayList<Categorie>();
+		for (Categorie categorie : listCat) {
+			if(categorie.getNomCategorie().startsWith(like))
+				newListCat.add(categorie);
+		}
+		return newListCat;
+	}
+	
     public boolean updateCategory(Categorie updateCategorie, Categorie newCategorie) {
     	Session session = sessionFactory.openSession();
         try{
@@ -256,6 +290,11 @@ public class Manager {
         	Categorie categorie = (Categorie)session.get(Categorie.class, updateCategorie.getIdC()); 
             categorie.setNomCategorie(newCategorie.getNomCategorie());
             session.update(categorie); 
+            //Pour tous les tags concernés : mise à jour du nom de la catégorie dans le nom du tag
+            for (Tag tag : selectAllTagsLike(updateCategorie.getNomCategorie())) {
+            	Tag newTag = new Tag(tag.getIdC(), tag.getNomTag().replace(updateCategorie.getNomCategorie(), newCategorie.getNomCategorie()));
+				updateTag(tag, newTag);
+			}
             session.getTransaction().commit();
             return true;
          } catch (HibernateException e) {
@@ -268,22 +307,33 @@ public class Manager {
          }
     }
  
-    //Supprimer aussi le tag?
-    public void deleteCategory(Categorie categorie) {
+    public boolean deleteCategory(Categorie categorie) {
         Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        
-        session.delete(categorie);
-        
-        session.getTransaction().commit();
-        session.close();		
+        try{
+        	session.beginTransaction();
+	        session.delete(categorie);
+	        for (Tag tag : selectAllTagsLike(categorie.getNomCategorie())) {
+				deleteTag(tag);
+			}
+	        session.getTransaction().commit();
+	        return true;
+        } catch (HibernateException e) {
+        	if(session.getTransaction()!=null)
+        		session.getTransaction().rollback();
+        	e.printStackTrace();
+        	return false;
+		} finally {
+			session.close();
+		}
 	}
     
-    public void deleteAllCategories() {
+    public boolean deleteAllCategories() {
     	List<Categorie> listCategories = selectAllCategories();
     	for (Categorie categorie : listCategories) {
-			deleteCategory(categorie);
+			if(!deleteCategory(categorie))
+				return false;
 		}
+    	return true;
     }
     
     
@@ -315,6 +365,16 @@ public class Manager {
         return billet;
     }
     
+    public Billet selectBillet(String text) {
+    	Session session = sessionFactory.openSession();
+    	List<Billet> listBillet = selectAllBillets();
+    	for (Billet billet : listBillet) {
+			if(billet.getText().equals(text))
+				return billet;
+		}
+    	return null;    	
+    }
+    
 	public List<Billet> selectAllBillets() {
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
@@ -330,7 +390,6 @@ public class Manager {
     	return results;
 	}
  
-	//Rajouter update du tag
     public boolean updateBillet(Billet updateBillet, Billet newBillet) {
     	Session session = sessionFactory.openSession();
         try{
@@ -338,7 +397,7 @@ public class Manager {
         	Billet billet = (Billet)session.get(Billet.class, updateBillet.getIdB()); 
             billet.setText(newBillet.getText());
             billet.setCreation(newBillet.getCreation());
-            billet.setModification(newBillet.getModification());
+            billet.setModification(new Date(new java.util.Date().getTime()));
             session.update(billet); 
             session.getTransaction().commit();
             return true;
@@ -352,22 +411,30 @@ public class Manager {
          }
     }
  
-    //Supprimer aussi le tag?
-    public void deleteBillet(Billet billet) {
+    public boolean deleteBillet(Billet billet) {
         Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        
-        session.delete(billet);
-        
-        session.getTransaction().commit();
-        session.close();		
+        try{
+        	session.beginTransaction();
+	        session.delete(billet);
+	        session.getTransaction().commit();
+	        return true;
+        } catch (HibernateException e) {
+        	if(session.getTransaction()!=null)
+        		session.getTransaction().rollback();
+        	e.printStackTrace();
+        	return false;
+		} finally {
+			session.close();
+		}		
 	}
     
-    public void deleteAllBillets() {
+    public boolean deleteAllBillets() {
     	List<Billet> listBillets = selectAllBillets();
     	for (Billet billet : listBillets) {
-			deleteBillet(billet);
+			if(!deleteBillet(billet))
+				return false;
 		}
+    	return true;
     }
     
 
@@ -399,6 +466,16 @@ public class Manager {
         return tag;
     }
     
+    public Tag selectTag(Long idC, String nomTag) {
+    	Session session = sessionFactory.openSession();
+    	List<Tag> listTags = selectAllTags();
+    	for (Tag tag : listTags) {
+			if(tag.getIdC() == idC && tag.getNomTag().equals(nomTag))
+				return tag;
+		}
+    	return null;
+    }
+    
 	public List<Tag> selectAllTags() {
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
@@ -413,8 +490,17 @@ public class Manager {
     	session.close();
     	return results;
 	}
- 
-	//Rajouter update du tag
+
+	public List<Tag> selectAllTagsLike(String like){
+		List<Tag> listTag = selectAllTags();
+		List<Tag> newListTag = new ArrayList<Tag>();
+		for (Tag tag : listTag) {
+			if(tag.getNomTag().startsWith(like))
+				newListTag.add(tag);
+		}
+		return newListTag;
+	}
+	
     public boolean updateTag(Tag updateTag, Tag newTag) {
     	Session session = sessionFactory.openSession();
         try{
@@ -422,8 +508,7 @@ public class Manager {
         	Tag tag = (Tag)session.get(Tag.class, updateTag.getIdT()); 
         	tag.setNomTag(newTag.getNomTag());
             tag.setIdC(newTag.getIdC()); 	//A supprimer ou conserver??
-            tag.setIdT(newTag.getIdT());	//A supprimer ou conserver??
-        	session.update(tag); 
+            session.update(tag); 
             session.getTransaction().commit();
             return true;
          } catch (HibernateException e) {
@@ -436,22 +521,30 @@ public class Manager {
          }
     }
  
-    //Supprimer aussi le tag?
-    public void deleteTag(Tag tag) {
+    public boolean deleteTag(Tag tag) {
         Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        
-        session.delete(tag);
-        
-        session.getTransaction().commit();
-        session.close();		
+        try{
+        	session.beginTransaction();
+	        session.delete(tag);
+	        session.getTransaction().commit();
+	        return true;
+        } catch (HibernateException e) {
+        	if(session.getTransaction()!=null)
+        		session.getTransaction().rollback();
+        	e.printStackTrace();
+        	return false;
+		} finally {
+			session.close();
+		}
 	}
     
-    public void deleteAllTags() {
+    public boolean deleteAllTags() {
     	List<Tag> listTags = selectAllTags();
     	for (Tag tag : listTags) {
-			deleteTag(tag);
+			if(!deleteTag(tag))
+				return false;
 		}
+    	return true;
     }
         
     public void printListUsers() {
@@ -486,28 +579,68 @@ public class Manager {
 		}
     }
     
-    public static void main(String[] args) {
+    private void test() {
     	Utilisateur utilisateur = new Utilisateur("myemail@gmail.com","mypassword", "myName", "myFirstName",1);
     	Utilisateur newUtilisateur = new Utilisateur("mynewemail@gmail.com","mynewpassword", "myNewName", "myNewFirstName",1);
+    	Tag tag = new Tag(Long.valueOf(1), "Projet 3");
+    	Tag newTag = new Tag(Long.valueOf(1), "Projet 3bis");
+    	Categorie categorie = new Categorie("test");
+    	Categorie categorie2 = new Categorie("newTest");
+    	Billet billet = new Billet("Billet test");
+    	Billet newBillet = new Billet("UPDATE Billet test");
     	Manager manager = new Manager();
         manager.setup();
+        //Situation de départ
+        System.out.println("Situation de départ : \n");
         //manager.printListUsers();
-//        System.out.println("Après création");
+        //manager.printListTags();       
+        //manager.printListCategories();
+        manager.printListBillets();
+        
+        //Création
         //manager.createUser(utilisateur);
-//        manager.updateUser(utilisateur, newUtilisateur);
-        manager.printListUsers();
-        manager.printListTags();
-        //Utilisateur getUser = manager.read((long)20)
-        //List<Utilisateur> listUsers = manager.selectAllUsers();
-        //Utilisateur newUser = new Utilisateur("a@a.a","admin","nom","prenom",1);
-        //System.out.println("\n ---------- APRES MODIFICATION : ------------- \n");
-        //manager.updateUser(manager.selectUserByID((long)28), newUser);
-        //manager.printListBillets();
-    	//manager.printListCategories();
-        //manager.printListTags();
+        //manager.createTag(tag);
+        //manager.createCategory(categorie);
+    	//Tag testTag = new Tag(manager.selectCategory("test").getIdC(),"test 3");
+    	//manager.createTag(testTag);
+        manager.createBillet(billet);
+        System.out.println("Après création : \n");
         //manager.printListUsers();
-        //manager.create(new Utilisateur("a@a.a","admin","nom","prenom",1));
-        //manager.delete(utilisateur)
+        //manager.printListTags();
+        //manager.printListCategories();
+        manager.printListBillets();
+
+        //Modification
+        //manager.updateUser(utilisateur, newUtilisateur); 
+        //manager.updateTag(tag, newTag);
+        //manager.updateCategory(categorie, categorie2);
+        //Categorie categorie3 = new Categorie("Utilisateur");
+        //manager.updateCategory(manager.selectCategory("auteur"), categorie3);
+        manager.updateBillet(billet, newBillet);
+        System.out.println("Après modification : \n");
+        //manager.printListUsers();
+        //manager.printListTags();
+        //manager.printListCategories();
+        manager.printListBillets();
+        
+        //Suppression
+        //Utilisateur delNewUser = manager.selectUser(newUtilisateur.getEmail(), newUtilisateur.getMotDePasse());
+        //Utilisateur delUser = manager.selectUser(utilisateur.getEmail(), utilisateur.getMotDePasse());
+        //manager.deleteUser(delUser);
+        //manager.deleteUser(delNewUser);
+        //Tag delTag = manager.selectTag(tag.getIdC(), tag.getNomTag());
+        //Tag delNewTag = manager.selectTag(newTag.getIdC(), newTag.getNomTag());
+        //manager.deleteTag(delTag);
+        //manager.deleteTag(delNewTag);
+        //Categorie delCat = manager.selectCategory(categorie2.getNomCategorie());
+        //manager.deleteCategory(delCat);
+        //manager.deleteCategory(categorie);
+        manager.deleteBillet(manager.selectBillet(newBillet.getText()));
+        System.out.println("Après suppression : \n");
+        //manager.printListUsers();
+        //manager.printListTags();
+        //manager.printListCategories();
+        manager.printListBillets();
         manager.exit();
     }
 }

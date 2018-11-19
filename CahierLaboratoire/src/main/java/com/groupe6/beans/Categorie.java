@@ -13,10 +13,9 @@ public class Categorie{
 	private Long idC;
 	private String nomCategorie;
 	
-	public Categorie() {}
+	public Categorie(){}
 	
-	public Categorie(Long idC, String nomCategorie){
-		this.idC = idC;
+	public Categorie(String nomCategorie){
 		this.nomCategorie = nomCategorie;
 	}
 
@@ -27,7 +26,7 @@ public class Categorie{
 		return idC;
 	}
 
-	public void setIdC(Long idC) {
+	private void setIdC(Long idC) {
 		this.idC = idC;
 	}
 

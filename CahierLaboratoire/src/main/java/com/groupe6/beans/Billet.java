@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "billet")
 public class Billet{
@@ -20,10 +22,8 @@ public class Billet{
     
     public Billet() { }
     
-    public Billet(String text, Timestamp creation, Date modification) {
+    public Billet(String text) {
     	this.text = text;
-    	this.creation = creation;
-    	this.modification = modification;
     }
     
 	@Id
@@ -46,6 +46,7 @@ public class Billet{
 		this.text = text;
 	}
 
+	@CreationTimestamp
 	@Column(name = "creation")
 	public Timestamp getCreation() {
 		return creation;

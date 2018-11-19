@@ -28,7 +28,7 @@ public class Tag {
 		return idT;
 	}
 
-	public void setIdT(Long idT) {
+	private void setIdT(Long idT) {
 		this.idT = idT;
 	}
 	
