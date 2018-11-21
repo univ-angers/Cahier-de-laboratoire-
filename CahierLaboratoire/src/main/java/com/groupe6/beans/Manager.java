@@ -12,9 +12,19 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+
+//@Repository
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Manager {
     protected SessionFactory sessionFactory;
@@ -23,6 +33,24 @@ public class Manager {
      * Toujours appeler le constructeur, puis la méthode à utiliser, puis exit()
      */
     public Manager() {
+
+    		System.out.println("DANS LE CONSTRUCTEUR");
+    		setup();
+    }
+
+
+    protected void setup() {
+    	System.out.println("DANS LE SETUP");
+    	
+    	
+    	final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+    	        .configure() // configures settings from hibernate.cfg.xml
+    	        .build(); 
+    	
+    	System.out.println("DECLARATION REGISTRE");
+    	try {
+
+
     	setup();
     }
     
@@ -31,11 +59,16 @@ public class Manager {
     	        .configure() // configures settings from hibernate.cfg.xml
     	        .build();
     	try {
+
     	    sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     	} catch (HibernateException hex) {
 			System.out.println("Problem creating session factory");
 			hex.printStackTrace();
     	}
+
+    	System.out.println("SETUP OK");
+=======
+
     }
 
     public void exit() {
@@ -153,6 +186,7 @@ public class Manager {
     }
     
 	public List<Utilisateur> selectAllUsers() {
+
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
     	CriteriaQuery<Utilisateur> criteriaQuery = cBuilder.createQuery(Utilisateur.class);
@@ -579,7 +613,9 @@ public class Manager {
 		}
     }
     
-    private void test() {
+
+    private void test(){
+
     //public static void main(String args[]) {
     	Utilisateur utilisateur = new Utilisateur("myemail@gmail.com","mypassword", "myName", "myFirstName",1);
     	Utilisateur newUtilisateur = new Utilisateur("mynewemail@gmail.com","mynewpassword", "myNewName", "myNewFirstName",1);
@@ -644,4 +680,22 @@ public class Manager {
         manager.printListBillets();
         manager.exit();
     }
+
+    
+    public Collection<Utilisateur> findAll() {
+    	System.out.println("DANS LE MANAGER");
+    	Session session = sessionFactory.openSession();
+    	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
+    	CriteriaQuery<Utilisateur> criteriaQuery = cBuilder.createQuery(Utilisateur.class);
+    	Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
+    	criteriaQuery.select(root);
+    	Query query = session.createQuery(criteriaQuery);
+    	List<Utilisateur> results = query.getResultList();
+    	for (Utilisateur utilisateur : results) {
+    		selectUserByID(utilisateur.getId());
+		}
+    	session.close();
+    	return results;
+    }
+
 }
