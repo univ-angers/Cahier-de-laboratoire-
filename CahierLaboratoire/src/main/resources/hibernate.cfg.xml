@@ -16,7 +16,6 @@
     <mapping class="com.groupe6.beans.Categorie"/>
     <mapping class="com.groupe6.beans.Tag"/> 
     <mapping class="com.groupe6.beans.Utilisateur" />
-    <!-- Rajouter d'autres mapping class ? -->
      
   </session-factory>
 </hibernate-configuration>

@@ -580,6 +580,7 @@ public class Manager {
     }
     
     private void test() {
+    //public static void main(String args[]) {
     	Utilisateur utilisateur = new Utilisateur("myemail@gmail.com","mypassword", "myName", "myFirstName",1);
     	Utilisateur newUtilisateur = new Utilisateur("mynewemail@gmail.com","mynewpassword", "myNewName", "myNewFirstName",1);
     	Tag tag = new Tag(Long.valueOf(1), "Projet 3");
