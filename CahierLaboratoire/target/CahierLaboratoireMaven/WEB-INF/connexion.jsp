@@ -61,22 +61,22 @@
 
 <!-- Bootstrap core CSS -->
 <link type="text/css" rel="stylesheet"
-	href="<c:url value="/inc/css/bootstrap.css"/>" />
+	href="/inc/css/bootstrap.css"/>
 
 <!-- Custom styles for this template -->
 
-<link rel="stylesheet" href="<c:url value="/inc/css/signin.css"/>" />
-<link rel="stylesheet" href="<c:url value="/inc/css/buttonStyle.css"/>" />
+<link rel="stylesheet" href="/inc/css/signin.css" />
+<link rel="stylesheet" href="/inc/css/buttonStyle.css"/>
 <link rel="stylesheet"
-	href="<c:url value="/inc/css/Popups/Popups.css"/>" />
+	href="/inc/css/Popups/Popups.css"/>
 <link rel="stylesheet"
-	href="<c:url value="https://fonts.googleapis.com/css?family=Roboto+Mono:500"/>" />
+	href="https://fonts.googleapis.com/css?family=Roboto+Mono:500"/>
 <body class="text-center"
 	datacustomTest="${empty form.erreurs ? 'succes' : 'erreur'}">
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
 		<a class="navbar-brand" href="#"
 			style="font-family: 'Roboto Mono', monospace;"> <img
-			src="<c:url value="/inc/assets/agenda2.png"/>" alt="" width="40"
+			src="/inc/assets/agenda2.png" alt="" width="40"
 			height="40"> Cahier de laboratoire - Connexion
 		</a>
 	</nav>

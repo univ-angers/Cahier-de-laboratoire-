@@ -20,6 +20,7 @@
 	<servlet-class>com.groupe6.servlets.Deconnexion</servlet-class>
 	</servlet>
 	
+	<!--  
 	
 	<servlet-mapping>
 	    <servlet-name>Inscription</servlet-name>
@@ -35,7 +36,7 @@
 	</servlet-mapping>
 	
 	
-<!--  
+
 
 	<filter>
 	        <filter-name>RestrictionFilter</filter-name>

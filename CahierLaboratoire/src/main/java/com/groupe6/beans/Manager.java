@@ -39,22 +39,10 @@ public class Manager {
     }
 
 
-    protected void setup() {
-    	System.out.println("DANS LE SETUP");
-    	
-    	
-    	final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-    	        .configure() // configures settings from hibernate.cfg.xml
-    	        .build(); 
-    	
-    	System.out.println("DECLARATION REGISTRE");
-    	try {
-
-
-    	setup();
-    }
     
     protected void setup() {
+    	System.out.println("DANS LE SETUP");
+    
     	final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
     	        .configure() // configures settings from hibernate.cfg.xml
     	        .build();
@@ -67,7 +55,7 @@ public class Manager {
     	}
 
     	System.out.println("SETUP OK");
-=======
+
 
     }
 
