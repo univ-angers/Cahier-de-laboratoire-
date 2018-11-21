@@ -16,10 +16,12 @@
         <property name="defaultEncoding" value="ISO-8859-1" />
     </bean>
 
+
+
 	<context:component-scan base-package="com.groupe6." />
 	
 	
-	
+	<mvc:resources mapping="/inc/**" location="/inc/" />
 	
 	<bean name="MaNNNAAAAGER" class="com.groupe6.beans.Manager"/>
 
