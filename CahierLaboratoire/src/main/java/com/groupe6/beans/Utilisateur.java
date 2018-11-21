@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "utilisateur")
-public class Utilisateur implements TableBD {
+public class Utilisateur {
 	private Long id;
     private String email;
     private String motDePasse;
@@ -21,11 +21,12 @@ public class Utilisateur implements TableBD {
     	
     }
 
-	public Utilisateur(String email, String motDePasse, String nom, String prenom) {
+	public Utilisateur(String email, String motDePasse, String nom, String prenom, int isAdmin) {
     	this.email = email;
     	this.motDePasse = motDePasse;
     	this.nom = nom;
     	this.prenom = prenom;
+    	this.isAdmin = isAdmin;
     }
  
     public void setEmail(String email) {
