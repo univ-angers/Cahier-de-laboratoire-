@@ -18,4 +18,5 @@
    <mapping class="com.groupe6.beans.Utilisateur" />
 
  </session-factory>
+
 </hibernate-configuration>
