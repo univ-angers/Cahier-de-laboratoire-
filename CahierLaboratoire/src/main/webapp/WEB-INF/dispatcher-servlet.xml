@@ -24,39 +24,6 @@
 	<bean name="MaNNNAAAAGER" class="com.groupe6.beans.Manager"/>
 
 
-
-<!-- 
-    <bean name="manager" class="com.groupe6.beans.Manager"/>
-
-
-
-	<context:component-scan base-package="com.groupe6.web" />
-	<context:component-scan base-package="com.groupe6.business" />
-
-
-
-
-
-	<context:component-scan base-package="com.groupe6.beans" />
-
-	<context:component-scan base-package="com.groupe6.config" />
-
-	<context:component-scan base-package="com.groupe6.dao" />
-	<context:component-scan base-package="com.groupe6.filters" />
-	<context:component-scan base-package="com.groupe6.forms" />
-
-	<context:component-scan base-package="com.groupe6.servlets" />
-	
- -->
-	
-	
-	
-	
-	<!-- 
-		<context:component-scan base-package="com.groupe6.services" />
-		<context:component-scan base-package="com.groupe6.controller" />
- -->
-
 	<bean id="viewResolver"
     class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="viewClass"

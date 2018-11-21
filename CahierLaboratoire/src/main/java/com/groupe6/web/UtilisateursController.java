@@ -18,8 +18,7 @@ import com.groupe6.beans.Utilisateur;
 
 
 @Controller()
-@RequestMapping("/product")
-public class ProductController {
+public class UtilisateursController {
 	
 	//@Autowired
     Manager manager; 
@@ -27,10 +26,10 @@ public class ProductController {
 
     protected final Log logger = LogFactory.getLog(getClass());
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/utilisateurs", method = RequestMethod.GET)
     public ModelAndView listProducts() {
     	manager = new Manager(); 
-        logger.info("List of products");
+        logger.info("List of utilisateurs");
         Collection<Utilisateur> utilisateurs = manager.selectAllUsers();
         manager.exit();
         return new ModelAndView("utilisateurList", "utilisateurs", utilisateurs);
