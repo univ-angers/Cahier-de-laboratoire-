@@ -1,5 +1,6 @@
 package com.groupe6.beans;
 
+
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -12,10 +13,14 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+
+//@Repository
 public class Manager {
     protected SessionFactory sessionFactory;
     
@@ -23,19 +28,28 @@ public class Manager {
      * Toujours appeler le constructeur, puis la méthode à utiliser, puis exit()
      */
     public Manager() {
-    	setup();
+    		System.out.println("DANS LE CONSTRUCTEUR");
+    		setup();
     }
-    
+
+
     protected void setup() {
+    	System.out.println("DANS LE SETUP");
+    	
+    	
     	final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
     	        .configure() // configures settings from hibernate.cfg.xml
-    	        .build();
+    	        .build(); 
+    	
+    	System.out.println("DECLARATION REGISTRE");
     	try {
+
     	    sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     	} catch (HibernateException hex) {
 			System.out.println("Problem creating session factory");
 			hex.printStackTrace();
     	}
+    	System.out.println("SETUP OK");
     }
 
     public void exit() {
@@ -153,6 +167,7 @@ public class Manager {
     }
     
 	public List<Utilisateur> selectAllUsers() {
+		System.out.println("Dans le managers");
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
     	CriteriaQuery<Utilisateur> criteriaQuery = cBuilder.createQuery(Utilisateur.class);
@@ -579,6 +594,7 @@ public class Manager {
 		}
     }
     
+
     private void test() {
     //public static void main(String args[]) {
     	Utilisateur utilisateur = new Utilisateur("myemail@gmail.com","mypassword", "myName", "myFirstName",1);
@@ -643,5 +659,21 @@ public class Manager {
         //manager.printListCategories();
         manager.printListBillets();
         manager.exit();
+    }
+    
+    public Collection<Utilisateur> findAll() {
+    	System.out.println("DANS LE MANAGER");
+    	Session session = sessionFactory.openSession();
+    	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
+    	CriteriaQuery<Utilisateur> criteriaQuery = cBuilder.createQuery(Utilisateur.class);
+    	Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
+    	criteriaQuery.select(root);
+    	Query query = session.createQuery(criteriaQuery);
+    	List<Utilisateur> results = query.getResultList();
+    	for (Utilisateur utilisateur : results) {
+    		selectUserByID(utilisateur.getId());
+		}
+    	session.close();
+    	return results;
     }
 }

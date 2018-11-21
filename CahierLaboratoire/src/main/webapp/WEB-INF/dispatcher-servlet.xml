@@ -15,4 +15,55 @@
         <property name="basename" value="classpath:messages" />
         <property name="defaultEncoding" value="ISO-8859-1" />
     </bean>
+
+	<context:component-scan base-package="com.groupe6." />
+	
+	
+	
+	
+	<bean name="MaNNNAAAAGER" class="com.groupe6.beans.Manager"/>
+
+
+
+<!-- 
+    <bean name="manager" class="com.groupe6.beans.Manager"/>
+
+
+
+	<context:component-scan base-package="com.groupe6.web" />
+	<context:component-scan base-package="com.groupe6.business" />
+
+
+
+
+
+	<context:component-scan base-package="com.groupe6.beans" />
+
+	<context:component-scan base-package="com.groupe6.config" />
+
+	<context:component-scan base-package="com.groupe6.dao" />
+	<context:component-scan base-package="com.groupe6.filters" />
+	<context:component-scan base-package="com.groupe6.forms" />
+
+	<context:component-scan base-package="com.groupe6.servlets" />
+	
+ -->
+	
+	
+	
+	
+	<!-- 
+		<context:component-scan base-package="com.groupe6.services" />
+		<context:component-scan base-package="com.groupe6.controller" />
+ -->
+
+	<bean id="viewResolver"
+    class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass"
+        value="org.springframework.web.servlet.view.JstlView"></property>
+    <property name="prefix" value="/WEB-INF/jsp/"></property>
+    <property name="suffix" value=".jsp"></property>
+</bean>
+	
+
 </beans>
