@@ -31,235 +31,101 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500"
 	rel="stylesheet">
 <script type="text/javascript">
+	function exportPDF() {
+		var doc = new jsPDF()
 
+		doc.text('Hello world!', 10, 10)
+		doc.fromHTML($('#data1').html(), 15, 15, {
+			'width' : 170
+		});
+		doc.save('Export.pdf');
 
-function exportPDF() {
-	var doc = new jsPDF()
-
-	doc.text('Hello world!', 10, 10)
-	    doc.fromHTML(  $('#data1').html(), 15, 15, {
-        'width': 170
-    });
-    doc.save('Export.pdf');
-
-	
-}
-
-
-
-	
-	
+	}
 </script>
 <title>Cahier de laboratoire</title>
 
 </head>
 <body class="container-fluid"
-	style="font-family: 'Roboto Mono', monospace">
+	style="font-family: 'Roboto Mono', monospace;">
+
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<a class="navbar-brand" href="#"
 			style="font-family: 'Roboto Mono', monospace;"> <img
 			src="<c:url value="/inc/assets/agenda2.png"/>" alt="" width="40"
-			height="40"> Cahier de laboratoire
+			height="40">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarCollapse" aria-controls="navbarCollapse"
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link" href="#">Accueil
+						<span class="sr-only">(current)</span> 
 				</a></li>
-				
-				
 				<c:if test="${ sessionScope.sessionUtilisateur.isAdmin== 1}">
-					<li class="nav-item"><a class="nav-link" href="/CahierLaboratoire/inscription">Inscription</a></li>
-				</c:if> 			 		
-
+					<li class="nav-item"><a class="nav-link"
+						href="/CahierLaboratoire/inscription">Ajouter un utilisateur</a></li>
+				</c:if>
 				
-				
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="true"> Dropdown </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a> <a
-							class="dropdown-item" href="#">Another action</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</div></li>
+				<li class="nav-item"><a class="nav-link"
+						href="#">Aide ?</a></li>
 
 			</ul>
-			<input type="search" placeholder="Search">
 
 
-			<button class="btn btn-danger navbar-btn" style="margin-left: 2%;">Déconnexion</button>
+			<button type="button" class="btn btn-danger navbar-btn" id="buttonDeco" data-toggle="modal" data-target="#exampleModalCenter" style="margin-left: 2%;">Déconnexion</button>
 
 		</div>
+
+
 	</nav>
-	<div class="row w-100" style="top: 10%; position: absolute">
-	
-		<div class="col ">
-			<button id="buttonIdTag" type="button" class="btn btn-info w-100" style="margin-bottom: 5%;"  >
-				+ Ajouter tag 
-			</button>
+
+	<div class="container-fluid row w-100 h-100"
+		style="position: absolute;">
+
+		<div class="col-sm-3" style="margin-left: 0%">
+			<button id="buttonRechercherTag" type="button"
+				class="btn btn-info w-100" style="margin-bottom: 5%; margin-top: 5%">Rechercher
+				tag</button>
+
+			<button id="buttonIdTag" type="button" class="btn btn-info w-100"
+				style="margin-bottom: 5%; margin-top: 5%">+ Ajouter tag</button>
+
+
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h4 class="my-0 font-weight-normal ">Tags </h4>
+					<h4 class="my-0 font-weight-normal ">Tags</h4>
 				</div>
-				<div id="taglist"class="card-body">
-					<a href="#" class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-success">Success</a> <a href="#"
-						class="badge badge-danger">Danger</a> <a href="#"
-						class="badge badge-info">Info</a> <a href="#"
-						class="badge badge-light">Light</a> <a href="#"
-						class="badge badge-dark">Dark</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-secondary ">Secondary</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-success">Success</a> <a href="#"
-						class="badge badge-danger">Danger</a> <a href="#"
-						class="badge badge-info">Info</a> <a href="#"
-						class="badge badge-light">Light</a> <a href="#"
-						class="badge badge-dark">Dark</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-secondary ">Secondary</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-success">Success</a> <a href="#"
-						class="badge badge-danger">Danger</a> <a href="#"
-						class="badge badge-info">Info</a> <a href="#"
-						class="badge badge-light">Light</a> <a href="#"
-						class="badge badge-dark">Dark</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-secondary ">Secondary</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-success">Success</a> <a href="#"
-						class="badge badge-danger">Danger</a> <a href="#"
-						class="badge badge-info">Info</a> <a href="#"
-						class="badge badge-light">Light</a> <a href="#"
-						class="badge badge-dark">Dark</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-secondary ">Secondary</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-success">Success</a> <a href="#"
-						class="badge badge-danger">Danger</a> <a href="#"
-						class="badge badge-info">Info</a> <a href="#"
-						class="badge badge-light">Light</a> <a href="#"
-						class="badge badge-dark">Dark</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-secondary ">Secondary</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-success">Success</a> <a href="#"
-						class="badge badge-danger">Danger</a> <a href="#"
-						class="badge badge-info">Info</a> <a href="#"
-						class="badge badge-light">Light</a> <a href="#"
-						class="badge badge-dark">Dark</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-secondary ">Secondary</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-success">Success</a> <a href="#"
-						class="badge badge-danger">Danger</a> <a href="#"
-						class="badge badge-info">Info</a> <a href="#"
-						class="badge badge-light">Light</a> <a href="#"
-						class="badge badge-dark">Dark</a> <a href="#"
-						class="badge badge-primary">Test</a> <a href="#"
-						class="badge badge-secondary ">Secondary</a>
+				<div id="categorylist" class="card-body row " style="overflow-y:scroll; height:600px;">
+
+
 				</div>
+			</div>
+		</div>
+
+		<div class="col-md-8 w-100 mx-auto" id="billetsList"
+			style="background: gainsboro; padding-top: 20px; border-radius: 1%;">
+			<div class="row">
+				<button type="button" id="printAllButton" class="btn btn-dark"
+					style="margin: 1%;margin-top:0px; margin-right: 0px; margin-left:30px" onclick="exportPDF()">
+					<img src="../inc/assets/print.png" width="25" height="25" />
+					Imprimer tous les billets ?
+				</button>
 			</div>
 		</div>
 		
-		<div class="col-10">
-<%-- 			 		<div id="billet-1" class="card mb-4 shadow-sm">
-				<div class="card-header">
-<button id="download-pdf" onclick="exportPDF()">DOWNLOAD PDF</button>
-					<h6 class="my-0 font-weight-normal d-inline">Projet_5 Mycose
-						de cyrillepinette</h6>
-					<button id="buttonAddtag" type="button" class="btn btn-dark d-inline float-right buttonQuill">
-						<img id="testquill" src="<c:url value="/inc/assets/edit1.svg"/>"
-							alt="" width="25" height="25">
-					</button>
-
-				</div>
-				<div class="card-body">
-					Nom : ${sessionScope.sessionUtilisateur.nom} Prénom : <br>
-					${sessionScope.sessionUtilisateur.prenom} Email :<br>
-					${sessionScope.sessionUtilisateur.email} MDP :<br>
-					${sessionScope.sessionUtilisateur.motdepasse} ADMIN :<br>
-					${sessionScope.sessionUtilisateur.isadmin}<br>
-					<div id=" data1">
-					 Le Lorem Ipsum est
-					simplement du faux texte employé dans la composition et la mise en
-					page avant impression. Le Lorem Ipsum est le faux texte standard de
-					l'imprimerie depuis les années 1500, quand un imprimeur anonyme
-					assembla ensemble des morceaux de texte pour réaliser un livre
-					spécimen de polices de texte. Il n'a pas fait que survivre cinq
-					siècles, mais s'est aussi adapté à la bureautique informatique,
-					sans que son contenu n'en soit modifié. Il a été popularisé dans
-					les années 1960 grâce à la vente de feuilles Letraset contenant des
-					passages du Lorem Ipsum, et, plus récemment, par son inclusion dans
-					des applications de mise en page de texte, comme Aldus PageMaker.
-					</div>
-					<div id="content-container">
-						<div id="toolbar-container">
-						</div>
-						<div id="editor-container"></div>
-					</div>
-				</div>
-			</div> --%>
-
-			<%-- 	<div class="card mb-4 shadow-sm">
-				<div class="card-header">
-					<h6 class="my-0 font-weight-normal d-inline">Projet_5 Mycose
-						de cyrillepinette</h6>
-					<button type="button" class="btn btn-dark d-inline float-right">
-						<img src="<c:url value="/inc/assets/edit1.svg"/>" alt=""
-							width="25" height="25">
-					</button>
-
-				</div>
-				<div class="card-body">Le Lorem Ipsum est simplement du faux
-					texte employé dans la composition et la mise en page avant
-					impression. Le Lorem Ipsum est le faux texte standard de
-					l'imprimerie depuis les années 1500, quand un imprimeur anonyme
-					assembla ensemble des morceaux de texte pour réaliser un livre
-					spécimen de polices de texte. Il n'a pas fait que survivre cinq
-					siècles, mais s'est aussi adapté à la bureautique informatique,
-					sans que son contenu n'en soit modifié. Il a été popularisé dans
-					les années 1960 grâce à la vente de feuilles Letraset contenant des
-					passages du Lorem Ipsum, et, plus récemment, par son inclusion dans
-					des applications de mise en page de texte, comme Aldus PageMaker.
-
-					Le Lorem Ipsum est simplement du faux texte employé dans la
-					composition et la mise en page avant impression. Le Lorem Ipsum est
-					le faux texte standard de l'imprimerie depuis les années 1500,
-					quand un imprimeur anonyme assembla ensemble des morceaux de texte
-					pour réaliser un livre spécimen de polices de texte. Il n'a pas
-					fait que survivre cinq siècles, mais s'est aussi adapté à la
-					bureautique informatique, sans que son contenu n'en soit modifié.
-					Il a été popularisé dans les années 1960 grâce à la vente de
-					feuilles Letraset contenant des passages du Lorem Ipsum, et, plus
-					récemment, par son inclusion dans des applications de mise en page
-					de texte, comme Aldus PageMaker. Le Lorem Ipsum est simplement du
-					faux texte employé dans la composition et la mise en page avant
-					impression. Le Lorem Ipsum est le faux texte standard de
-					l'imprimerie depuis les années 1500, quand un imprimeur anonyme
-					assembla ensemble des morceaux de texte pour réaliser un livre
-					spécimen de polices de texte. Il n'a pas fait que survivre cinq
-					siècles, mais s'est aussi adapté à la bureautique informatique,
-					sans que son contenu n'en soit modifié. Il a été popularisé dans
-					les années 1960 grâce à la vente de feuilles Letraset contenant des
-					passages du Lorem Ipsum, et, plus récemment, par son inclusion dans
-					des applications de mise en page de texte, comme Aldus PageMaker.</div>
-			</div>
- --%>
-		</div>
+		
 		<footer class="footer w-100 text-center ">
 			<p class="mt-5 mb-5 text-muted">Univ. Angers&copy; 2018-2019</p>
 		</footer>
 	</div>
-
+	
 </body>
+
+<!-- 
+
 <!-- <footer>
 	<p class="mt-5 mb-5 text-muted">Univ. Angers&copy; 2018-2019</p>
 </footer> -->
@@ -271,14 +137,33 @@ function exportPDF() {
 <!-- Main Quill library -->
 <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
-<script type="text/javascript"src="<c:url value="/inc/js/Scripts/Wysiwyg/wysiwyg.js"/>"></script>
-<script type="text/javascript"src="<c:url value="/inc/js/Scripts/Billet/GenerateBillet.js"/>"></script>
-<script type="text/javascript"src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
-<script type="text/javascript"src="<c:url value="/inc/js/Scripts/Tags/addTag.js"/>"></script>
-<script type="text/javascript"src="<c:url value="/inc/js/Scripts/Popup/Popup.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Wysiwyg/wysiwyg.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Billet/GenerateBillet.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Tags/addTag.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Tags/generateCategory.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Tags/generateTags.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Popup/Popup.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Recherche/popupRecherche.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Connexion/deconnexionPopup.js"/>"></script>
 <!-- JSPDF Library  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" 
-integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" 
-crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"
+	integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
+	crossorigin="anonymous"></script>
+<!-- jquery -->
+
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Bootstrap/bootstrap.min.js"/>"></script>
+
 </html>
 
