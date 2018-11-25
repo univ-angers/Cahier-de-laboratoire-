@@ -9,19 +9,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tag")
-public class Tag implements TableBD {
+public class Tag {
 	private Long idT;
 	private Long idC;
 	private String nomTag;
 	
 	public Tag() {}
 	
-	public Tag(Long idT, Long idC, String nomTag) {
-		this.idT = idT;
+	public Tag(Long idC, String nomTag) {
 		this.idC = idC;
 		this.nomTag = nomTag;
 	}
-
+	
 	@Id
 	@Column(name="id_t")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +28,7 @@ public class Tag implements TableBD {
 		return idT;
 	}
 
-	public void setIdT(Long idT) {
+	private void setIdT(Long idT) {
 		this.idT = idT;
 	}
 	
@@ -58,5 +57,4 @@ public class Tag implements TableBD {
 		description += "Nom de la catégorie : " + getNomTag() + "\n";
 		return description;
 	}
-	
 }

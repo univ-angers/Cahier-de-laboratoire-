@@ -10,9 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "billet")
-public class Billet implements TableBD {
+public class Billet{
 	private Long id;
     private String text;
     private Timestamp creation;
@@ -20,24 +22,22 @@ public class Billet implements TableBD {
     
     public Billet() { }
     
-    public Billet(String text, Timestamp creation, Date modification) {
+    public Billet(String text) {
     	this.text = text;
-    	this.creation = creation;
-    	this.modification = modification;
     }
     
 	@Id
 	@Column(name = "id_b")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
+	public Long getIdB() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setIdB(Long id) {
 		this.id = id;
 	}
 
-	@Column(name = "text")
+	@Column(name = "texte")
     public String getText() {
 		return text;
 	}
@@ -46,6 +46,7 @@ public class Billet implements TableBD {
 		this.text = text;
 	}
 
+	@CreationTimestamp
 	@Column(name = "creation")
 	public Timestamp getCreation() {
 		return creation;
@@ -66,7 +67,7 @@ public class Billet implements TableBD {
 	
 	@Override
 	public String toString() {
-		String description = "Billet " + getId() + "\n";
+		String description = "Billet " + getIdB() + "\n";
 		description += "Texte : " + getText() + "\n";
 		description += "Créé le : " + getCreation() + "\n";
 		description += "Modifié le : " + getModification() + "\n";
