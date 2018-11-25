@@ -1,12 +1,18 @@
 var AllQuillObjects = [
-  ["id", 'objet']
+  ["id", 'objet ']
 ];
 $(document).ready(function() {
 
+	$("#buttonRechercherTag").click(function() {
+	popupRechercheTag();
+	console.log("test");
+	});
+	
 	$("#buttonIdTag").click(function() {
 		popupAddTag();
 	});
 	
+	//ask in database for last billet avec var recherche
 	generateBillet('billet1','Sample');
 	generateBillet('billet2','Sample');
 	
@@ -27,5 +33,28 @@ $(document).ready(function() {
 		$(this).prop("disabled",true);
 		$("#"+strId+"Modify").prop("disabled",false);
 	});
+	
+	$( "#buttonDeco" ).click(function() {
+		popupDeconnexion();
+	});
+	
+	var array1 = ['val1', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3'];
+	
+	generateCategory("Category_1");
+	generateTags("Category_1",array1);
+	
+	generateCategory("Category_2");
+	generateTags("Category_2",array1);
+	
+	generateCategory("Category_3");
+	generateTags("Category_3",array1);
+	
+	generateCategory("Category_4");
+	generateTags("Category_4",array1);
+	
+	generateCategory("Category_5");
+	generateTags("Category_5",array1);
+	
+	
 	
 });

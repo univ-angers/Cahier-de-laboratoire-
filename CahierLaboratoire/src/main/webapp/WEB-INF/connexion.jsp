@@ -77,7 +77,7 @@
 		<a class="navbar-brand" href="#"
 			style="font-family: 'Roboto Mono', monospace;"> <img
 			src="<c:url value="/inc/assets/agenda2.png"/>" alt="" width="40"
-			height="40"> Cahier de laboratoire - Connexion
+			height="40"> Cahier de laboratoire
 		</a>
 	</nav>
 

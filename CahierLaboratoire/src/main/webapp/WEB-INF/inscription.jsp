@@ -21,12 +21,42 @@
     <link href="<c:url value="/inc/css/buttonStyle.css"/>" rel="stylesheet">
     <link href="<c:url value="/inc/css/Popups/Popups.css"/>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500" rel="stylesheet">
+    
+    <link href="<c:url value="/inc/css/searchBar.css"/>" rel="stylesheet">
 
 <body class="text-center" style="font-family: 'Roboto Mono', monospace;">
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#" style="font-family: 'Roboto Mono', monospace;"> <img src="<c:url value="/inc/assets/agenda2.png"/>"  alt="" width="40" height="40"> Cahier de laboratoire - Inscription</a>
-</nav>
+		<a class="navbar-brand" href="#"
+			style="font-family: 'Roboto Mono', monospace;"> <img
+			src="<c:url value="/inc/assets/agenda2.png"/>" alt="" width="40"
+			height="40">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarCollapse" aria-controls="navbarCollapse"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<c:if test="${ sessionScope.sessionUtilisateur.isAdmin== 1}">
+					<li class="nav-item"><a class="nav-link"
+						href="/CahierLaboratoire/inscription">Inscription</a></li>
+				</c:if>
 
+			</ul>
+			<input type="search" placeholder="Search">
+
+
+			<button class="btn btn-danger navbar-btn" style="margin-left: 2%;">Déconnexion</button>
+
+		</div>
+		
+	</nav>	
 <div class="d-flex justify-content-center align-items-center container ">
     <div class="row ">
        <form method="post" action="inscription">
@@ -72,6 +102,10 @@
     </div>
 </div>
 </body>
+<!-- jquery -->
+
+ <script type="text/javascript" src="<c:url value="/inc/js/Bootstrap/bootstrap.min.js"/>"></script>
+
 </html>
 
 
