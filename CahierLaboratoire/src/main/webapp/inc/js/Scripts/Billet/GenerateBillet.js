@@ -20,7 +20,7 @@ function generateBillet(id,data){
 						'</button>'+
 					'</div>'+
 				'</div>'+
-				'<div class="card-body">'+
+				
 					'<div id="'+id+'Content">'+
 					data+
 					'</div>'+
@@ -28,8 +28,9 @@ function generateBillet(id,data){
 						'<div id="'+id+'toolbar-container"></div>'+
 						'<div id="'+id+'editor-container"></div>'+
 					'</div>'+
-				'</div>'+
 			'</div>')
+			
+			quillEnable(id);
 			
 			$("#"+id+"save").prop("disabled",true);
 			
