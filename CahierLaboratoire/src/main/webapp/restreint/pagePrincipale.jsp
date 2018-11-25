@@ -108,8 +108,8 @@
 		<div class="col-md-8 w-100 mx-auto" id="billetsList"
 			style="background: gainsboro; padding-top: 20px; border-radius: 1%;">
 			<div class="row">
-				<button type="button" id="printAllButton" class="btn btn-dark"
-					style="margin: 1%;margin-top:0px; margin-right: 0px; margin-left:30px" onclick="exportPDF()">
+				<button type="button" id="printAllButton" class="btn btn-dark container-fluid"
+					style="margin: 2%;margin-top:0px;" onclick="exportPDF()">
 					<img src="../inc/assets/print.png" width="25" height="25" />
 					Imprimer tous les billets ?
 				</button>
