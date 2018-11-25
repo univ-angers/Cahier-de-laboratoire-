@@ -26,7 +26,7 @@
 
 <body class="text-center" style="font-family: 'Roboto Mono', monospace;">
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand" href="#"
+		<a class="navbar-brand" href="/CahierLaboratoire/restreint/pagePrincipale.jsp"
 			style="font-family: 'Roboto Mono', monospace;"> <img
 			src="<c:url value="/inc/assets/agenda2.png"/>" alt="" width="40"
 			height="40">
@@ -39,18 +39,18 @@
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home
+					<a class="nav-link" href="/CahierLaboratoire/restreint/pagePrincipale.jsp">Accueil
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
 				<c:if test="${ sessionScope.sessionUtilisateur.isAdmin== 1}">
 					<li class="nav-item"><a class="nav-link"
-						href="/CahierLaboratoire/inscription">Inscription</a></li>
+						href="/CahierLaboratoire/inscription">Ajouter un utilisateur</a></li>
 				</c:if>
-
+			
+			<li class="nav-item"><a class="nav-link"
+						href="#">Aide ?</a></li>
 			</ul>
-			<input type="search" placeholder="Search">
-
 
 			<button class="btn btn-danger navbar-btn" style="margin-left: 2%;">Déconnexion</button>
 

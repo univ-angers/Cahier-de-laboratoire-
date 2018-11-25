@@ -74,6 +74,7 @@
 
 			</ul>
 
+			<button type="button" class="btn btn-info navbar-btn" id="buttonAjoutBillet" data-toggle="modal" data-target="" style="margin-left: 2%;">Creer un billet</button>
 
 			<button type="button" class="btn btn-danger navbar-btn" id="buttonDeco" data-toggle="modal" data-target="#exampleModalCenter" style="margin-left: 2%;">Déconnexion</button>
 
