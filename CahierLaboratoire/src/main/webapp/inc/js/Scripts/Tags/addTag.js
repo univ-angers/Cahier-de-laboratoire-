@@ -56,7 +56,7 @@ function popupAddTag(){
 	'    </div>');
 
 	$(".close").click(function() {
-		$("#rechercheTag").fadeOut();
+		$("#addtagpopup").fadeOut();
 	});
 
 	$("#buttonPopupAddTag").click(function() {
