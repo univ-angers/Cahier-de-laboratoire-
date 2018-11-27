@@ -4,7 +4,8 @@
  
 	<display-name>Archetype Created Web Application</display-name>
  
- 
+ 	
+ <!-- 
  
    <servlet>
     <servlet-name>Inscription</servlet-name>
@@ -18,8 +19,7 @@
 	<servlet-name>Deconnexion</servlet-name>
 	<servlet-class>com.groupe6.servlets.Deconnexion</servlet-class>
 	</servlet>
-	
- <!-- 
+
 	<servlet-mapping>
 	    <servlet-name>Inscription</servlet-name>
 	    <url-pattern>/inscription</url-pattern>

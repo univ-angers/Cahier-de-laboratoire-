@@ -39,7 +39,8 @@ $(document).ready(function() {
 	});
 	
 	$( "#buttonDeco" ).click(function() {
-		popupDeconnexion();
+		//popupDeconnexion();
+		Deconnexion("deconnexion");
 	});
 	
 	var array1 = ['val1', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3'];

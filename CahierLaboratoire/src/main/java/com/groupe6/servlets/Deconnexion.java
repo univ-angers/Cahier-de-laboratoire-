@@ -24,3 +24,5 @@ public class Deconnexion extends HttpServlet {
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }
+
+
