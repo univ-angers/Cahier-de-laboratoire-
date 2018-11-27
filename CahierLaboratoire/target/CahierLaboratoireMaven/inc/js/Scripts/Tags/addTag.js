@@ -42,6 +42,7 @@ function popupAddTag(){
 	$(".modal-content").css("color","black");
 	$(".modal-content").empty();
 	$(".modal-content").append(
+			'<span class="close">&times;</span>'+
 			'<p>Ajouter un nouveau tag </p>'+
 			'    <div class="row " >' +
 			'      <div class="col-sm-9">' +
@@ -54,6 +55,9 @@ function popupAddTag(){
 			'       </div>'+
 	'    </div>');
 
+	$(".close").click(function() {
+		$("#addtagpopup").fadeOut();
+	});
 
 	$("#buttonPopupAddTag").click(function() {
 
