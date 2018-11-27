@@ -1,4 +1,4 @@
-package com.groupe6.web;
+package com.groupe6.controller;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
