@@ -1,7 +1,18 @@
 var AllQuillObjects = new Map();
 
 $(document).ready(function() {
-
+	$("#buttonAjoutBillet").click(function() {
+		var numItems = $('.ql-editor').length;
+		
+		numItems++;
+		console.log(numItems)
+		
+		//demander identifiant à la bd
+		var string= 'billet'+numItems;
+		
+		generateBillet(string,'Sample');
+		});
+	
 	$("#buttonRechercherTag").click(function() {
 	popupRechercheTag();
 	console.log("test");
@@ -12,9 +23,7 @@ $(document).ready(function() {
 	});
 	
 	//ask in database for last billet avec var recherche
-	generateBillet('billet1','Sample');
-	generateBillet('billet2','Sample');
-	
+
 	
 	$( ".buttonQuill" ).click(function() {
 		strId=this.id.substring(0, this.id.length - 6);//on récupère l'id commun

@@ -83,10 +83,10 @@
 
 	</nav>
 
-	<div class="container-fluid row w-100 h-100"
-		style="position: absolute;">
+	<div class="container-fluid row w-100 h-100 position-absolute"
+		>
 
-		<div class="col-sm-3" style="margin-left: 0%">
+		<div class="col-sm-3" style="margin-left: 0%;">
 			<button id="buttonRechercherTag" type="button"
 				class="btn btn-info w-100" style="margin-bottom: 5%; margin-top: 5%">Rechercher
 				tag</button>
