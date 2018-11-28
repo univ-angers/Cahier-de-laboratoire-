@@ -10,7 +10,13 @@ function generateTags(category,tagsList){
 }
 
 function generateOneTag(category,tag){
+	console.log("je genere un tag");
 	
+	
+    if (!document.getElementById("tagsList"+category)) {
+    	generateCategory(category);
+    }
+    
 	$("#tagsList"+category).append(
 			'	<a href="" class="badge badge-dark">'+tag+'</a> '
 	);

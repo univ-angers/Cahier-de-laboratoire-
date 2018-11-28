@@ -1,20 +1,29 @@
-/**
- * 
- */
+
 function getAllTags(){
+	console.log("get all tag");
+	
 
 	var data = {}
-	data["category"] = category;
-	data["name"] = name;
+	//data["category"] = category;
+	//data["name"] = name;
 	$.ajax({
-		type : "POST",
-		contentType : "application/json",
-		url : "url",
-		data : JSON.stringify(data),
+		type : "GET",
+		url : "../tag/get",
+		//data : JSON.stringify(data),
+		data : data,
 		dataType : 'json',
 		timeout : 100000,
 		success : function(data) {
 			//print all tags
+			
+			console.log(data);
+
+			for (var i = 0; i < data.length; i++){
+			    var obj = data[i];
+			    generateOneTag(obj["idC"], obj["nomTag"]);
+
+			}
+			
 			return true;
 		},
 		error : function(e) {
@@ -25,7 +34,9 @@ function getAllTags(){
 		}
 	});
 	
-	
-//on rempli la liste des tags
 
+//on rempli la liste des tags
+	
+	
 }
+

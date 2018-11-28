@@ -22,6 +22,5 @@ function connexion(popupName,name, mdp){
         	}
          }
      });
-	 
 }
 

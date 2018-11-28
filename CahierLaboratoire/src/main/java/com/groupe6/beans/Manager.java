@@ -60,6 +60,7 @@ public class Manager {
     }
 
     public void exit() {
+    	System.out.println("Close Manager");
     	sessionFactory.close();
     }
 
@@ -466,6 +467,7 @@ public class Manager {
     public boolean createTag(Tag tag) {
         Session session = sessionFactory.openSession();
         try {
+        	System.out.println("Tag crée dans le manager: \t" +tag);
 	        session.beginTransaction();
 		    session.save(tag);
 	    	session.getTransaction().commit();
@@ -499,6 +501,7 @@ public class Manager {
     }
     
 	public List<Tag> selectAllTags() {
+		System.out.println("GET ALL TAG");
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
     	CriteriaQuery<Tag> criteriaQuery = cBuilder.createQuery(Tag.class);
