@@ -4,7 +4,7 @@
 ## Inscription / Connexion
 L'application est restreinte. Il faut obligatoirement être enregistré.  
 
-1. Connexion  : http://localhost:8080/CahierLaboratoire/connexion
+1. Connexion  : http://localhost:8080/CahierLaboratoireMaven/connexion
     - Administrateur : 
         - Mail : a@a.a
         - Mot de passe : admin
