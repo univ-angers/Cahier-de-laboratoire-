@@ -4,6 +4,7 @@ com\groupe6\forms\FormValidationException.class
 com\groupe6\servlets\Restriction.class
 com\groupe6\servlets\Inscription.class
 com\groupe6\beans\Billet_Tag.class
+com\groupe6\controller\UtilisateursController.class
 com\groupe6\dao\UtilisateurDao.class
 com\groupe6\filters\RestrictionFilter.class
 com\groupe6\beans\Manager.class
@@ -13,8 +14,8 @@ com\groupe6\config\InitialisationDaoFactory.class
 com\groupe6\forms\InscriptionForm.class
 com\groupe6\servlets\Connexion.class
 com\groupe6\servlets\Deconnexion.class
-com\groupe6\web\UtilisateursController.class
 com\groupe6\beans\Categorie.class
+com\groupe6\controller\BilletController.class
 com\groupe6\dao\DAOFactory.class
 com\groupe6\beans\Billet.class
 com\groupe6\dao\UtilisateurDaoImpl.class

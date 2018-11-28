@@ -15,7 +15,7 @@ function generateBillet(id,data){
 						'<button type="button" id="'+id+'save" class="btn btn-dark saveButton" style="margin:1%">'+
 							'<img src="../inc/assets/save.png" width="25" height="25"/>'+
 						'</button>'+
-						'<button type="button" id="'+id+'Modify" class="btn btn-dark  buttonQuill" style="margin:1%">'+
+						'<button type="button" id="'+id+'Modify" class="btn btn-dark buttonQuill" style="margin:1%">'+
 							'<img src="../inc/assets/edit1.svg" width="25" height="25"/>'+
 						'</button>'+
 					'</div>'+

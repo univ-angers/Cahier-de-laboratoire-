@@ -25,6 +25,7 @@
 <!-- Custom styles for this template -->
 <link href="<c:url value="/inc/css/signin.css"/>" rel="stylesheet">
 <link href="<c:url value="/inc/css/buttonStyle.css"/>" rel="stylesheet">
+<link href="<c:url value="/inc/css/loader.css"/>" rel="stylesheet">
 <link href="<c:url value="/inc/css/Popups/Popups.css"/>"
 	rel="stylesheet">
 <link href="<c:url value="/inc/css/searchBar.css"/>" rel="stylesheet">
@@ -142,6 +143,8 @@
 	src="<c:url value="/inc/js/Scripts/Wysiwyg/wysiwyg.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Billet/GenerateBillet.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Billet/billetQueryInDB.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
 <script type="text/javascript"

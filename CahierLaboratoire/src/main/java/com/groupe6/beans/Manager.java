@@ -362,17 +362,20 @@ public class Manager {
     /*
      * Billet
      */
-    public boolean createBillet(Billet billet) {
+    public Long createBillet(Billet billet) {
         Session session = sessionFactory.openSession();
+        Long idB;
         try {
 	        session.beginTransaction();
 		    session.save(billet);
+		    List<Billet> listB = selectAllBillets();
+		    idB = listB.get(listB.size()-1).getIdB() + 1;
 	    	session.getTransaction().commit();
         } catch (Exception e) {
-        	return false;
+        	return null;
         }
     	session.close();
-    	return true;
+    	return idB;
     } 
     
     public Billet selectBilletByID(Long id) {

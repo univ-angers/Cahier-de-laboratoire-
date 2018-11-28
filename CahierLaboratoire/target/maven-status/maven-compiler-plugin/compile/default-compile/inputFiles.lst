@@ -9,6 +9,7 @@ C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\jav
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\dao\DAOFactory.java
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\forms\ConnexionForm.java
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\servlets\Connexion.java
+C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\controller\UtilisateursController.java
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\dao\DAOUtilitaire.java
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\forms\InscriptionForm.java
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\beans\Billet_Tag.java
@@ -18,6 +19,6 @@ C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\jav
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\dao\DAOException.java
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\servlets\Restriction.java
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\beans\Billet.java
-C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\web\UtilisateursController.java
+C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\controller\BilletController.java
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\beans\Manager.java
 C:\Users\Thierry\git\Cahier-de-laboratoireProject\CahierLaboratoire\src\main\java\com\groupe6\dao\UtilisateurDao.java
