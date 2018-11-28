@@ -161,6 +161,9 @@
 	src="<c:url value="/inc/js/Scripts/Connexion/deconnexionPopup.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Connexion/Deconnexion.js"/>"></script>
+	
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Tags/getTags.js"/>"></script>
 <!-- JSPDF Library  -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"

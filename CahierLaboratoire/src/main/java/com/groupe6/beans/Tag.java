@@ -17,9 +17,12 @@ public class Tag {
 	public Tag() {}
 	
 	public Tag(Long idC, String nomTag) {
+		
 		this.idC = idC;
 		this.nomTag = nomTag;
+		System.out.println(this.idC);
 	}
+	
 	
 	@Id
 	@Column(name="id_t")
@@ -52,9 +55,9 @@ public class Tag {
 
 	@Override
 	public String toString() {
-		String description = "Tag : " + getIdT() + "\n";
-		description += "Catégorie : " + getIdC() + "\n";
-		description += "Nom de la catégorie : " + getNomTag() + "\n";
+		String description = "Id Tag : " + getIdT() + "\n";
+		description += " ID Catégorie : " + getIdC() + "\n";
+		description += "Nom du tag : " + getNomTag() + "\n";
 		return description;
 	}
 }

@@ -1,14 +1,19 @@
 var AllQuillObjects = new Map();
 
 $(document).ready(function() {
+	
+	(function(){
+		getAllTags();
+	})()
+
 
 	$("#buttonRechercherTag").click(function() {
 	popupRechercheTag();
-	console.log("test");
 	});
 	
 	$("#buttonIdTag").click(function() {
 		popupAddTag();
+
 	});
 	
 	//ask in database for last billet avec var recherche
@@ -39,10 +44,11 @@ $(document).ready(function() {
 	});
 	
 	$( "#buttonDeco" ).click(function() {
-		//popupDeconnexion();
-		Deconnexion("deconnexion");
+		popupDeconnexion();
 	});
 	
+	
+	/*
 	var array1 = ['val1', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3'];
 	
 	generateCategory("Category_1");
@@ -60,6 +66,8 @@ $(document).ready(function() {
 	generateCategory("Category_5");
 	generateTags("Category_5",array1);
 	
+	*/
+
 	
 	
 });

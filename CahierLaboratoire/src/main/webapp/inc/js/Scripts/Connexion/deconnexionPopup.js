@@ -3,6 +3,7 @@
  */
 
 
+
 function popupDeconnexion(){
 
 	var popupName= popupCreation("deconnexionPopup");
@@ -15,20 +16,28 @@ function popupDeconnexion(){
 	$(".modal-content").append(
 			'<span class="close">&times;</span>'+
 			'<p>Souhaitez vous vraiment vous déconnecter ? </p>'+
-			'<form class="text-center w-100" style="margin:auto">'+
-			'<div class="form-group ">' +
+
+			'<div class="text-center w-100" style="margin:auto">' +
 			'      	<button id= "buttonYDeco" class="btn btn-danger"> Oui </button>' +
 			'      <button id= "buttonNDeco" class="btn btn-info"> Non </button>' +
 				'</div>'+
 			'</div>' +
 			 '<div id="reponse" style="margin:12px;font-weight: bold;"></div>' +	
-	'    </div></form>');
+	'    </div>');
 
 	$(".close").click(function() {
 		$("#deconnexionPopup").fadeOut();
 	});
+	$("#buttonNDeco").click(function() {
+		$("#deconnexionPopup").fadeOut();
+	});
 
-
+	
+	
+	$("#buttonYDeco").click(function() {
+		window.location.href = "../deconnexion";
+		
+	});
 
 //	$("#buttonRechercheTag").click(function() {
 //
