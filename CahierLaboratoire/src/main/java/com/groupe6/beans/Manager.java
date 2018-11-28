@@ -12,19 +12,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-
-
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-
-//@Repository
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Manager {
     protected SessionFactory sessionFactory;
@@ -33,25 +23,8 @@ public class Manager {
      * Toujours appeler le constructeur, puis la méthode à utiliser, puis exit()
      */
     public Manager() {
-
-    		System.out.println("DANS LE CONSTRUCTEUR");
-    		setup();
-    }
-
-
-    protected void setup() {
-    	System.out.println("DANS LE SETUP");
-    	
-    	
-    	final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-    	        .configure() // configures settings from hibernate.cfg.xml
-    	        .build(); 
-    	
-    	System.out.println("DECLARATION REGISTRE");
-    	try {
-
-
     	setup();
+    	test();
     }
     
     protected void setup() {
@@ -59,87 +32,23 @@ public class Manager {
     	        .configure() // configures settings from hibernate.cfg.xml
     	        .build();
     	try {
-
     	    sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     	} catch (HibernateException hex) {
 			System.out.println("Problem creating session factory");
 			hex.printStackTrace();
     	}
-
-    	System.out.println("SETUP OK");
-=======
-
     }
 
     public void exit() {
     	sessionFactory.close();
     }
 
-    /*
-     * Général <-- NE PAS UTILISER POUR LE MOMENT...
-     *
-    public boolean create(BaseEntity tableBD) {
-    	Session session = sessionFactory.openSession();
-    	try {
-    		session.beginTransaction();
-    		session.save(tableBD);
-    		session.getTransaction().commit();
-    	} catch (Exception e) {
-    		return false;
-    	}
-    	session.close();
-    	return true;
-    }
-
-	public List<BaseEntity> selectAll() {
-    	Session session = sessionFactory.openSession();
-    	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
-    	CriteriaQuery<Utilisateur> criteriaQuery = cBuilder.createQuery(Utilisateur.class);
-    	Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
-    	criteriaQuery.select(root);
-    	Query query = session.createQuery(criteriaQuery);
-    	List<BaseEntity> results = query.getResultList();
-    	for (BaseEntity tableBD : results) {
-    		selectUserByID(tableBD.getId());
-		}
-    	session.close();
-    	return results;
-	}
-
-    public void delete(BaseEntity tableBD) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        
-        session.delete(tableBD);
-        
-        session.getTransaction().commit();
-        session.close();		
-	}
-    
-    //Supprimer tous les tags?
-    public void deleteAll() {
-    	List<BaseEntity> listTableBD = selectAll();
-    	for (BaseEntity tableBD : listTableBD) {
-			delete(tableBD);
-		}
-    }
-	
-/*	public BaseEntity selectByID(Long id) {
-        Session session = sessionFactory.openSession();
-        BaseEntity tableBD = new BaseEntity();
-        try {
-        	tableBD = session.get(TableBD.class, id);
-        } catch (NullPointerException npe) {
-        	npe.printStackTrace();
-        }
-        session.close();
-        return tableBD;    	
-    }*/
 
     /*
      * Utilisateur
      */
-    public boolean createUser(Utilisateur utilisateur) {
+    //Renvoie l'id généré lors de la création de l'utilisateur
+    public Long createUser(Utilisateur utilisateur) {
         Session session = sessionFactory.openSession();
         try {
 	        session.beginTransaction();
@@ -147,10 +56,10 @@ public class Manager {
 		    createTagForUser(Long.valueOf(2), utilisateur);
 	    	session.getTransaction().commit();
         } catch (Exception e) {
-        	return false;
+        	return Long.valueOf(0);
         }
     	session.close();
-    	return true;
+    	return selectUser(utilisateur.getEmail(), utilisateur.getMotDePasse()).getId();
     } 
     
     private boolean createTagForUser(Long idC, Utilisateur utilisateur) {
@@ -166,11 +75,12 @@ public class Manager {
 
 	public Utilisateur selectUserByID(Long id) {
         Session session = sessionFactory.openSession();
-        Utilisateur utilisateur = new Utilisateur();
+        Utilisateur utilisateur;
         try {
         	utilisateur = session.get(Utilisateur.class, id);
         } catch (NullPointerException npe) {
         	npe.printStackTrace();
+        	return null;
         }
         session.close();
         return utilisateur;
@@ -186,7 +96,6 @@ public class Manager {
     }
     
 	public List<Utilisateur> selectAllUsers() {
-
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
     	CriteriaQuery<Utilisateur> criteriaQuery = cBuilder.createQuery(Utilisateur.class);
@@ -259,17 +168,17 @@ public class Manager {
     /*
      * Catégorie
      */
-    public boolean createCategory(Categorie categorie) {
+    public Long createCategory(Categorie categorie) {
         Session session = sessionFactory.openSession();
         try {
 	        session.beginTransaction();
 		    session.save(categorie);
 	    	session.getTransaction().commit();
         } catch (Exception e) {
-        	return false;
+        	return Long.valueOf(0);
         }
     	session.close();
-    	return true;
+    	return selectCategory(categorie.getNomCategorie()).getIdC();
     } 
     
     public Categorie selectCategoryByID(Long id) {
@@ -368,23 +277,24 @@ public class Manager {
 				return false;
 		}
     	return true;
-    }
-    
+    }    
     
     /*
      * Billet
      */
-    public boolean createBillet(Billet billet) {
+    public Long createBillet(Billet billet) {
         Session session = sessionFactory.openSession();
+        Long idB;
         try {
 	        session.beginTransaction();
 		    session.save(billet);
+		    idB = selectAllBillets().get(selectAllBillets().size()-1).getIdB();
 	    	session.getTransaction().commit();
         } catch (Exception e) {
-        	return false;
+        	return Long.valueOf(0);
         }
     	session.close();
-    	return true;
+    	return idB;
     } 
     
     public Billet selectBilletByID(Long id) {
@@ -475,17 +385,19 @@ public class Manager {
     /*
      * Tag 
      */
-    public boolean createTag(Tag tag) {
+    public Long createTag(Tag tag) {
         Session session = sessionFactory.openSession();
+        Long idT;
         try {
 	        session.beginTransaction();
 		    session.save(tag);
+		    idT = selectAllTags().get(selectAllTags().size()-1).getIdT();
 	    	session.getTransaction().commit();
         } catch (Exception e) {
-        	return false;
+        	return Long.valueOf(0);
         }
     	session.close();
-    	return true;
+    	return idT;
     } 
         
     public Tag selectTagByID(Long id) {
@@ -613,9 +525,7 @@ public class Manager {
 		}
     }
     
-
-    private void test(){
-
+    private void test() {
     //public static void main(String args[]) {
     	Utilisateur utilisateur = new Utilisateur("myemail@gmail.com","mypassword", "myName", "myFirstName",1);
     	Utilisateur newUtilisateur = new Utilisateur("mynewemail@gmail.com","mynewpassword", "myNewName", "myNewFirstName",1);
@@ -680,22 +590,4 @@ public class Manager {
         manager.printListBillets();
         manager.exit();
     }
-
-    
-    public Collection<Utilisateur> findAll() {
-    	System.out.println("DANS LE MANAGER");
-    	Session session = sessionFactory.openSession();
-    	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
-    	CriteriaQuery<Utilisateur> criteriaQuery = cBuilder.createQuery(Utilisateur.class);
-    	Root<Utilisateur> root = criteriaQuery.from(Utilisateur.class);
-    	criteriaQuery.select(root);
-    	Query query = session.createQuery(criteriaQuery);
-    	List<Utilisateur> results = query.getResultList();
-    	for (Utilisateur utilisateur : results) {
-    		selectUserByID(utilisateur.getId());
-		}
-    	session.close();
-    	return results;
-    }
-
 }
