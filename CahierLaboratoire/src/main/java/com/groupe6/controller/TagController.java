@@ -35,21 +35,7 @@ public class TagController {
 	
 	//@Autowired
     //Manager manager;
-    
 
-    protected final Log logger = LogFactory.getLog(getClass());
-
-    @RequestMapping(value = "/getTagBillet", method = RequestMethod.GET)
-    public  @ResponseBody List<Tag> listTagBillets(@RequestParam(value = "id", required = true) long id) { 
-    
-    	Manager manager = new Manager(); 
-        List<Tag> lt;
-        lt = manager.selectTagsByBilletId(id);
-        manager.exit();
-        return  lt;
-    }
-    
-    
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public  @ResponseBody List<Tag> listTag() { 
     

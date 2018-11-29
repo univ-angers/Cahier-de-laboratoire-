@@ -36,7 +36,7 @@ function createBillet(){
 
 		$("#buttonAjoutBillet").prop("disabled",false);
 
-		generateBillet("billet"+data,"");
+		generateBillet(data,"");
 
 		$(".buttonQuill").click(
 				function() {
@@ -86,7 +86,8 @@ function affcherBilletsAccueilAndLast(){
 			console.log(data)
 			
 			$.each(data, function() {
-				generateBillet("billet"+this.idB,this.text);
+				generateBillet(this.idB,this.text, this.idB);
+				getTagsInBillet(this.idB);
 			});
 
 			$(".buttonQuill").click(

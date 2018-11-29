@@ -92,7 +92,6 @@
 			<version>1.9.2</version>
 		</dependency>
 
-<<<<<<< HEAD
 	<!-- Hibernate dependencies -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -130,27 +129,6 @@
 		    <version>2.2.11</version>
 		</dependency>
 
-=======
-		<!-- Hibernate dependencies -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.2.6.Final</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.2.6.Final</version>
-		</dependency>
-
-		<dependency>
-
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
->>>>>>> refs/remotes/master/master
 
 		<dependency>
 			<groupId>org.springframework</groupId>

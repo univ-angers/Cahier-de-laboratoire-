@@ -372,11 +372,9 @@ public class Manager {
 	    	session.getTransaction().commit();
 	    	idB = selectAllBillets().get(selectAllBillets().size()-1).getIdB();
         } catch (Exception e) {
-<<<<<<< HEAD
+
         	return Long.valueOf(0);
-=======
-        	return null;
->>>>>>> refs/remotes/master/master
+
         }
     	session.close();
     	return idB;
@@ -617,7 +615,7 @@ public class Manager {
     	return listTags;
     }
     
-    public List<Tag> selectTagsByBilletId(long id){
+    public List<Tag> selectTagsByBilletId(Long id){
     	List<Billet_Tag> listBT = selectAllBilletsTags();
     	List<Tag> listTags = new ArrayList<Tag>();
     	for(Billet_Tag billet_Tag : listBT) {

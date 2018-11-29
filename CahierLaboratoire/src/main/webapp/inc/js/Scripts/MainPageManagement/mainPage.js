@@ -66,5 +66,6 @@ $(document).ready(
 			});
 
 			affcherBilletsAccueilAndLast();
+			//addTagInBilletToDatabase(0,0);
 
 		});
