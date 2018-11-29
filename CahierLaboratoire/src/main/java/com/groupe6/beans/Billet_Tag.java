@@ -10,10 +10,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "billet_tag")
 public class Billet_Tag {
+	private Long idBT;
 	private Long idB;
 	private Long idT;
-	
-	//Rajouter un champ identité idBT? ex: jointure n°x : billet 5 avec tag 36
 	
 	public Billet_Tag() {}
 	
@@ -23,8 +22,17 @@ public class Billet_Tag {
 	}
 
 	@Id
-	@Column (name = "id_b")
+	@Column (name = "id_bt")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long getIdBT() {
+		return idBT;
+	}
+	
+	public void setIdBT(Long idBT) {
+		this.idBT = idBT;
+	}
+	
+	@Column (name = "id_b")
 	public Long getIdB() {
 		return idB;
 	}
@@ -44,7 +52,8 @@ public class Billet_Tag {
 	
 	@Override
 	public String toString() {
-		String description = "Billet : " + getIdB() + "\n";
+		String description = "Billet_Tag : " + getIdBT() + "\n";
+		description += "Billet : " + getIdB() + "\n";
 		description += "Tag : " + getIdT() + "\n";
 		return description;
 	}
