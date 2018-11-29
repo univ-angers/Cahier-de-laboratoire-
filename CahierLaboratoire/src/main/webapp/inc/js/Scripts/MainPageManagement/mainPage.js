@@ -60,7 +60,9 @@ $(document).ready(
 			$("#buttonDeco").click(function() {
 				popupDeconnexion();
 			});
-
+			
+			affcherBilletsAccueilAndLast();
+			
 			var array1 = [ 'val1', 'val2', 'val3', 'val2', 'val3', 'val2',
 				'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3' ];
 

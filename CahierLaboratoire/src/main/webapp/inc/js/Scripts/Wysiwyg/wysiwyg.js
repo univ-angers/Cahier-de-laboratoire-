@@ -11,8 +11,10 @@ function quillEnable(strId){
 		},
 		theme: 'snow'  // or 'bubble'
 	});
-
-	quill.setText($( "#"+strId+"Content" ).text());
+	console.log("On met a jour le contenu du editor quill "+$( "#"+strId+"Content" ).html())
+	
+	//quill.setText();
+	$( "#"+strId+"editor-container" ).find('.ql-editor').html($( "#"+strId+"Content" ).html());
 	$( "#"+strId+"Content" ).text('');
 	$('.ql-toolbar','#'+strId+'content-container').hide();
 	quill.disable();

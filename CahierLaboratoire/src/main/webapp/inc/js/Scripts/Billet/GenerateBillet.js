@@ -2,6 +2,8 @@
 
 
 function generateBillet(id,data){
+	
+	console.log("on genere le billet id : "+id+" avec le content : "+data );
 	$("#billetsList").append(
 			'<div id="'+id+'" class="card mb-4 shadow-sm">'+
 				'<div class="card-header ">'+
@@ -21,7 +23,7 @@ function generateBillet(id,data){
 					'</div>'+
 				'</div>'+
 					'<div id="'+id+'Content">'+
-					data+
+					data +
 					'</div>'+
 					'<div id="'+id+'content-container">'+
 						'<div id="'+id+'toolbar-container"></div>'+
@@ -32,5 +34,7 @@ function generateBillet(id,data){
 			quillEnable(id);
 			
 			$("#"+id+"save").prop("disabled",true);
+			
+			
 			
 }
