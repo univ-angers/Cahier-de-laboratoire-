@@ -611,6 +611,17 @@ public class Manager {
     	return listTags;
     }
     
+    public List<Tag> selectTagsByBilletId(long id){
+    	List<Billet_Tag> listBT = selectAllBilletsTags();
+    	List<Tag> listTags = new ArrayList<Tag>();
+    	for(Billet_Tag billet_Tag : listBT) {
+    		if(billet_Tag.getIdB() == id)
+    			listTags.add(selectTagByID(billet_Tag.getIdT()));
+    	}
+    	return listTags;
+    }
+    
+    
     public List<Billet> selectBilletsByTag(Tag tag){
     	List<Billet_Tag> listBT = selectAllBilletsTags();
     	List<Billet> listBillets = new ArrayList<Billet>();

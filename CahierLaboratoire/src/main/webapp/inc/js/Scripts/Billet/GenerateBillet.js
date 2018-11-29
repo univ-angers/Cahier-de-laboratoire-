@@ -5,6 +5,7 @@ function generateBillet(id,data){
 	$("#billetsList").append(
 			'<div id="'+id+'" class="card mb-4 shadow-sm">'+
 				'<div class="card-header ">'+
+					'<div id="tag'+id+'></div>'+
 					'<div class="float-left">'+
 						'<h6 class="my-0 font-weight-normal d-inline"> </h6>'+
 					'</div>'+

@@ -5,6 +5,8 @@ $(document).ready(function() {
 	(function(){
 		getAllTags();
 	})()
+	
+	
 
 
 	$("#buttonRechercherTag").click(function() {
