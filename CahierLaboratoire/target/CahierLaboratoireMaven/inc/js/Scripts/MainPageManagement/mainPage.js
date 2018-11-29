@@ -1,7 +1,31 @@
 var AllQuillObjects = new Map();
 
 $(document).ready(function() {
-
+	$("#buttonAjoutBillet").click(function() {
+		var numItems = $('.ql-editor').length;
+		
+		numItems++;
+		
+		
+		//demander identifiant à la bd
+		getIdBillet();	
+		var string= 'billet'+numItems;
+		console.log(string);
+		generateBillet(string,'Sample');
+		
+		$( ".buttonQuill" ).click(function() {
+			strId=this.id.substring(0, this.id.length - 6);//on récupère l'id commun
+			//quill=quillEnable(strId);
+			quill=AllQuillObjects.get(strId);
+			$('.ql-toolbar','#'+strId+'content-container').fadeIn();
+			//quill retourne l'objet et on l'ajout à la liste pour manipuler l'objet quand on veut
+			$(this).prop("disabled",true);
+			$("#"+strId+"save").prop("disabled",false);
+			quill.enable();
+			});
+		
+		});
+	
 	$("#buttonRechercherTag").click(function() {
 	popupRechercheTag();
 	console.log("test");
@@ -12,21 +36,9 @@ $(document).ready(function() {
 	});
 	
 	//ask in database for last billet avec var recherche
-	generateBillet('billet1','Sample');
-	generateBillet('billet2','Sample');
+
 	
-	
-	$( ".buttonQuill" ).click(function() {
-		strId=this.id.substring(0, this.id.length - 6);//on récupère l'id commun
-		//quill=quillEnable(strId);
-		quill=AllQuillObjects.get(strId);
-		$('.ql-toolbar','#'+strId+'content-container').fadeIn();
-		//quill retourne l'objet et on l'ajout à la liste pour manipuler l'objet quand on veut
-		$(this).prop("disabled",true);
-		$("#"+strId+"save").prop("disabled",false);
-		quill.enable();
-		});
-	
+
 	$( ".saveButton" ).click(function() {
 		strId=this.id.substring(0, this.id.length - 4);
 		quill=AllQuillObjects.get(strId);

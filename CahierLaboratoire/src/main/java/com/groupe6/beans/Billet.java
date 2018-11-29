@@ -20,7 +20,9 @@ public class Billet{
     private Timestamp creation;
     private Date modification;
     
-    public Billet() { }
+    public Billet() {
+    	
+    }
     
     public Billet(String text) {
     	this.text = text;

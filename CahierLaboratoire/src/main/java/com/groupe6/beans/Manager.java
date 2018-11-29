@@ -367,10 +367,16 @@ public class Manager {
         try {
 	        session.beginTransaction();
 		    session.save(billet);
+		    List<Billet> listB = selectAllBillets();
+		    idB = listB.get(listB.size()-1).getIdB() + 1;
 	    	session.getTransaction().commit();
 	    	idB = selectAllBillets().get(selectAllBillets().size()-1).getIdB();
         } catch (Exception e) {
+<<<<<<< HEAD
         	return Long.valueOf(0);
+=======
+        	return null;
+>>>>>>> refs/remotes/master/master
         }
     	session.close();
     	return idB;

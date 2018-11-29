@@ -25,6 +25,7 @@
 <!-- Custom styles for this template -->
 <link href="<c:url value="/inc/css/signin.css"/>" rel="stylesheet">
 <link href="<c:url value="/inc/css/buttonStyle.css"/>" rel="stylesheet">
+<link href="<c:url value="/inc/css/loader.css"/>" rel="stylesheet">
 <link href="<c:url value="/inc/css/Popups/Popups.css"/>"
 	rel="stylesheet">
 <link href="<c:url value="/inc/css/searchBar.css"/>" rel="stylesheet">
@@ -86,10 +87,10 @@
 
 	</nav>
 
-	<div class="container-fluid row w-100 h-100"
-		style="position: absolute;">
+	<div class="container-fluid row w-100 h-100 position-absolute"
+		>
 
-		<div class="col-sm-3" style="margin-left: 0%">
+		<div class="col-sm-3" style="margin-left: 0%;">
 			<button id="buttonRechercherTag" type="button"
 				class="btn btn-info w-100" style="margin-bottom: 5%; margin-top: 5%">Rechercher
 				tag</button>
@@ -145,6 +146,8 @@
 	src="<c:url value="/inc/js/Scripts/Wysiwyg/wysiwyg.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Billet/GenerateBillet.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Billet/billetQueryInDB.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
 <script type="text/javascript"
