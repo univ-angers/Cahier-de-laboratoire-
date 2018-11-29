@@ -2,12 +2,16 @@ var AllQuillObjects = new Map();
 
 $(document).ready(
 		function() {
+
+			
+		getAllTags();
+
 			$("#buttonAjoutBillet").click(
 					function() {
 						//creer un billet bd
 						$("#buttonAjoutBillet").prop("disabled",true);
 						$("#billetsList").append('<div class="loader"></div>');
-						
+
 						createBillet();
 					});
 
@@ -60,25 +64,7 @@ $(document).ready(
 			$("#buttonDeco").click(function() {
 				popupDeconnexion();
 			});
-			
+
 			affcherBilletsAccueilAndLast();
-			
-			var array1 = [ 'val1', 'val2', 'val3', 'val2', 'val3', 'val2',
-				'val3', 'val2', 'val3', 'val2', 'val3', 'val2', 'val3' ];
-
-			generateCategory("Category_1");
-			generateTags("Category_1", array1);
-
-			generateCategory("Category_2");
-			generateTags("Category_2", array1);
-
-			generateCategory("Category_3");
-			generateTags("Category_3", array1);
-
-			generateCategory("Category_4");
-			generateTags("Category_4", array1);
-
-			generateCategory("Category_5");
-			generateTags("Category_5", array1);
 
 		});

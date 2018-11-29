@@ -20,10 +20,10 @@
 	
 	
 	
-	
+	<!-- 
 	<bean name="MaNNNAAAAGER" class="com.groupe6.beans.Manager"/>
 
-
+ -->
 
 <!-- 
     <bean name="manager" class="com.groupe6.beans.Manager"/>

@@ -43,6 +43,8 @@
 
 	}
 </script>
+
+
 <title>Cahier de laboratoire</title>
 
 </head>
@@ -77,7 +79,8 @@
 
 			<button type="button" class="btn btn-info navbar-btn" id="buttonAjoutBillet" data-toggle="modal" data-target="" style="margin-left: 2%;">Creer un billet</button>
 
-			<button type="button" class="btn btn-danger navbar-btn" id="buttonDeco" data-toggle="modal" data-target="#exampleModalCenter" style="margin-left: 2%;">Déconnexion</button>
+			<!-- <button onclick="window.location='../deconnexion';" type="button" class="btn btn-danger navbar-btn" id="buttonDeco" data-toggle="modal" data-target="#exampleModalCenter" style="margin-left: 2%;">Déconnexion</button>-->
+				<button  type="button" class="btn btn-danger navbar-btn" id="buttonDeco" data-toggle="modal" data-target="#exampleModalCenter" style="margin-left: 2%;">Déconnexion</button>
 
 		</div>
 
@@ -159,6 +162,11 @@
 	src="<c:url value="/inc/js/Scripts/Recherche/popupRecherche.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Connexion/deconnexionPopup.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Connexion/Deconnexion.js"/>"></script>
+	
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Tags/getTags.js"/>"></script>
 <!-- JSPDF Library  -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"

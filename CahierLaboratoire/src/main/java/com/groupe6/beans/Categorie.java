@@ -41,8 +41,8 @@ public class Categorie{
 	
 	@Override
 	public String toString() {
-		String description = "Categorie " + getIdC() + "\n";
-		description += "Nom : " + getNomCategorie() + "\n";
+		String description = "Id Categorie " + getIdC() + "\n";
+		description += "Nom Catégorie : " + getNomCategorie() + "\n";
 		return description;
 	}
 }
