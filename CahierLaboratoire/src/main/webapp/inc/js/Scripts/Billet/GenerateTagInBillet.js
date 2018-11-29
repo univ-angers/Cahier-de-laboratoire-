@@ -1,5 +1,5 @@
 function getTagsInBillet(){
-	console.log("get all tag");
+
 	
 
 	var data = {}
