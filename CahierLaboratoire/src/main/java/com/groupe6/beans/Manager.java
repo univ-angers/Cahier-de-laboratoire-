@@ -24,7 +24,6 @@ public class Manager {
      */
     public Manager() {
     	setup();
-    	test();
     }
     
     protected void setup() {
@@ -95,6 +94,7 @@ public class Manager {
     	return null;
     }
     
+    @SuppressWarnings("unchecked")
 	public List<Utilisateur> selectAllUsers() {
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
@@ -103,9 +103,6 @@ public class Manager {
     	criteriaQuery.select(root);
     	Query query = session.createQuery(criteriaQuery);
     	List<Utilisateur> results = query.getResultList();
-    	for (Utilisateur utilisateur : results) {
-    		selectUserByID(utilisateur.getId());
-		}
     	session.close();
     	return results;
 	}
@@ -163,8 +160,8 @@ public class Manager {
 		}
     	return true;
     }
-
     
+
     /*
      * Catégorie
      */
@@ -201,6 +198,7 @@ public class Manager {
     	return null;
     }
     
+    @SuppressWarnings("unchecked")
 	public List<Categorie> selectAllCategories() {
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
@@ -209,9 +207,6 @@ public class Manager {
     	criteriaQuery.select(root);
     	Query query = session.createQuery(criteriaQuery);
     	List<Categorie> results = query.getResultList();
-    	for (Categorie categorie : results) {
-    		selectUserByID(categorie.getIdC());
-		}
     	session.close();
     	return results;
 	}
@@ -278,6 +273,7 @@ public class Manager {
 		}
     	return true;
     }    
+
     
     /*
      * Billet
@@ -288,8 +284,8 @@ public class Manager {
         try {
 	        session.beginTransaction();
 		    session.save(billet);
-		    idB = selectAllBillets().get(selectAllBillets().size()-1).getIdB();
 	    	session.getTransaction().commit();
+	    	idB = selectAllBillets().get(selectAllBillets().size()-1).getIdB();
         } catch (Exception e) {
         	return Long.valueOf(0);
         }
@@ -310,7 +306,6 @@ public class Manager {
     }
     
     public Billet selectBillet(String text) {
-    	Session session = sessionFactory.openSession();
     	List<Billet> listBillet = selectAllBillets();
     	for (Billet billet : listBillet) {
 			if(billet.getText().equals(text))
@@ -319,6 +314,7 @@ public class Manager {
     	return null;    	
     }
     
+    @SuppressWarnings("unchecked")
 	public List<Billet> selectAllBillets() {
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
@@ -327,9 +323,6 @@ public class Manager {
     	criteriaQuery.select(root);
     	Query query = session.createQuery(criteriaQuery);
     	List<Billet> results = query.getResultList();
-    	for (Billet billet : results) {
-    		selectUserByID(billet.getIdB());
-		}
     	session.close();
     	return results;
 	}
@@ -391,8 +384,8 @@ public class Manager {
         try {
 	        session.beginTransaction();
 		    session.save(tag);
-		    idT = selectAllTags().get(selectAllTags().size()-1).getIdT();
 	    	session.getTransaction().commit();
+	    	idT = selectAllTags().get(selectAllTags().size()-1).getIdT();
         } catch (Exception e) {
         	return Long.valueOf(0);
         }
@@ -413,7 +406,6 @@ public class Manager {
     }
     
     public Tag selectTag(Long idC, String nomTag) {
-    	Session session = sessionFactory.openSession();
     	List<Tag> listTags = selectAllTags();
     	for (Tag tag : listTags) {
 			if(tag.getIdC() == idC && tag.getNomTag().equals(nomTag))
@@ -422,6 +414,7 @@ public class Manager {
     	return null;
     }
     
+    @SuppressWarnings("unchecked")
 	public List<Tag> selectAllTags() {
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
@@ -430,9 +423,6 @@ public class Manager {
     	criteriaQuery.select(root);
     	Query query = session.createQuery(criteriaQuery);
     	List<Tag> results = query.getResultList();
-    	for (Tag tag : results) {
-    		selectUserByID(tag.getIdT());
-		}
     	session.close();
     	return results;
 	}
@@ -480,6 +470,7 @@ public class Manager {
         	e.printStackTrace();
         	return false;
 		} finally {
+			System.out.println("CLOSE");
 			session.close();
 		}
 	}
@@ -492,7 +483,106 @@ public class Manager {
 		}
     	return true;
     }
-        
+
+    
+    /*
+     * Billet-Tag
+     * Rajouter une clé primaire idBT représentant l'association du billet et du tag
+     * passer idB en clé étrangère, comme idT?
+     */
+    public Long createBilletTag(Billet billet, Tag tag) {
+    	Session session = sessionFactory.openSession();
+    	Long idBT;
+    	try {
+    		session.beginTransaction();
+    		session.save(new Billet_Tag(billet.getIdB(), tag.getIdT()));
+    		session.getTransaction().commit();
+    		idBT = selectAllBilletsTags().get(selectAllBilletsTags().size()-1).getIdBT();
+    	} catch(Exception e) {
+    		return Long.valueOf(0);
+    	}
+    	session.close();
+    	return idBT;
+    }
+    
+    public Billet_Tag selectBilletTag(Billet billet, Tag tag) {
+    	List<Billet_Tag> listBT = selectAllBilletsTags();
+    	for(Billet_Tag bTag : listBT) {
+    		if(bTag.getIdB()==billet.getIdB() && bTag.getIdT() == tag.getIdT())
+    			return bTag;
+    	}
+    	return null;
+    }
+    
+    public List<Tag> selectTagsByBillet(Billet billet){
+    	List<Billet_Tag> listBT = selectAllBilletsTags();
+    	List<Tag> listTags = new ArrayList<Tag>();
+    	for(Billet_Tag billet_Tag : listBT) {
+    		if(billet_Tag.getIdB() == billet.getIdB())
+    			listTags.add(selectTagByID(billet_Tag.getIdT()));
+    	}
+    	return listTags;
+    }
+    
+    public List<Billet> selectBilletsByTag(Tag tag){
+    	List<Billet_Tag> listBT = selectAllBilletsTags();
+    	List<Billet> listBillets = new ArrayList<Billet>();
+    	for(Billet_Tag billet_Tag : listBT) {
+    		if(billet_Tag.getIdT() == tag.getIdT())
+    			listBillets.add(selectBilletByID(billet_Tag.getIdT()));
+    	}
+    	return listBillets;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Billet_Tag> selectAllBilletsTags(){
+    	Session session = sessionFactory.openSession();
+    	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
+    	CriteriaQuery<Billet_Tag> criteriaQuery = cBuilder.createQuery(Billet_Tag.class);
+    	Root<Billet_Tag> root = criteriaQuery.from(Billet_Tag.class);
+    	criteriaQuery.select(root);
+    	Query query = session.createQuery(criteriaQuery);
+    	List<Billet_Tag> results = query.getResultList();
+    	session.close();
+    	return results;
+    }
+    
+    public boolean deleteBilletTag(Billet_Tag billet_Tag) {
+    	Session session = sessionFactory.openSession();
+    	try {
+    		session.beginTransaction();
+    		session.delete(billet_Tag);
+    		session.getTransaction().commit();
+    		return true;
+    	} catch (HibernateException e) {
+    		if(session.getTransaction()!=null)
+    			session.getTransaction().rollback();
+    		e.printStackTrace();
+    		return false;
+    	} finally {
+    		session.close();
+    	}
+    }
+    
+    public boolean deleteAllBilletsTags(Billet billet) {
+    	List<Billet_Tag> listBT = selectAllBilletsTags();
+    	for(Billet_Tag bTag : listBT)
+    		if(bTag.getIdB() == billet.getIdB())
+    			if(!deleteBilletTag(bTag))
+    				return false;
+    	return true;
+    }
+    
+    public boolean deleteAllBilletsTags(Tag tag) {
+    	List<Billet_Tag> listBT = selectAllBilletsTags();
+    	for(Billet_Tag bTag : listBT) 
+    		if(bTag.getIdT() == tag.getIdT()) 
+    			if(!deleteBilletTag(bTag))
+    				return false;
+    	return true;
+    }
+
+    
     public void printListUsers() {
         List<Utilisateur> listUtilisateurs = this.selectAllUsers();
         System.out.println("Liste des utilisateurs : ");
@@ -524,7 +614,15 @@ public class Manager {
 			System.out.println(tag.toString());
 		}
     }
-    
+
+    public void printListBilletsTags() {
+    	List<Billet_Tag> listBT = this.selectAllBilletsTags();
+    	System.out.println("Liste des billet_tags : ");
+    	for (Billet_Tag bTag : listBT) {
+    		System.out.println(bTag.toString());
+    	}
+    }
+
     private void test() {
     //public static void main(String args[]) {
     	Utilisateur utilisateur = new Utilisateur("myemail@gmail.com","mypassword", "myName", "myFirstName",1);
@@ -536,13 +634,13 @@ public class Manager {
     	Billet billet = new Billet("Billet test");
     	Billet newBillet = new Billet("UPDATE Billet test");
     	Manager manager = new Manager();
-        manager.setup();
+        //manager.setup();
         //Situation de départ
         System.out.println("Situation de départ : \n");
         //manager.printListUsers();
         //manager.printListTags();       
         //manager.printListCategories();
-        manager.printListBillets();
+        //manager.printListBillets();
         
         //Création
         //manager.createUser(utilisateur);
@@ -550,26 +648,43 @@ public class Manager {
         //manager.createCategory(categorie);
     	//Tag testTag = new Tag(manager.selectCategory("test").getIdC(),"test 3");
     	//manager.createTag(testTag);
+        //manager.createBillet(billet);
         manager.createBillet(billet);
+        Billet billet1 = new Billet("Billet n°1");
+        Billet billet2 = new Billet("Billet n°2");
+        Billet billet3 = new Billet("Billet n°3");
+		manager.createBillet(billet1);
+        manager.createBillet(billet2);
+        manager.createBillet(billet3);
+        Tag tag1 = new Tag(Long.valueOf(2),"Tag lié au billet 1");
+        Tag tag2 = new Tag(Long.valueOf(2),"Tag lié au billet 2");
+        Tag tag3 = new Tag(Long.valueOf(2),"Tag lié aux billets 2 et 3");
+        //manager.createTag(tag1);
+        //manager.createTag(tag2);
+        //manager.createTag(tag3);
+        //manager.createBilletTag(billet1,tag1);
+        //manager.createBilletTag(billet2,tag2);
+        //manager.createBilletTag(billet2,tag3);
+        //manager.createBilletTag(billet3,tag3);
+        //manager.deleteAllBilletsTags(testBillet);
         System.out.println("Après création : \n");
         //manager.printListUsers();
         //manager.printListTags();
         //manager.printListCategories();
-        manager.printListBillets();
-
+        manager.printListBilletsTags();
+        
         //Modification
         //manager.updateUser(utilisateur, newUtilisateur); 
         //manager.updateTag(tag, newTag);
         //manager.updateCategory(categorie, categorie2);
         //Categorie categorie3 = new Categorie("Utilisateur");
         //manager.updateCategory(manager.selectCategory("auteur"), categorie3);
-        manager.updateBillet(billet, newBillet);
+        //manager.updateBillet(billet, newBillet);
         System.out.println("Après modification : \n");
         //manager.printListUsers();
         //manager.printListTags();
         //manager.printListCategories();
-        manager.printListBillets();
-        
+        //manager.printListBillets();
         //Suppression
         //Utilisateur delNewUser = manager.selectUser(newUtilisateur.getEmail(), newUtilisateur.getMotDePasse());
         //Utilisateur delUser = manager.selectUser(utilisateur.getEmail(), utilisateur.getMotDePasse());
@@ -582,12 +697,20 @@ public class Manager {
         //Categorie delCat = manager.selectCategory(categorie2.getNomCategorie());
         //manager.deleteCategory(delCat);
         //manager.deleteCategory(categorie);
-        manager.deleteBillet(manager.selectBillet(newBillet.getText()));
+        //manager.deleteBillet(manager.selectBillet(newBillet.getText()));
+        //System.out.println("Sélection des billets liés au tag 3 : ");
+        //System.out.println(manager.selectBilletsByTag(tag3).size());
+        
+        //System.out.println("Sélection des tags liés au billet 2 : ");
+        //System.out.println(manager.selectTagsByBillet(billet2).size());
+        
         System.out.println("Après suppression : \n");
+        //manager.deleteBilletTag(manager.selectBilletTag(testBillet, testTag));
+        //manager.deleteBilletTag(manager.selectBilletTag(testBillet, testTag2));
         //manager.printListUsers();
         //manager.printListTags();
         //manager.printListCategories();
-        manager.printListBillets();
+        manager.printListBilletsTags();
         manager.exit();
     }
 }
