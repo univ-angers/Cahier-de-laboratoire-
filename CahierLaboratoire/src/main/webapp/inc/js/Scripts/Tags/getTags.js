@@ -1,7 +1,5 @@
 
 function getAllTags(){
-	console.log("get all tag");
-	
 
 	var data = {}
 	//data["category"] = category;
@@ -15,8 +13,7 @@ function getAllTags(){
 		timeout : 100000,
 		success : function(data) {
 			//print all tags
-			
-			console.log(data);
+		
 
 			for (var i = 0; i < data.length; i++){
 			    var obj = data[i];
@@ -37,6 +34,9 @@ function getAllTags(){
 
 //on rempli la liste des tags
 	
+}
+
+function removeTag(id){
 	
 }
 

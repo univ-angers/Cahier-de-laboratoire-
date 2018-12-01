@@ -5,7 +5,7 @@ $(document).ready(
 
 			
 		getAllTags();
-
+		
 			$("#buttonAjoutBillet").click(
 					function() {
 						//creer un billet bd
@@ -81,6 +81,6 @@ $(document).ready(
 			});
 
 			affcherBilletsAccueilAndLast();
-			//addTagInBilletToDatabase(0,0);
+
 
 		});

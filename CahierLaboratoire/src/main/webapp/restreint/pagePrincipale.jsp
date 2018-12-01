@@ -149,8 +149,6 @@
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Billet/billetQueryInDB.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
-<script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Tags/addTag.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Tags/generateCategory.js"/>"></script>
@@ -179,8 +177,14 @@
 	crossorigin="anonymous"></script>
 <!-- jquery -->
 
+
+<script type="text/javascript"
+	src="https://unpkg.com/popper.js"></script>
+
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Bootstrap/bootstrap.min.js"/>"></script>
 
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
 </html>
 
