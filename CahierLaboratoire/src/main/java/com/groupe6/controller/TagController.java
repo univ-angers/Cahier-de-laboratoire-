@@ -2,6 +2,7 @@ package com.groupe6.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -37,13 +38,28 @@ public class TagController {
     //Manager manager;
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public  @ResponseBody List<Tag> listTag() { 
+    public  @ResponseBody ArrayList<ArrayList<String> > getTags() { 
     
     	Manager manager = new Manager(); 
         List<Tag> lt;
         lt = manager.selectAllTags();
+        ArrayList<ArrayList<String> > alo = new ArrayList<ArrayList<String>>(); 
+        Categorie c; 
+        
+        for (int i =0; i<lt.size(); i++) {
+        	ArrayList<String> temps = new ArrayList<String>();
+        	System.out.println(  lt.get(i).getNomTag().toString()    );
+        	temps.add(lt.get(i).getNomTag().toString()  );
+        	c = manager.selectCategoryByID(lt.get(i).getIdC());
+        	temps.add( c.getNomCategorie().toString());
+        	alo.add(temps);
+        	
+        }
+        
+        
+        //o = manager.selectCategoryByID(id)
         manager.exit();
-        return  lt;
+        return  alo;
     }
     
     /*

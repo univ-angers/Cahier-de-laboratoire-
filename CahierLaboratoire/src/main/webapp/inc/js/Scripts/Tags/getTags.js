@@ -17,7 +17,7 @@ function getAllTags(){
 
 			for (var i = 0; i < data.length; i++){
 			    var obj = data[i];
-			    generateOneTag(obj["idC"], obj["nomTag"]);
+			    generateOneTag(obj[1], obj[0]);
 
 			}
 			
