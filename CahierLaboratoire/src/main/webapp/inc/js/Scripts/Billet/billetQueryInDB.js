@@ -1,9 +1,31 @@
 /**
  * 
  */
+
+function removeBillet(id){
+	$.ajax({
+		url: "../billet/billetRemove",
+		type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+		success : function(data) {
+			console.log("success")
+			return true;
+		},
+		error : function(e) {
+			console.log(e)
+			return false;
+		},
+		done : function(e) {
+			return true;
+		},
+		data:  JSON.stringify({ idBillet : id}),
+	});
+
+}
 function updateBillet(id, content){
 	
-	console.log("Sending ")
+	
 	$.ajax({
 		url: "../billet/billetUpdate",
 		type: 'POST',
@@ -72,6 +94,18 @@ function createBillet(){
 
 					updateBillet(id, $("#billet"+id+"editor-container").find( ".ql-editor" ).html());
 				});
+		
+
+		$(".removeButton").click(
+				function() {
+					
+					strId = this.id.substring(0,this.id.length - 6);// on récupère
+					console.log("remove pressed "+strId);
+					//removing in data base 
+					removeBillet(strId.replace('billet',''));
+					//removing from ui
+					$("#"+strId).remove();
+				});
 
 	});
 }
@@ -122,6 +156,19 @@ function affcherBilletsAccueilAndLast(){
 						
 
 						updateBillet(strId.replace("billet",""), $("#billet"+strId.replace("billet","")+"editor-container").find( ".ql-editor" ).html());
+					});
+
+			$(".removeButton").click(
+					function() {
+						
+						strId = this.id.substring(0,this.id.length - 6);// on récupère
+						console.log("remove pressed "+strId);
+						//removing in data base 
+						removeBillet(strId.replace('billet',''));
+						
+						//removing from ui
+						$("#"+strId).remove();
+						
 					});
 			return true;
 		},

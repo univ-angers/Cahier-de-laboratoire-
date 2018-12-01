@@ -9,11 +9,18 @@ function generateBillet(idOrig,data){
 	$("#billetsList").append(
 			'<div id="' +id+  '" class="card mb-4 shadow-sm">'+
 				'<div class="card-header ">'+
-					'<div id="tag'+idOrig+'"></div>'+
+					'<div id="tag'+idOrig+'">'+
+					'<button type="button" id="'+id+'Remove" class="btn btn-dark addTagToBilletButton" style="">'+
+					'+'+
+					'</button>'+
+					'</div>'+
 					'<div class="float-left">'+
 						'<h6 class="my-0 font-weight-normal d-inline"> </h6>'+
 					'</div>'+
 					'<div class="float-right btn-group">'+
+						'<button type="button" id="'+id+'Remove" class="btn btn-dark removeButton" style="margin:1%">'+
+						'<img src="../inc/assets/trashcan.png" width="25" height="25"/>'+
+						'</button>'+
 						'<button type="button" id="'+id+'print" class="btn btn-dark printButton" style="margin:1%" onclick="exportPDF()">'+
 							'<img src="../inc/assets/print.png" width="25" height="25"/>'+
 						'</button>'+

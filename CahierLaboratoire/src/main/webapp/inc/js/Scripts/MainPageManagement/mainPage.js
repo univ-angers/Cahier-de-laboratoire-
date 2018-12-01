@@ -15,6 +15,21 @@ $(document).ready(
 						createBillet();
 					});
 
+			$(".removeButton").click(
+					function() {
+						
+						strId = this.id.substring(0,this.id.length - 6);
+						// on récupère
+						console.log("remove pressed ");
+						
+						//removing in data base 
+						removeBillet(strId.charAt(strId.length - 1));
+						
+						//removing from ui
+						$("#"+strId).remove();
+						
+					});
+			
 			$(".buttonQuill").click(
 					function() {
 						strId = this.id.substring(0,
