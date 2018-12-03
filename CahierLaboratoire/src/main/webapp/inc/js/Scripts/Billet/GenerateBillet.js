@@ -38,6 +38,6 @@ function generateBillet(idOrig,data){
 			
 			$("#"+id+"save").prop("disabled",true);
 			
-			
+			getTagsInBillet(idOrig); 
 			
 }

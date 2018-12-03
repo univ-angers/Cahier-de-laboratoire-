@@ -504,6 +504,8 @@ public class Manager {
     	return null;
     }
     
+
+    
     @SuppressWarnings("unchecked")
 	public List<Tag> selectAllTags() {
 		System.out.println("GET ALL TAG");
@@ -630,9 +632,13 @@ public class Manager {
     	List<Billet_Tag> listBT = selectAllBilletsTags();
     	List<Billet> listBillets = new ArrayList<Billet>();
     	for(Billet_Tag billet_Tag : listBT) {
-    		if(billet_Tag.getIdT() == tag.getIdT())
-    			listBillets.add(selectBilletByID(billet_Tag.getIdT()));
+    		if(billet_Tag.getIdT() == tag.getIdT()) {
+    			listBillets.add(selectBilletByID(                     billet_Tag.getIdB()    ));
+    			System.out.println("Match"+ selectBilletByID(billet_Tag.getIdT()) );
+    		}
+
     	}
+
     	return listBillets;
     }
     

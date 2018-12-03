@@ -87,7 +87,7 @@ function affcherBilletsAccueilAndLast(){
 			
 			$.each(data, function() {
 				generateBillet(this.idB,this.text, this.idB);
-				getTagsInBillet(this.idB);
+				//getTagsInBillet(this.idB);
 			});
 
 			$(".buttonQuill").click(

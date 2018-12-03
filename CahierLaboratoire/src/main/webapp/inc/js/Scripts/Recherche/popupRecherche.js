@@ -13,12 +13,12 @@ function popupRechercheTag(){
 	$(".modal-content").append(
 			'<span class="close">&times;</span>'+
 			'<p>Rerchercher Tag : </p>'+
-			'<form class="text-center w-100" style="margin:auto">'+
+			'<div class="text-center w-100" style="margin:auto">'+
 			'<div class="form-group ">' +
-			'      	<input type="search" placeholder="Catégorie" style="">' +
+			'      	<input id="searchCategorie" type="search" placeholder="Catégorie" style="">' +
 			'</div>' +
 			'<div class="form-group ">' +
-			'      	<input type="search" placeholder="Nom tag" style="">' +
+			'      	<input  id="searchNomTag" type="search" placeholder="Nom tag" style="">' +
 				'</div>'+
 			'</div>' +
 			'<div class="form-group row" >' +
@@ -27,7 +27,7 @@ function popupRechercheTag(){
 			'</div>'+
 			'</div>'+
 			 '<div id="reponse" style="margin:12px;font-weight: bold;"></div>' +	
-	'    </div></form>');
+	'    </div></div>');
 
 	$(".close").click(function() {
 		$("#rechercheTag").fadeOut();
@@ -36,19 +36,23 @@ function popupRechercheTag(){
 
 
 	$("#buttonRechercheTag").click(function() {
+		
+		
+		searchBilletsByName(  document.getElementById('searchNomTag').value);
+
 
 		
-			$("#reponse").text("Resultat");
-			//afficher billet
-			$("#buttonRechercheTag").text("Close");
-			$("#buttonRechercheTag").click(function() {
-				$("#rechercheTag").fadeOut();
-			});
-			
 	
 	});
+	
 
 
+	
+
+
+
+	
 	$("#rechercheTag").fadeIn();
 
 }
+

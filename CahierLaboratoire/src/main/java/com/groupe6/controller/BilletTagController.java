@@ -58,7 +58,7 @@ public class BilletTagController {
     
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<String> saveProduct(/*@ModelAttribute Tag t, BindingResult result,*/
+    public @ResponseBody ResponseEntity<String> saveBilletTag(/*@ModelAttribute Tag t, BindingResult result,*/
     														@RequestParam(value = "idB", required = true) long idB,
     														@RequestParam(value = "idT", required = true) long idT) 
     {

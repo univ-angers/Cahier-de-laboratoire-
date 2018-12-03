@@ -16,7 +16,7 @@ function getTagsInBillet(idB){
 				
 				console.log(data);
 	
-				for (var i = 0; i < data.length; i++){
+				for (var i = 0; i <= data.length; i++){
 				    var obj = data[i];
 				    generateTagInBillet(idB,obj["nomTag"]);
 				    console.log("JE GENERE LE TAG "+obj["nomTag"]+"POUR LE BILLET: "+idB );
