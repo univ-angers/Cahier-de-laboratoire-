@@ -10,7 +10,7 @@ function generateBillet(idOrig,data){
 			'<div id="' +id+  '" class="card mb-4 shadow-sm">'+
 				'<div class="card-header ">'+
 					'<div id="tag'+idOrig+'">'+
-					'<button type="button" id="'+id+'Remove" class="btn btn-dark addTagToBilletButton" style="">'+
+					'<button type="button" id="'+id+'addTagToBillet" class="btn btn-dark addTagToBilletButton" style="">'+
 					'+'+
 					'</button>'+
 					'</div>'+

@@ -57,14 +57,18 @@ public class BilletTagController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public @ResponseBody ResponseEntity<String> saveBilletTag(/*@ModelAttribute Tag t, BindingResult result,*/
     														@RequestParam(value = "idB", required = true) long idB,
-    														@RequestParam(value = "idT", required = true) long idT) 
+    														@RequestParam(value = "nomTag", required = true) String nomTag, 
+    														@RequestParam(value = "nomCategorie", required = true) String nomCategorie) 
     {
     	
     	
     	Manager manager = new Manager(); 
+    	Categorie c = manager.selectCategory(nomCategorie);
         //System.out.println("TAG DANS LE CONTROLLER AVANT CREATE");
-    	Tag tag = manager.selectTagByID(idT);
+    	//Tag tag = manager.selectTagByID(idT);
+    	Tag tag = manager.selectTag(c.getIdC(), nomTag);
     	Billet billet = manager.selectBilletByID(idB);
+
     	//System.out.println("Je crée un Tag Billet");
         //System.out.println(tag);
         //System.out.println(billet);

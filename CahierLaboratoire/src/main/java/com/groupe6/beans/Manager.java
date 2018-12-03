@@ -582,13 +582,19 @@ public class Manager {
      */
     public Long createBilletTag(Billet billet, Tag tag) {
     	Session session = sessionFactory.openSession();
+    	
+    	System.out.println(billet);
+    	System.out.println(tag); 
     	Long idBT;
     	try {
+    		System.out.println("je crée un billet-tag");
     		session.beginTransaction();
     		session.save(new Billet_Tag(billet.getIdB(), tag.getIdT()));
     		session.getTransaction().commit();
     		idBT = selectAllBilletsTags().get(selectAllBilletsTags().size()-1).getIdBT();
+    		System.out.println(idBT.toString());
     	} catch(Exception e) {
+    		System.out.println("dans l'exception");
     		return Long.valueOf(0);
     	}
     	session.close();

@@ -170,6 +170,12 @@
 	src="<c:url value="/inc/js/Scripts/Tags/getTags.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/BilletTag/GenerateTagInBillet.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/BilletTag/popupAddTagToBillet.js"/>"></script>
+	
+	
+	
+	
 	
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Quill/update.js"/>"></script>

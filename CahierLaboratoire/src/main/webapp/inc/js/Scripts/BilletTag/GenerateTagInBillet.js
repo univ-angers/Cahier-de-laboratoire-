@@ -34,33 +34,7 @@ function getTagsInBillet(idB){
 
 }
 
-function addTagInBilletToDatabase(idB, idT){
 
-	$.ajax({
-		type : "GET",
-		contentType : "application/json",
-		url : "../billetTag/add",
-		data : {
-			"idB": idB,
-			"idT" : idT
-		},
-
-		dataType : 'json',
-		timeout : 100000,
-		success : function(data) {
-			return true;
-		},
-		error : function(e) {
-			return false;
-		},
-		done : function(e) {
-			return true;
-		}
-	});
-	return true;
-
-
-}
 
 
 function generateTagInBillet(idBillet,tag){

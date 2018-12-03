@@ -59,6 +59,7 @@ function createBillet(){
 
 		generateBillet(data,"");
 
+		/*
 		$(".buttonQuill").click(
 				function() {
 					strId = this.id.substring(0,
@@ -105,6 +106,22 @@ function createBillet(){
 					//removing from ui
 					$("#"+strId).remove();
 				});
+		
+		$(".addTagToBilletButton").click(
+
+				function() {
+					strId = this.id.substring(0,this.id.length - 14);// on récupère
+					console.log("+ pressed "+strId);
+					//removing in data base 
+					popupAddTagToBillet(strId.replace('billet',''));
+					//removing from ui
+					$("#"+strId).remove();
+
+				});
+		
+*/
+		updateQuill();
+
 
 	});
 }
@@ -122,7 +139,7 @@ function affcherBilletsAccueilAndLast(){
 				generateBillet(this.idB,this.text, this.idB);
 				//getTagsInBillet(this.idB);
 			});
-
+/*
 			$(".buttonQuill").click(
 					function() {
 						strId = this.id.substring(0,
@@ -169,6 +186,22 @@ function affcherBilletsAccueilAndLast(){
 						$("#"+strId).remove();
 						
 					});
+			
+			$(".addTagToBilletButton").click(
+
+					function() {
+						strId = this.id.substring(0,this.id.length - 14);// on récupère
+						console.log("+ pressed "+strId);
+						//removing in data base 
+						popupAddTagToBillet(strId.replace('billet',''));
+						//removing from ui
+						$("#"+strId).remove();
+
+					});
+					
+					*/
+			
+			updateQuill();
 			return true;
 		},
 		error : function(e) {
