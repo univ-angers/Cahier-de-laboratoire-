@@ -141,5 +141,44 @@ public class TagController {
 		return result;
 	}
 
+	@RequestMapping(value = "/update", method = RequestMethod.POST, headers = "Accept=application/json")
+	public @ResponseBody boolean tagUpdate(@RequestBody String data) {
+		
+		Manager manager = new Manager(); 
+		
+		JsonFactory factory = new JsonFactory();
+		Long idBillet=(long) 0;
+		try {
+			JsonParser j= factory.createJsonParser(data);
+			while(!j.isClosed()){
+				JsonToken jsonToken = j.nextToken();
+
+				if(JsonToken.FIELD_NAME.equals(jsonToken)){
+					String fieldName = j.getCurrentName();
+					System.out.println(fieldName);
+
+					jsonToken = j.nextToken();
+
+					if("idBillet".equals(fieldName)){
+						idBillet= j.getValueAsLong();
+					}
+				}
+			}
+
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		manager = new Manager(); 
+		boolean result=false;
+		Tag t= manager.selectTagByID(idBillet);
+		result=manager.deleteTag(t);
+		manager.exit();
+		return result;
+	}
 
 }
