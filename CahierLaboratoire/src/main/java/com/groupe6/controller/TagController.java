@@ -29,7 +29,7 @@ import com.groupe6.beans.Tag;
 @RequestMapping("/tag")
 public class TagController {
 	
-	//@Autowired
+
     //Manager manager;
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
@@ -43,7 +43,7 @@ public class TagController {
         
         for (int i =0; i<lt.size(); i++) {
         	ArrayList<String> temps = new ArrayList<String>();
-        	System.out.println(  lt.get(i).getNomTag().toString()    );
+        	//System.out.println(  lt.get(i).getNomTag().toString()    );
         	temps.add(lt.get(i).getNomTag().toString()  );
         	c = manager.selectCategoryByID(lt.get(i).getIdC());
         	temps.add( c.getNomCategorie().toString());
@@ -57,35 +57,10 @@ public class TagController {
         return  alo;
     }
     
-    /*
-    //@ModelAttribute
-    public Tag newTag(@RequestParam(value = "categorie", required = true) String categorie,
-    				 @RequestParam(value = "nomTag", required = true) String nomTag) {   
-    	
-    	
-    	Manager manager = new Manager(); 
-    	
-    	Categorie c =  manager.selectCategory(categorie);
-
-    	System.out.println(c.toString());
-    	System.out.println("nomTag: " +nomTag);
-    	System.out.println("Catégorie: " +categorie);
-        //long idC = categorie; 
-    	Long idC = c.getIdC(); 
-    
-        String nom = nomTag; 
-    	System.out.println("nom: " +nom);
-        Tag tag = new Tag(idC,nom);
-        logger.info("Nouveau TAG ");
-        manager.exit();
-        return tag; 
-    }
-    */
     
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<String> saveTag(/*@ModelAttribute Tag t, BindingResult result,*/
-    														@RequestParam(value = "categorie", required = true) String categorie,
-    														@RequestParam(value = "nomTag", required = true) String nomTag) 
+    public @ResponseBody ResponseEntity<String> saveTag(@RequestParam(value = "categorie", required = true) String categorie,
+    													@RequestParam(value = "nomTag", required = true) String nomTag) 
     {
     	Manager manager = new Manager(); 
     	
@@ -99,22 +74,18 @@ public class TagController {
     		c =  manager.selectCategory(categorie);
     	}
 
-    	
-    	System.out.println(c.toString());
-    	System.out.println("nomTag: " +nomTag);
-    	System.out.println("Catégorie: " +categorie);
     	Long idC = c.getIdC(); 
     
         String nom = nomTag; 
-    	System.out.println("IDC: " +idC);
+    	//System.out.println("IDC: " +idC);
         Tag tag = new Tag(idC,nom);
         tag.setIdC(idC);
     	
 
-        System.out.println("TAG DANS LE CONTROLLER AVANT CREATE");
-        System.out.println(tag);
+        //System.out.println("TAG DANS LE CONTROLLER AVANT CREATE");
+        //System.out.println(tag);
         manager.createTag(tag);
-        //return "redirect:list";
+
         manager.exit();
          return new ResponseEntity<String>(HttpStatus.OK);
          

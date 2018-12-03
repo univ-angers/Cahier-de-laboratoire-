@@ -70,7 +70,7 @@ function popupAddTag(){
 			
 			var popupName = "popupAjoutTag";
 			
-			console.log("J'AI BIEN INSERE DANS LA BDD");
+			//console.log("J'AI BIEN INSERE DANS LA BDD");
 			$("#reponse").css("color","green");
 			$("#reponse").text("Tag ajouté en base de données : catégorie "+$("#tagCategory").val()+" nom "+ $("#tagValue").val()+".");
 			

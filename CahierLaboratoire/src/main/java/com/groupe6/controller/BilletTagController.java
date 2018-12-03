@@ -42,15 +42,12 @@ public class BilletTagController {
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public  @ResponseBody List<Tag> listTagBillets(@RequestParam(value = "idB", required = true) Long idB) { 
-    	System.out.println("DANS LE CONTROLLER GET TAG, idB= "+ idB);
+    	//System.out.println("DANS LE CONTROLLER GET TAG, idB= "+ idB);
     	Manager manager = new Manager(); 
         List<Tag> lt;
 
         lt = manager.selectTagsByBilletId(idB);
-        for (Tag t : lt) {
 
-        	System.out.println(t);
-        }
         manager.exit();
         return  lt;
     }
@@ -65,28 +62,14 @@ public class BilletTagController {
     	
     	
     	Manager manager = new Manager(); 
-    	
-
-    	
-    	//System.out.println(c.toString());
-    	//System.out.println("nomTag: " +nomTag);
-    	//System.out.println("Catégorie: " +categorie);
-    
-        //String nom = nomTag; 
-    	//System.out.println("IDC: " +idC);
-        //Tag tag = new Tag(idC,nom);
-        //tag.setIdC(idC);
-    	
-
         //System.out.println("TAG DANS LE CONTROLLER AVANT CREATE");
-
     	Tag tag = manager.selectTagByID(idT);
     	Billet billet = manager.selectBilletByID(idB);
-    	System.out.println("Je crée un Tag Billet");
-        System.out.println(tag);
-        System.out.println(billet);
+    	//System.out.println("Je crée un Tag Billet");
+        //System.out.println(tag);
+        //System.out.println(billet);
         manager.createBilletTag(billet, tag);
-        //return "redirect:list";
+
         manager.exit();
         return new ResponseEntity<String>(HttpStatus.OK);
          

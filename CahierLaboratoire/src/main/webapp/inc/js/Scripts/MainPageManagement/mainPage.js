@@ -19,7 +19,6 @@ $(document).ready(
 
 			$("#buttonRechercherTag").click(function() {
 				popupRechercheTag();
-				console.log("test");
 			});
 
 			$("#buttonIdTag").click(function() {

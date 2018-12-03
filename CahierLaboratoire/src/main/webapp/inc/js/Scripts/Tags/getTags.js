@@ -1,6 +1,6 @@
 
 function getAllTags(){
-	console.log("get all tag");
+	//console.log("get all tag");
 	
 
 	var data = {}
@@ -16,7 +16,7 @@ function getAllTags(){
 		success : function(data) {
 			//print all tags
 			
-			console.log(data);
+			//console.log(data);
 
 			for (var i = 0; i < data.length; i++){
 			    var obj = data[i];

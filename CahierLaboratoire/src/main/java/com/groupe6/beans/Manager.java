@@ -34,14 +34,13 @@ public class Manager {
      */
     public Manager() {
 
-    		System.out.println("DANS LE CONSTRUCTEUR");
     		setup();
     }
 
 
     
     protected void setup() {
-    	System.out.println("DANS LE SETUP");
+    	System.out.println("Setup Manager");
     
     	final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
     	        .configure() // configures settings from hibernate.cfg.xml
@@ -54,7 +53,6 @@ public class Manager {
 			hex.printStackTrace();
     	}
 
-    	System.out.println("SETUP OK");
 
 
     }
@@ -508,7 +506,6 @@ public class Manager {
     
     @SuppressWarnings("unchecked")
 	public List<Tag> selectAllTags() {
-		System.out.println("GET ALL TAG");
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
     	CriteriaQuery<Tag> criteriaQuery = cBuilder.createQuery(Tag.class);
@@ -564,7 +561,7 @@ public class Manager {
         	e.printStackTrace();
         	return false;
 		} finally {
-		System.out.println("CLOSE");
+		System.out.println("Close Manager");
 			session.close();
 		}
 	}
@@ -799,7 +796,6 @@ public class Manager {
 
     
     public Collection<Utilisateur> findAll() {
-    	System.out.println("DANS LE MANAGER");
     	Session session = sessionFactory.openSession();
     	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
     	CriteriaQuery<Utilisateur> criteriaQuery = cBuilder.createQuery(Utilisateur.class);
