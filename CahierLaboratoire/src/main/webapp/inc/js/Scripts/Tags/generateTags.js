@@ -16,7 +16,7 @@ function generateOneTag(category,tag){
     }
     
 	$("#tagsList"+category).append(
-			'	<button class="badge badge-dark" style="border-color: #3B3B3B">'+tag+'</button> '
+			'	<button class="badge badge-dark" style="border-color: #3B3B3B; width-max:100%">'+tag+'</button> '
 	);
 	
 }
