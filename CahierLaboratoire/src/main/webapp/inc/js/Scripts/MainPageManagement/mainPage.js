@@ -1,8 +1,9 @@
 var AllQuillObjects = new Map();
 
+
 $(document).ready(
 		function() {
-
+			
 			
 		getAllTags();
 		

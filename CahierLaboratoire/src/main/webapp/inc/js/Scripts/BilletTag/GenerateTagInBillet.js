@@ -22,6 +22,7 @@ function getTagsInBillet(idB){
 
 			}
 
+			
 			return true;
 		},
 		error : function(e) {
@@ -69,14 +70,8 @@ function generateTagInBillet(idBillet,tag){
 	$("#tag"+idBillet).append(
 			'	<button type="button" class="badge badge-dark" style="color:white;border-color: #3B3B3B">'+tag+'</button> '
 	);
-
-	$('.badge').popover({
-		trigger: 'focus',
-		placement: 'bottom',
-		html: true,
-		title : '<span class="text-info"><strong>Tag menu :</strong></span>',
-		content : '<button class="btn btn-dark" style="margin:2px">Remove</button><button class="btn btn-dark" style="margin:2px">Modify</button>'
-	});
+	
 	
 }
+
 
