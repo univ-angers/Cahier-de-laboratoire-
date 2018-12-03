@@ -1,26 +1,24 @@
 function getTagsInBillet(idB){
 
-
-
-	console.log("JE SUIS DANS TAGINBILLET" +idB);
-
-	$.ajax({
-		type : "GET",
-		url : "../billetTag/get",
-		//data : JSON.stringify(data),
-		data : {"idB": idB},
-		dataType : 'json',
-		timeout : 100000,
-		success : function(data) {
-			//print all tags
-
-			console.log(data);
-
-			for (var i = 0; i < data.length; i++){
-				var obj = data[i];
-				generateTagInBillet(idB,obj["nomTag"]);
-
-			}
+		$.ajax({
+			type : "GET",
+			url : "../billetTag/get",
+			//data : JSON.stringify(data),
+			data : {"idB": idB},
+			dataType : 'json',
+			timeout : 100000,
+			success : function(data) {
+				//print all tags
+				
+				//console.log(data);
+	
+				for (var i = 0; i < data.length; i++){
+				    var obj = data[i];
+				    generateTagInBillet(idB,obj["nomTag"]);
+				    //console.log("JE GENERE LE TAG "+obj["nomTag"]+"POUR LE BILLET: "+idB );
+	
+				}
+				
 
 			
 			return true;
@@ -66,7 +64,7 @@ function addTagInBilletToDatabase(idB, idT){
 
 
 function generateTagInBillet(idBillet,tag){
-	console.log(idBillet + tag );
+	//console.log(idBillet + tag );
 	$("#tag"+idBillet).append(
 			'	<button type="button" class="badge badge-dark" style="color:white;border-color: #3B3B3B">'+tag+'</button> '
 	);

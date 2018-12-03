@@ -121,7 +121,6 @@ public class BilletController {
 	@RequestMapping(value = "/billetCreation", method = RequestMethod.POST, headers = "Accept=application/json")
 
 	public @ResponseBody long billetidRequest() {
-		System.out.println("test");
 		manager = new Manager(); 
 		long result=0;
 		logger.info("Recupération d'un id lors de la création d'un billet");
@@ -134,7 +133,6 @@ public class BilletController {
 	@RequestMapping(value = "/lastBillets", method = RequestMethod.POST, headers = "Accept=application/json")
 
 	public @ResponseBody List<Billet> lastBillets() {
-		System.out.println("test");
 		manager = new Manager();
 		List<Billet> result=null;
 		logger.info("Recupération");

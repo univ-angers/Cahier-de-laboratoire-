@@ -16,6 +16,7 @@ $(document).ready(
 						createBillet();
 					});
 
+
 			$(".removeButton").click(
 					function() {
 						
@@ -66,9 +67,11 @@ $(document).ready(
 								false);
 					});
 
+			updateQuill();
+
+
 			$("#buttonRechercherTag").click(function() {
 				popupRechercheTag();
-				console.log("test");
 			});
 
 			$("#buttonIdTag").click(function() {

@@ -110,7 +110,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-8 w-100 mx-auto" id="billetsList"
+		<div class="col-md-8 w-100 mx-auto" id="mainBilletsList"
 			style="background: gainsboro; padding-top: 20px; border-radius: 1%;">
 			<div class="row">
 				<button type="button" id="printAllButton" class="btn btn-dark container-fluid"
@@ -118,7 +118,9 @@
 					<img src="../inc/assets/print.png" width="25" height="25" />
 					Imprimer tous les billets ?
 				</button>
+				
 			</div>
+			<div id="billetsList"></div>
 		</div>
 		
 		
@@ -159,14 +161,21 @@
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Recherche/popupRecherche.js"/>"></script>
 <script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Recherche/researchQueryInDB.js"/>"></script>	
+<script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Connexion/deconnexionPopup.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Connexion/Deconnexion.js"/>"></script>
-	
+	src="<c:url value="/inc/js/Scripts/Connexion/Deconnexion.js"/>"></script>	
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Tags/getTags.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/BilletTag/GenerateTagInBillet.js"/>"></script>
+	
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Quill/update.js"/>"></script>
+
+	
+
 	
 	
 	

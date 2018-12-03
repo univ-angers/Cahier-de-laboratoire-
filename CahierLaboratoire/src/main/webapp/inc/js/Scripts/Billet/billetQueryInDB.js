@@ -25,18 +25,17 @@ function removeBillet(id){
 }
 function updateBillet(id, content){
 	
-	
 	$.ajax({
 		url: "../billet/billetUpdate",
 		type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
 		success : function(data) {
-			console.log("success")
+			//console.log("success")
 			return true;
 		},
 		error : function(e) {
-			console.log(e)
+			//console.log(e)
 			return false;
 		},
 		done : function(e) {
@@ -90,7 +89,7 @@ function createBillet(){
 					$(this).prop("disabled", true);
 					$("#" + strId + "Modify").prop("disabled",false);
 
-					console.log($("#billet"+id+"editor-container").find( ".ql-editor" ).html())
+					//console.log($("#billet"+id+"editor-container").find( ".ql-editor" ).html())
 
 					updateBillet(id, $("#billet"+id+"editor-container").find( ".ql-editor" ).html());
 				});
@@ -117,11 +116,11 @@ function affcherBilletsAccueilAndLast(){
 		dataType: "json",
 		contentType: 'application/json',
 		success : function(data) {
-			console.log(data)
+			//console.log(data)
 			
 			$.each(data, function() {
 				generateBillet(this.idB,this.text, this.idB);
-				getTagsInBillet(this.idB);
+				//getTagsInBillet(this.idB);
 			});
 
 			$(".buttonQuill").click(
@@ -173,7 +172,7 @@ function affcherBilletsAccueilAndLast(){
 			return true;
 		},
 		error : function(e) {
-			console.log(e)
+			//onsole.log(e)
 			return false;
 		},
 		done : function(e) {

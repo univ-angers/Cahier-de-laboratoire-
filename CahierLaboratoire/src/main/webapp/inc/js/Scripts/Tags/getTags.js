@@ -1,6 +1,7 @@
 
 function getAllTags(){
 
+
 	var data = {}
 	//data["category"] = category;
 	//data["name"] = name;
