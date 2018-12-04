@@ -3,6 +3,7 @@ package com.groupe6.controller;
 
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,7 +56,7 @@ public class BilletTagController {
     
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<String> saveBilletTag(/*@ModelAttribute Tag t, BindingResult result,*/
+    public @ResponseBody Map saveBilletTag(/*@ModelAttribute Tag t, BindingResult result,*/
     														@RequestParam(value = "idB", required = true) long idB,
     														@RequestParam(value = "nomTag", required = true) String nomTag, 
     														@RequestParam(value = "nomCategorie", required = true) String nomCategorie) 
@@ -63,19 +64,25 @@ public class BilletTagController {
     	
     	
     	Manager manager = new Manager(); 
-    	Categorie c = manager.selectCategory(nomCategorie);
-        //System.out.println("TAG DANS LE CONTROLLER AVANT CREATE");
-    	//Tag tag = manager.selectTagByID(idT);
-    	Tag tag = manager.selectTag(c.getIdC(), nomTag);
-    	Billet billet = manager.selectBilletByID(idB);
 
-    	//System.out.println("Je crée un Tag Billet");
-        //System.out.println(tag);
-        //System.out.println(billet);
-        manager.createBilletTag(billet, tag);
+    	try{
+    		Categorie c = manager.selectCategory(nomCategorie);
+    		Tag tag = manager.selectTag(c.getIdC(), nomTag);
+    		Billet billet = manager.selectBilletByID(idB);
+    		
+			if (manager.createBilletTag(billet, tag)==0) {
+				return Collections.singletonMap("flag", false);
+			}
+    	}
+    	catch (Exception e) {
 
-        manager.exit();
-        return new ResponseEntity<String>(HttpStatus.OK);
+    		 
+    	}
+
+
+    	manager.exit();
+        
+    	 return Collections.singletonMap("flag", true);
          
     }
     

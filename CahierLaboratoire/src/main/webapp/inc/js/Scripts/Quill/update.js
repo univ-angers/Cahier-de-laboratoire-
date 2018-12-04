@@ -1,24 +1,21 @@
 			
 function updateQuill(){
 	$(".buttonQuill").click(
-						function() {
-							strId = this.id.substring(0,
-									this.id.length - 6);// on récupère
-							// l'id commun
-							// quill=quillEnable(strId);
-							quill = AllQuillObjects.get(strId);
-							$('.ql-toolbar',
-									'#' + strId + 'content-container')
-									.fadeIn();
-							// quill retourne l'objet et on l'ajout à la
-							// liste pour manipuler l'objet quand on
-							// veut
-							$(this).prop("disabled", true);
-							$("#" + strId + "save").prop("disabled",
-									false);
-							quill.enable();
-	});
-	
+			function() {
+				strId = this.id.substring(0,
+						this.id.length - 6);// on récupère
+
+				quill = AllQuillObjects.get(strId);
+				$('.ql-toolbar',
+						'#' + strId + 'content-container')
+						.fadeIn();
+
+				$(this).prop("disabled", true);
+				$("#" + strId + "save").prop("disabled",
+						false);
+				quill.enable();
+			});
+
 	$(".saveButton").click(
 			function() {
 				strId = this.id.substring(0,
@@ -31,9 +28,25 @@ function updateQuill(){
 						.hide();
 				// must save in database
 				$(this).prop("disabled", true);
-				$("#" + strId + "Modify").prop("disabled",
-						false);
-	});
+				$("#" + strId + "Modify").prop("disabled",false);
+				//console.log(strId.replace('billet',''));
+				
+				//console.log($("#billet"+id+"editor-container").find( ".ql-editor" ).html())
+				
+				updateBillet(strId.replace('billet',''), $("#billet"+strId.replace('billet','')+"editor-container").find( ".ql-editor" ).html());
+			});
+	
+
+	$(".removeButton").click(
+			function() {
+				
+				strId = this.id.substring(0,this.id.length - 6);// on récupère
+				console.log("remove pressed "+strId);
+				//removing in data base 
+				removeBillet(strId.replace('billet',''));
+				//removing from ui
+				$("#"+strId).remove();
+			});
 	
 	
 	$(".addTagToBilletButton").click(
@@ -41,10 +54,9 @@ function updateQuill(){
 			function() {
 				strId = this.id.substring(0,this.id.length - 14);// on récupère
 				console.log("+ pressed "+strId);
-				//removing in data base 
 				popupAddTagToBillet(strId.replace('billet',''));
-				//removing from ui
-				$("#"+strId).remove();
+
+
 
 			});
 

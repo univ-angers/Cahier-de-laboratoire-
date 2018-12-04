@@ -1,28 +1,7 @@
 function addTagInBilletToDatabase(idB, nomTag, nomCategorie){
 
-	$.ajax({
-		type : "GET",
-		contentType : "application/json",
-		url : "../billetTag/add",
-		data : {
-			"idB": idB,
-			"nomTag" : nomTag,
-			"nomCategorie" : nomCategorie
-		},
 
-		dataType : 'json',
-		timeout : 100000,
-		success : function(data) {
-			return true;
-		},
-		error : function(e) {
-			return false;
-		},
-		done : function(e) {
-			return true;
-		}
-	});
-	return true;
+
 
 
 }
@@ -57,22 +36,70 @@ function popupAddTagToBillet(idB){
 	$(".close").click(function() {
 		$("#popupAddTagToBillet").fadeOut();
 	});
-
-
-
+	
 	$("#buttonAjouterTagInBillet").click(function() {
-		//searchBilletsByName(  document.getElementById('searchNomTag').value);
-		addTagInBilletToDatabase( idB, document.getElementById('searchNomTag').value,document.getElementById('searchCategorie').value  ); 
+		//searchBilletsByName(  document.getElementById('searchNomTag').value)
 		
-		var popupName2 = "popupAjoutTagInBillet";
+		//addTagInBilletToDatabase( idB, document.getElementById('searchNomTag').value,document.getElementById('searchCategorie').value);
+		var nomTag = document.getElementById('searchNomTag').value;
+		var nomCategorie = document.getElementById('searchCategorie').value;
+		
+		
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			url : "../billetTag/add",
+			data : {
+				"idB": idB,
+				"nomTag" : nomTag,
+				"nomCategorie" : nomCategorie
+			},
 
-		popupSuccess(popupName,"Le tag a bien été inséré dans le billet");
-		$("#"+popupName2).fadeTo("slow",1);
-		$("#popupAddTagToBillet").fadeTo("slow",1);
-		$("#popupAddTagToBillet").fadeOut();
+			dataType : 'json',
+			timeout : 100000,
+			success : function(data) {
+				console.log("data.flag=" + typeof(data.flag));
+				console.log
+				if (data.flag==true){
+
+					generateTagInBillet(idB,document.getElementById('searchNomTag').value);
+					
+					var popupName2 = "popupAjoutTagInBillet";
+
+					popupSuccess(popupName,"Le tag a bien été inséré dans le billet");
+					$("#"+popupName2).fadeTo("slow",1);
+					$("#popupAddTagToBillet").fadeTo("slow",1);
+					$("#popupAddTagToBillet").fadeOut();
+					return true;
+				}
+				else{
+					popupFailure(popupName,"Erreur");
+					$("#"+popupName2).fadeTo("slow",1);
+					$("#popupAddTagToBillet").fadeTo("slow",1);
+					$("#popupAddTagToBillet").fadeOut();
+					return false; 
+				}
+			},
+			error : function(e) {
+				return false;
+			},
+			done : function(e) {
+				return true;
+			}
+		});
+		
+		
+
+		
+
 		
 		
 	});
+	
+
+
+
+
 	
 	$("#popupAddTagToBillet").fadeIn();
 }
