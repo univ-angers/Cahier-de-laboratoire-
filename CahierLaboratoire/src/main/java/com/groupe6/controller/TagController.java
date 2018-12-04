@@ -107,7 +107,7 @@ public class TagController {
 		Manager manager = new Manager(); 
 		
 		JsonFactory factory = new JsonFactory();
-		Long idBillet=(long) 0;
+		Long idTag=(long) 0;
 		try {
 			JsonParser j= factory.createJsonParser(data);
 			while(!j.isClosed()){
@@ -119,8 +119,8 @@ public class TagController {
 
 					jsonToken = j.nextToken();
 
-					if("idBillet".equals(fieldName)){
-						idBillet= j.getValueAsLong();
+					if("idTag".equals(fieldName)){
+						idTag= j.getValueAsLong();
 					}
 				}
 			}
@@ -135,7 +135,7 @@ public class TagController {
 
 		manager = new Manager(); 
 		boolean result=false;
-		Tag t= manager.selectTagByID(idBillet);
+		Tag t= manager.selectTagByID(idTag);
 		result=manager.deleteTag(t);
 		manager.exit();
 		return result;
@@ -144,10 +144,12 @@ public class TagController {
 	@RequestMapping(value = "/update", method = RequestMethod.POST, headers = "Accept=application/json")
 	public @ResponseBody boolean tagUpdate(@RequestBody String data) {
 		
+		
 		Manager manager = new Manager(); 
 		
 		JsonFactory factory = new JsonFactory();
-		Long idBillet=(long) 0;
+		Long idTag=(long) 0;
+		String content="";
 		try {
 			JsonParser j= factory.createJsonParser(data);
 			while(!j.isClosed()){
@@ -159,8 +161,11 @@ public class TagController {
 
 					jsonToken = j.nextToken();
 
-					if("idBillet".equals(fieldName)){
-						idBillet= j.getValueAsLong();
+					if("idTag".equals(fieldName)){
+						idTag= j.getValueAsLong();
+					}
+					else if("content".equals(fieldName)){
+						content= j.getText();
 					}
 				}
 			}
@@ -175,8 +180,9 @@ public class TagController {
 
 		manager = new Manager(); 
 		boolean result=false;
-		Tag t= manager.selectTagByID(idBillet);
-		result=manager.deleteTag(t);
+		Tag newTag= new Tag(idTag, content);
+		Tag t= manager.selectTagByID(idTag);
+		result=manager.updateTag(t, newTag);
 		manager.exit();
 		return result;
 	}
