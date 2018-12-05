@@ -33,7 +33,7 @@
 	rel="stylesheet">
 <script type="text/javascript">
 	function exportPDF() {
-		var doc = new jsPDF();
+		var doc = new jsPDF('p', 'pt', 'a4');
 	/*
 		var specialElementHandlers = {
 				'#editor': function(element, renderer){
@@ -59,9 +59,12 @@ var options = {
         pagesplit: true,
         "width" : width,
    };
-doc.context2d.pageWrapY = doc.internal.pageSize.height-20;
-	doc.addHTML(  $(".tagToPrint"),options ,function() {
-
+   
+   var toExport = $(".tagToPrint");
+   console.log(toExport);
+//doc.context2d.pageWrapY = doc.internal.pageSize.height-20;
+//, 0,0,toExport.width*0.2,toExport.height*0.2
+	doc.addHTML( toExport,  0,0,toExport.width*0.2,toExport.height*0.2  ,function() {
 		doc.save('web.pdf');
 	});
 		

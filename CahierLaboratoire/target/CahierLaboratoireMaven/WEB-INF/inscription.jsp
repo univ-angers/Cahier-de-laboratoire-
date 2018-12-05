@@ -28,7 +28,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<a class="navbar-brand" href="/CahierLaboratoire/accueil"
 			style="font-family: 'Roboto Mono', monospace;"> <img
-			src="<c:url value="/inc/assets/agenda2.png"/>" alt="" width="40"
+			src="<c:url value="/inc/assets/agenda2.png"/>" alt="" width="40" 
 			height="40">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -39,7 +39,7 @@
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="/CahierLaboratoire/restreint/pagePrincipale.jsp">Accueil
+					<a class="nav-link" href="./accueil">Accueil
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
