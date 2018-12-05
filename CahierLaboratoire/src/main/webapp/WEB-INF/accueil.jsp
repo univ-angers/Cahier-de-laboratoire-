@@ -9,26 +9,26 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="<c:url value="/inc/assets/login2.png"/>">
+<link rel="icon" href="<c:url value="./inc/assets/login2.png"/>">
 
 
 
 <!-- Theme included stylesheets -->
 <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
-<link href="<c:url value="/inc/css/quillCustomSize.css"/>"
+<link href="<c:url value="./inc/css/quillCustomSize.css"/>"
 	rel="stylesheet">
 
 <!-- Bootstrap core CSS -->
-<link href="<c:url value="/inc/css/bootstrap.css"/>" rel="stylesheet">
+<link href="<c:url value="./inc/css/bootstrap.css"/>" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="<c:url value="/inc/css/signin.css"/>" rel="stylesheet">
-<link href="<c:url value="/inc/css/buttonStyle.css"/>" rel="stylesheet">
-<link href="<c:url value="/inc/css/loader.css"/>" rel="stylesheet">
-<link href="<c:url value="/inc/css/Popups/Popups.css"/>"
+<link href="<c:url value="./inc/css/signin.css"/>" rel="stylesheet">
+<link href="<c:url value="./inc/css/buttonStyle.css"/>" rel="stylesheet">
+<link href="<c:url value="./inc/css/loader.css"/>" rel="stylesheet">
+<link href="<c:url value="./inc/css/Popups/Popups.css"/>"
 	rel="stylesheet">
-<link href="<c:url value="/inc/css/searchBar.css"/>" rel="stylesheet">
+<link href="<c:url value="./inc/css/searchBar.css"/>" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500"
 	rel="stylesheet">
 <script type="text/javascript">
@@ -54,7 +54,7 @@
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<a class="navbar-brand" href="#"
 			style="font-family: 'Roboto Mono', monospace;"> <img
-			src="<c:url value="/inc/assets/agenda2.png"/>" alt="" width="40"
+			src="<c:url value="./inc/assets/agenda2.png"/>" alt="" width="40"
 			height="40">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -64,12 +64,12 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Accueil
+				<li class="nav-item active"><a class="nav-link" href="accueil">Accueil
 						<span class="sr-only">(current)</span> 
 				</a></li>
 				<c:if test="${ sessionScope.sessionUtilisateur.isAdmin== 1}">
 					<li class="nav-item"><a class="nav-link"
-						href="/CahierLaboratoire/inscription">Ajouter un utilisateur</a></li>
+						href="./inscription">Ajouter un utilisateur</a></li>
 				</c:if>
 				
 				<li class="nav-item"><a class="nav-link"
@@ -115,7 +115,7 @@
 			<div class="row">
 				<button type="button" id="printAllButton" class="btn btn-dark container-fluid"
 					style="margin: 2%;margin-top:0px;" onclick="exportPDF()">
-					<img src="../inc/assets/print.png" width="25" height="25" />
+					<img src="./inc/assets/print.png" width="25" height="25" />
 					Imprimer tous les billets ?
 				</button>
 				
@@ -139,51 +139,50 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Popup/Popup.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Popup/Popup.js"/>"></script>
   
 <!-- Main Quill library -->
 <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Wysiwyg/wysiwyg.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Wysiwyg/wysiwyg.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Billet/GenerateBillet.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Billet/GenerateBillet.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Billet/billetQueryInDB.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Billet/billetQueryInDB.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Tags/addTag.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Tags/addTag.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Tags/generateCategory.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Tags/generateCategory.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Tags/generateTags.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Tags/generateTags.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Popup/Popup.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Popup/Popup.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Recherche/popupRecherche.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Recherche/popupRecherche.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Recherche/researchQueryInDB.js"/>"></script>	
+	src="<c:url value="./inc/js/Scripts/Recherche/researchQueryInDB.js"/>"></script>	
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Connexion/deconnexionPopup.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Connexion/deconnexionPopup.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Connexion/Deconnexion.js"/>"></script>	
+	src="<c:url value="./inc/js/Scripts/Connexion/Deconnexion.js"/>"></script>	
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Tags/getTags.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Tags/getTags.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/BilletTag/GenerateTagInBillet.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/BilletTag/GenerateTagInBillet.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/BilletTag/popupAddTagToBillet.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/BilletTag/popupAddTagToBillet.js"/>"></script>
 	
 	
 	
 	
 	
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/Quill/update.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/Quill/update.js"/>"></script>
 
 	
 
-	
-	
+
 	
 <!-- JSPDF Library  -->
 <script
@@ -197,9 +196,9 @@
 	src="https://unpkg.com/popper.js"></script>
 
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Bootstrap/bootstrap.min.js"/>"></script>
+	src="<c:url value="./inc/js/Bootstrap/bootstrap.min.js"/>"></script>
 
 <script type="text/javascript"
-	src="<c:url value="/inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
+	src="<c:url value="./inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
 </html>
 

@@ -9,7 +9,7 @@ function addTagToDatabase(category, name){
 		$.ajax({
 			type : "GET",
 			contentType : "application/json",
-			url : "../tag/add",
+			url : "./tag/add",
 			data : {
 					"categorie": category,
 					"nomTag" : name

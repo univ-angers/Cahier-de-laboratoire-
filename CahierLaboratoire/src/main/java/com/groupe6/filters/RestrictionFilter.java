@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 @WebFilter( urlPatterns = "/*")
 public class RestrictionFilter implements Filter {
     public static final String ACCES_CONNEXION  = "/connexion";
-    public static final String ACCES_PAGEPRINCIPALE  = "/restreint/pagePrincipale.jsp";
+    public static final String ACCES_PAGEPRINCIPALE  = "/accueil";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
 
     public void init( FilterConfig config ) throws ServletException {

@@ -48,7 +48,7 @@ function popupAddTagToBillet(idB){
 		$.ajax({
 			type : "GET",
 			contentType : "application/json",
-			url : "../billetTag/add",
+			url : "./billetTag/add",
 			data : {
 				"idB": idB,
 				"nomTag" : nomTag,

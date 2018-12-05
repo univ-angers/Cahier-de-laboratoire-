@@ -3,15 +3,18 @@
  */
 
 function addTagToDatabase(category, name){
+
 	if(category.length > 0 && name.length > 0){
-		var data = {}
-		data["category"] = category;
-		data["name"] = name;
+			
 		$.ajax({
-			type : "POST",
+			type : "GET",
 			contentType : "application/json",
-			url : "url",
-			data : JSON.stringify(data),
+			url : "../tag/add",
+			data : {
+					"categorie": category,
+					"nomTag" : name
+	        },
+		
 			dataType : 'json',
 			timeout : 100000,
 			success : function(data) {
@@ -59,21 +62,35 @@ function popupAddTag(){
 		$("#addtagpopup").fadeOut();
 	});
 
+	// AJOUTER POPUP CLOSE
+	
+	
 	$("#buttonPopupAddTag").click(function() {
-
 		if(addTagToDatabase($("#tagCategory").val(), $("#tagValue").val())){
-
+			
+			var popupName = "popupAjoutTag";
+			
+			//console.log("J'AI BIEN INSERE DANS LA BDD");
 			$("#reponse").css("color","green");
 			$("#reponse").text("Tag ajouté en base de données : catégorie "+$("#tagCategory").val()+" nom "+ $("#tagValue").val()+".");
-			$("#buttonPopupAddTag").text("Close");
-			$("#buttonPopupAddTag").click(function() {
-				$("#addtagpopup").fadeOut();
-			});
+			
 			addTagInList($("#tagValue").val());
 			addTagInProjectDiv($("#tagValue").val())
+			
+			generateOneTag($("#tagCategory").val(),$("#tagValue").val());
+			
+			popupSuccess(popupName,"Le tag a bien été inséré");
+			$("#"+popupName).fadeTo("slow",1);
+			//$("#"+popupName).delay(1000).fadeTo("slow", 0);
+			$("#addtagpopup").fadeTo("slow",1);
+			$("#addtagpopup").fadeOut();
+			
 		}else{
 			$("#reponse").css("color","red");
 			$("#reponse").text("Tag non ajouté en base de données, contacter administrateur.");
+			popupFailure(popupName," ERREUR : le tag n'a pas été inséré");
+			$("#"+popupName).fadeTo("slow",1);
+			$("#addtagpopup").fadeOut();
 		}
 	});
 
@@ -81,6 +98,11 @@ function popupAddTag(){
 	$("#addtagpopup").fadeIn();
 
 }
+
+
+
+
+
 
 function addTagInList(name){
 

@@ -2,7 +2,7 @@ function getTagsInBillet(idB){
 
 		$.ajax({
 			type : "GET",
-			url : "../billetTag/get",
+			url : "./billetTag/get",
 			//data : JSON.stringify(data),
 			data : {"idB": idB},
 			dataType : 'json',

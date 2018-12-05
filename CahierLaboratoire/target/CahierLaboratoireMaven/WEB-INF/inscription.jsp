@@ -26,7 +26,7 @@
 
 <body class="text-center" style="font-family: 'Roboto Mono', monospace;">
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand" href="/CahierLaboratoire/restreint/pagePrincipale.jsp"
+		<a class="navbar-brand" href="/CahierLaboratoire/accueil"
 			style="font-family: 'Roboto Mono', monospace;"> <img
 			src="<c:url value="/inc/assets/agenda2.png"/>" alt="" width="40"
 			height="40">

@@ -21,6 +21,7 @@ public class Connexion extends HttpServlet {
 	public static final String ATT_INTERVALLE_CONNEXIONS = "intervalleConnexions";
 	public static final String ATT_SESSION_USER = "sessionUtilisateur";
 	public static final String VUE = "/WEB-INF/connexion.jsp";
+	public static final String ACCUEIL = "/accueil";
 
 	private UtilisateurDao utilisateurDao;
 	
@@ -53,7 +54,7 @@ public class Connexion extends HttpServlet {
 		 */
 		if (form.getErreurs().isEmpty()) {
 			session.setAttribute(ATT_SESSION_USER, utilisateur);
-			response.sendRedirect(request.getContextPath() + "/restreint/pagePrincipale.jsp");
+			response.sendRedirect(request.getContextPath() +ACCUEIL);
 			return; 
 			
 		} else {

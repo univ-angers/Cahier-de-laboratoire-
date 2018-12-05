@@ -4,7 +4,7 @@
 
 function removeBillet(id){
 	$.ajax({
-		url: "../billet/billetRemove",
+		url: "/billet/billetRemove",
 		type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
@@ -26,7 +26,7 @@ function removeBillet(id){
 function updateBillet(id, content){
 	
 	$.ajax({
-		url: "../billet/billetUpdate",
+		url: "./billet/billetUpdate",
 		type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
@@ -50,7 +50,7 @@ function createBillet(){
 
 	var id=0;
 
-	$.post( "../billet/billetCreation")
+	$.post( "./billet/billetCreation")
 	.done(function( data ) {
 		id=data;
 		$( ".loader" ).remove();
@@ -128,7 +128,7 @@ function createBillet(){
 
 function affcherBilletsAccueilAndLast(){
 	$.ajax({
-		url: "../billet/lastBillets",
+		url: "./billet/lastBillets",
 		method: "POST",
 		dataType: "json",
 		contentType: 'application/json',

@@ -3,48 +3,6 @@
  
  
 	<display-name>Archetype Created Web Application</display-name>
- 
- 	
- <!-- 
- 
-   <servlet>
-    <servlet-name>Inscription</servlet-name>
-    <servlet-class>com.groupe6.servlets.Inscription</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>Connexion</servlet-name>
-    <servlet-class>com.groupe6.servlets.Connexion</servlet-class>
-  </servlet>
-  <servlet>
-	<servlet-name>Deconnexion</servlet-name>
-	<servlet-class>com.groupe6.servlets.Deconnexion</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-	    <servlet-name>Inscription</servlet-name>
-	    <url-pattern>/inscription</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-	    <servlet-name>Connexion</servlet-name>
-	    <url-pattern>/connexion</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Deconnexion</servlet-name>
-		<url-pattern>/deconnexion</url-pattern>
-	</servlet-mapping>
-	
-		-->
-<!--  
-
-	<filter>
-	        <filter-name>RestrictionFilter</filter-name>
-	        <filter-class>com.groupe6.filters.RestrictionFilter</filter-class>
-	</filter>
-	<filter-mapping>
-	        <filter-name>RestrictionFilter</filter-name>
-	        <url-pattern>/*</url-pattern>
-	</filter-mapping>
-	-->
 
 	
 	<filter>
@@ -75,10 +33,7 @@
 		<url-pattern>/inscription</url-pattern>
 	</filter-mapping>
  
- 
- 
- 
-	
+
 	
 	<context-param>
         <param-name>contextConfigLocation</param-name>
