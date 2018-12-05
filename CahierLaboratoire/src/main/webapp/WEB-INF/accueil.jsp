@@ -33,13 +33,53 @@
 	rel="stylesheet">
 <script type="text/javascript">
 	function exportPDF() {
-		var doc = new jsPDF()
-
-		doc.text('Hello world!', 10, 10)
-		doc.fromHTML($('#data1').html(), 15, 15, {
-			'width' : 170
+		var doc = new jsPDF();
+	/*
+		var specialElementHandlers = {
+				'#editor': function(element, renderer){
+					return true;
+				},
+				'.tagToPrint': function(element, renderer){
+					return true;
+				}
+			};
+		
+		var tagToPrint = $(".tagToPrint");
+		doc.fromHTML( tagToPrint.html(), 15, 15, {
+			 'elementHandlers': specialElementHandlers 
 		});
-		doc.save('Export.pdf');
+		
+*/
+
+
+   
+var width = doc.internal.pageSize.getWidth();
+var height = doc.internal.pageSize.getHeight();
+var options = {
+        pagesplit: true,
+        "width" : width,
+   };
+doc.context2d.pageWrapY = doc.internal.pageSize.height-20;
+	doc.addHTML(  $(".tagToPrint"),options ,function() {
+
+		doc.save('web.pdf');
+	});
+		
+		
+		/*
+		tagToPrint.each(function() {
+		    var currentElement = $(this);
+			console.log(currentElement);
+			doc.text(20, 20, currentElement.html());
+		
+			doc.fromHTML( currentElement.html(), 15, 15, {
+				'width' : 170
+			});
+			
+		});
+	*/
+
+
 
 	}
 </script>
@@ -120,7 +160,7 @@
 				</button>
 				
 			</div>
-			<div id="billetsList"></div>
+			<div id="billetsList" class="tagToPrint"></div>
 		</div>
 		
 		

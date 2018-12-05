@@ -7,7 +7,7 @@ function generateBillet(idOrig,data){
 	// @THIERRY : ID n'est pas un id mais une chaine de caractere
 	//console.log("on genere le billet id : "+id+" avec le content : "+data );
 	$("#billetsList").append(
-			'<div id="' +id+  '" class="card mb-4 shadow-sm">'+
+			'<div id="' +id+  '" class="card mb-4 shadow-sm ">'+
 				'<div class="card-header ">'+
 					'<div id="tag'+idOrig+'">'+
 					'<button type="button" id="'+id+'addTagToBillet" class="btn btn-dark addTagToBilletButton" style="">'+
