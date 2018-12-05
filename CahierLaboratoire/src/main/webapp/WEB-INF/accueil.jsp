@@ -34,41 +34,35 @@
 <script type="text/javascript">
 	function exportPDF() {
 		var doc = new jsPDF('p', 'pt', 'a4');
-	/*
+		doc.internal.scaleFactor = 2.25;
+		/*
 		var specialElementHandlers = {
-				'#editor': function(element, renderer){
-					return true;
-				},
-				'.tagToPrint': function(element, renderer){
+				'.btn-group': function(element, renderer){
 					return true;
 				}
 			};
-		
-		var tagToPrint = $(".tagToPrint");
-		doc.fromHTML( tagToPrint.html(), 15, 15, {
-			 'elementHandlers': specialElementHandlers 
-		});
-		
-*/
 
-
-   
+   */
 var width = doc.internal.pageSize.getWidth();
 var height = doc.internal.pageSize.getHeight();
-var options = {
-        pagesplit: true,
-        "width" : width,
-   };
-   
+
+$('.btn-group').hide(); //before the addHTML()
+$('.addTagToBilletButton').hide(); //before the addHTML()
    var toExport = $(".tagToPrint");
    console.log(toExport);
-//doc.context2d.pageWrapY = doc.internal.pageSize.height-20;
-//, 0,0,toExport.width*0.2,toExport.height*0.2
-	doc.addHTML( toExport,  0,0,toExport.width*0.2,toExport.height*0.2  ,function() {
+
+	
+	doc.addHTML( toExport,  {dim:{'w':width, 'h':height}},  function() {
+
+		//'elementHandlers': specialElementHandlers 
+		//doc.internal.scaleFactor = 0.25; 
+		//doc.internal.scaleFactor = 30; 
 		doc.save('web.pdf');
+
 	});
 		
-		
+	 $('.btn-group').show();
+	 $('.addTagToBilletButton').show(); //before the addHTML()
 		/*
 		tagToPrint.each(function() {
 		    var currentElement = $(this);
