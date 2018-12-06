@@ -16,4 +16,3 @@ L'application est restreinte. Il faut obligatoirement être enregistré.
 ## Spring + Hibernate
 Après connexion, une page listant les utilisateurs via Spring + Hibernate est disponible à cette adresse:
 http://localhost:8080/CahierLaboratoire/utilisateurs
-
