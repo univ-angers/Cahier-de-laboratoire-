@@ -29,7 +29,12 @@ public class SearchEngine {
 		List<Tag> lt = manager.selectAllTagsLike(nomTag);
 		for (Tag t : lt) {
 			//System.out.println(t);
-			lb.addAll( manager.selectBilletsByTag(t)); 	
+			try {
+				lb.addAll( manager.selectBilletsByTag(t));
+			}
+			catch (NullPointerException e) {
+				
+			}
 		}
 
         manager.exit();
