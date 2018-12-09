@@ -3,24 +3,20 @@ function getTagsInBillet(idB){
 		$.ajax({
 			type : "GET",
 			url : "../billetTag/get",
-			//data : JSON.stringify(data),
 			data : {"idB": idB},
 			dataType : 'json',
 			timeout : 100000,
 			success : function(data) {
 				//print all tags
-				
-				//console.log(data);
-	
+				 
 				for (var i = 0; i < data.length; i++){
 				    var obj = data[i];
-				    generateTagInBillet(idB,obj["nomTag"]);
-				    //console.log("JE GENERE LE TAG "+obj["nomTag"]+"POUR LE BILLET: "+idB );
+				   generateTagInBillet(idB,obj["nomTag"],obj["idT"]);
 	
 				}
 				
-
-			
+				updatePopover();
+				
 			return true;
 		},
 		error : function(e) {
@@ -63,10 +59,9 @@ function addTagInBilletToDatabase(idB, idT){
 }
 
 
-function generateTagInBillet(idBillet,tag){
-	//console.log(idBillet + tag );
+function generateTagInBillet(idBillet,tag,id){
 	$("#tag"+idBillet).append(
-			'	<button type="button" class="badge badge-dark" style="color:white;border-color: #3B3B3B">'+tag+'</button> '
+			'	<button  id="billetTag'+id+'" type="button" class="badge badge-dark" style="color:white;border-color: #3B3B3B">'+tag+'</button> '
 	);
 	
 	

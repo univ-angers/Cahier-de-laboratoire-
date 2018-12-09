@@ -69,11 +69,8 @@
 				</a></li>
 				<c:if test="${ sessionScope.sessionUtilisateur.isAdmin== 1}">
 					<li class="nav-item"><a class="nav-link"
-						href="/CahierLaboratoire/inscription">Ajouter un utilisateur</a></li>
+						href="<c:url value="/CahierLaboratoire/inscription"/>">Ajouter un utilisateur</a></li>
 				</c:if>
-				
-				<li class="nav-item"><a class="nav-link"
-						href="#">Aide ?</a></li>
 
 			</ul>
 
@@ -170,9 +167,13 @@
 	src="<c:url value="/inc/js/Scripts/Tags/getTags.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/BilletTag/GenerateTagInBillet.js"/>"></script>
-	
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Tags/tagsQueryInDB.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Quill/update.js"/>"></script>
+	
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/Popover/updatePopover.js"/>"></script>
 
 	
 

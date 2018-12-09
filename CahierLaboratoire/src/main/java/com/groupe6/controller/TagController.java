@@ -46,28 +46,26 @@ public class TagController {
         List<Tag> lt;
         lt = manager.selectAllTags();
         ArrayList<ArrayList<String> > alo = new ArrayList<ArrayList<String>>(); 
-        Categorie c; 
+        Categorie c;
         
         for (int i =0; i<lt.size(); i++) {
+        	
         	ArrayList<String> temps = new ArrayList<String>();
-        	//System.out.println(  lt.get(i).getNomTag().toString()    );
-        	temps.add(lt.get(i).getNomTag().toString()  );
+        	temps.add(lt.get(i).getNomTag().toString());
         	c = manager.selectCategoryByID(lt.get(i).getIdC());
         	temps.add( c.getNomCategorie().toString());
+        	temps.add(lt.get(i).getIdT().toString());
         	alo.add(temps);
         	
         }
         
-        
-        //o = manager.selectCategoryByID(id)
         manager.exit();
         return  alo;
     }
     
     
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<String> saveTag(@RequestParam(value = "categorie", required = true) String categorie,
-    													@RequestParam(value = "nomTag", required = true) String nomTag) 
+    public @ResponseBody ResponseEntity<String> saveTag(@RequestParam(value = "categorie", required = true) String categorie,@RequestParam(value = "nomTag", required = true) String nomTag) 
     {
     	Manager manager = new Manager(); 
     	
@@ -103,11 +101,11 @@ public class TagController {
     
 	@RequestMapping(value = "/remove", method = RequestMethod.POST, headers = "Accept=application/json")
 	public @ResponseBody boolean tagRemove(@RequestBody String data) {
-		
+		System.out.println("Remove called");
 		Manager manager = new Manager(); 
-		
 		JsonFactory factory = new JsonFactory();
 		Long idTag=(long) 0;
+		
 		try {
 			JsonParser j= factory.createJsonParser(data);
 			while(!j.isClosed()){
@@ -124,7 +122,8 @@ public class TagController {
 					}
 				}
 			}
-
+			
+			
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -149,7 +148,7 @@ public class TagController {
 		
 		JsonFactory factory = new JsonFactory();
 		Long idTag=(long) 0;
-		String content="";
+		String content="False";
 		try {
 			JsonParser j= factory.createJsonParser(data);
 			while(!j.isClosed()){
@@ -177,11 +176,16 @@ public class TagController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		
+		
 		manager = new Manager(); 
 		boolean result=false;
-		Tag newTag= new Tag(idTag, content);
+
 		Tag t= manager.selectTagByID(idTag);
+		
+		Tag newTag= new Tag(t.getIdC(),content);
+		
 		result=manager.updateTag(t, newTag);
 		manager.exit();
 		return result;
