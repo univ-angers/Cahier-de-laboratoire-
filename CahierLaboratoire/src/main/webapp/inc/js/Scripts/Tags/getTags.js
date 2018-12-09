@@ -10,7 +10,7 @@ function getAllTags(){
 	//data["name"] = name;
 	$.ajax({
 		type : "GET",
-		url : "../tag/get",
+		url : "./tag/get", 
 		//data : JSON.stringify(data),
 		data : data,
 		dataType : 'json',
@@ -44,7 +44,7 @@ function removeTag(id){
 	console.log('Removing tag with id :'+id)
 	$.ajax({
 //		type : "GET",
-//		url : "../tag/get",
+//		url : "./tag/get",
 //		//data : JSON.stringify(data),
 //		data : data,
 //		dataType : 'json',

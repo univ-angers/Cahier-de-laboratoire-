@@ -17,7 +17,7 @@ import com.groupe6.beans.Utilisateur;
 @WebFilter( urlPatterns = "/inscription" )
 public class InscriptionFilter implements Filter {
 	public static final String ATT_SESSION_USER = "sessionUtilisateur";
-	public static final String REDIRECTION_PP = "/restreint/pagePrincipale.jsp";
+	public static final String REDIRECTION_PP = "/accueil";
 
 	public InscriptionFilter() {
 	}

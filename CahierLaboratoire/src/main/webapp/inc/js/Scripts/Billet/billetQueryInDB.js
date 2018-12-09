@@ -4,7 +4,7 @@
 
 function removeBillet(id){
 	$.ajax({
-		url: "../billet/billetRemove",
+		url: "/billet/billetRemove",
 		type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
@@ -26,7 +26,7 @@ function removeBillet(id){
 function updateBillet(id, content){
 	
 	$.ajax({
-		url: "../billet/billetUpdate",
+		url: "./billet/billetUpdate",
 		type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
@@ -50,7 +50,7 @@ function createBillet(){
 
 	var id=0;
 
-	$.post( "../billet/billetCreation")
+	$.post( "./billet/billetCreation")
 	.done(function( data ) {
 		id=data;
 		$( ".loader" ).remove();
@@ -59,6 +59,7 @@ function createBillet(){
 
 		generateBillet(data,"");
 
+		/*
 		$(".buttonQuill").click(
 				function() {
 					strId = this.id.substring(0,
@@ -105,13 +106,29 @@ function createBillet(){
 					//removing from ui
 					$("#"+strId).remove();
 				});
+		
+		$(".addTagToBilletButton").click(
+
+				function() {
+					strId = this.id.substring(0,this.id.length - 14);// on récupère
+					console.log("+ pressed "+strId);
+					//removing in data base 
+					popupAddTagToBillet(strId.replace('billet',''));
+					//removing from ui
+					$("#"+strId).remove();
+
+				});
+		
+*/
+		updateQuill();
+
 
 	});
 }
 
 function affcherBilletsAccueilAndLast(){
 	$.ajax({
-		url: "../billet/lastBillets",
+		url: "./billet/lastBillets",
 		method: "POST",
 		dataType: "json",
 		contentType: 'application/json',
@@ -122,7 +139,7 @@ function affcherBilletsAccueilAndLast(){
 				generateBillet(this.idB,this.text, this.idB);
 				//getTagsInBillet(this.idB);
 			});
-
+/*
 			$(".buttonQuill").click(
 					function() {
 						strId = this.id.substring(0,
@@ -169,6 +186,22 @@ function affcherBilletsAccueilAndLast(){
 						$("#"+strId).remove();
 						
 					});
+			
+			$(".addTagToBilletButton").click(
+
+					function() {
+						strId = this.id.substring(0,this.id.length - 14);// on récupère
+						console.log("+ pressed "+strId);
+						//removing in data base 
+						popupAddTagToBillet(strId.replace('billet',''));
+						//removing from ui
+						$("#"+strId).remove();
+
+					});
+					
+					*/
+			
+			updateQuill();
 			return true;
 		},
 		error : function(e) {

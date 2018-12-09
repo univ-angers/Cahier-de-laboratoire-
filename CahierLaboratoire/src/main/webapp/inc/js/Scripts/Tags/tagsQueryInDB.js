@@ -5,7 +5,7 @@
 function removeTag(id){
 	console.log("RemoveTag called");
 	$.ajax({
-		url: "../tag/remove",
+		url: "./tag/remove",
 		type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
@@ -28,7 +28,7 @@ function removeTag(id){
 
 function updateTag(id,content){
 	$.ajax({
-		url: "../tag/update",
+		url: "./tag/update",
 		type: 'POST',
         dataType: 'json',
         contentType: 'application/json',

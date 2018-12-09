@@ -49,12 +49,6 @@ function popupRechercheTag(){
 	});
 	
 
-
-	
-
-
-
-	
 	$("#rechercheTag").fadeIn();
 
 }

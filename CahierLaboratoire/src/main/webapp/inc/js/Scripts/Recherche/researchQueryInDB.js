@@ -3,7 +3,7 @@ function searchBilletsByName( name){
 		$.ajax({
 			type : "GET",
 			contentType : "application/json",
-			url : "../search/get",
+			url : "./search/get",
 			data : {
 					"nomTag" : name
 	        },
@@ -20,7 +20,6 @@ function searchBilletsByName( name){
 					//console.log(data);
 					$("#reponse").text("Resultats trouvés.");
 					$("#billetsList").empty();
-					console.log("je rentre dans le retour du get");
 					for (var i = 0; i < data.length; i++){
 					    var obj = data[i];
 					    console.log(obj);
