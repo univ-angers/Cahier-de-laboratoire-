@@ -50,7 +50,12 @@ $(document).ready(
 				popupDeconnexion();
 			});
 
-			
+			$("#printAllButton").click(function() {
+				exportPDF();
+			});
+
+				
+				
 			affcherBilletsAccueilAndLast();
 
 

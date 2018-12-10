@@ -43,13 +43,6 @@
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
-				<c:if test="${ sessionScope.sessionUtilisateur.isAdmin== 1}">
-					<li class="nav-item"><a class="nav-link"
-						href="/CahierLaboratoire/inscription">Ajouter un utilisateur</a></li>
-				</c:if>
-			
-			<li class="nav-item"><a class="nav-link"
-						href="#">Aide ?</a></li>
 			</ul>
 
 			<button class="btn btn-danger navbar-btn" style="margin-left: 2%;">Déconnexion</button>

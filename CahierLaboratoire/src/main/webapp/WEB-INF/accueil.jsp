@@ -32,25 +32,6 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500"
 	rel="stylesheet">
 	
-<script type="text/javascript">
-/*
-	function exportPDF() {
-		var doc = new jsPDF('p', 'pt', 'a4');
-		doc.internal.scaleFactor = 2.25;
-		var width = doc.internal.pageSize.getWidth();
-		var height = doc.internal.pageSize.getHeight();
-		$('.btn-group').hide(); //before the addHTML()
-		$('.addTagToBilletButton').hide(); //before the addHTML()
-		var toExport = $(".tagToPrint");
-		doc.addHTML( toExport,  {dim:{'w':width, 'h':height}},  function() {
-				doc.save('web.pdf');
-		});
-		$('.btn-group').show();
-		$('.addTagToBilletButton').show(); //before the addHTML()
-	}
-	*/
-</script>
-
 
 <title>Cahier de laboratoire</title>
 
@@ -119,7 +100,7 @@
 			style="background: gainsboro; padding-top: 20px; border-radius: 1%;">
 			<div class="row">
 				<button type="button" id="printAllButton" class="btn btn-dark container-fluid"
-					style="margin: 2%;margin-top:0px;" onclick="exportPDF()">
+					style="margin: 2%;margin-top:0px;" >
 					<img src="./inc/assets/print.png" width="25" height="25" />
 					Imprimer tous les billets ?
 				</button>
@@ -170,8 +151,6 @@
 <script type="text/javascript"
 	src="<c:url value="./inc/js/Scripts/Connexion/deconnexionPopup.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="./inc/js/Scripts/Connexion/Deconnexion.js"/>"></script>	
-<script type="text/javascript"
 	src="<c:url value="./inc/js/Scripts/Tags/getTags.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="./inc/js/Scripts/BilletTag/GenerateTagInBillet.js"/>"></script>
@@ -182,6 +161,8 @@
 	src="<c:url value="/inc/js/Scripts/Tags/tagsQueryInDB.js"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/inc/js/Scripts/Quill/update.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="/inc/js/Scripts/ExportPDF/exportPDF.js"/>"></script>
 	
 	
 	

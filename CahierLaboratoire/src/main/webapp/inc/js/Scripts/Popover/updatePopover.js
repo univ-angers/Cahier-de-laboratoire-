@@ -3,7 +3,6 @@
  */
 
 function updatePopover(){
-
 	$('.badge').on('click', function (e) {
 
 		if($(".popover").length <1){
@@ -26,6 +25,7 @@ function updatePopover(){
 
 			$(".close").on("click",function(){
 				$(objectPopover).remove();
+
 			});
 
 			$(this).on('hide.bs.popover', function (e) {
@@ -67,7 +67,7 @@ function updatePopover(){
 				});
 
 				$("#buttonPopoverRemove").on( "click",function(e2){
-
+					console.log("remove");
 					if($(this).text()!="Annuler"){
 						console.log("Bouton annulé pressé");
 

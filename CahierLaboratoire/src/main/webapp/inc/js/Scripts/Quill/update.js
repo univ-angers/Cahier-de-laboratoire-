@@ -36,6 +36,13 @@ function updateQuill(){
 				updateBillet(strId.replace('billet',''), $("#billet"+strId.replace('billet','')+"editor-container").find( ".ql-editor" ).html());
 			});
 	
+	$(".printButtonMono").click(
+			function() {
+				strId = this.id.substring(0,
+						this.id.length - 14);
+				exportPDFMono(strId);
+			});
+	
 
 	$(".removeButton").click(
 			function() {

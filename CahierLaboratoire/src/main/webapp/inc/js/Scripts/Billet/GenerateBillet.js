@@ -21,7 +21,7 @@ function generateBillet(idOrig,data){
 						'<button type="button" id="'+id+'Remove" class="btn btn-dark removeButton" style="margin:1%">'+
 						'<img src="./inc/assets/trashcan.png" width="25" height="25"/>'+
 						'</button>'+
-						'<button type="button" id="'+id+'print" class="btn btn-dark printButton" style="margin:1%" onclick="exportPDF()">'+
+						'<button type="button" id="'+id+'tagToPrintMono" class="btn btn-dark printButtonMono" style="margin:1%">'+
 							'<img src="./inc/assets/print.png" width="25" height="25"/>'+
 						'</button>'+
 						'<button type="button" id="'+id+'save" class="btn btn-dark saveButton" style="margin:1%">'+
