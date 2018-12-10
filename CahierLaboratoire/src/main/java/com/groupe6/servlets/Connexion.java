@@ -45,8 +45,8 @@ public class Connexion extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		
-		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
-	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+		response.setContentType("text/plain"); 
+	    response.setCharacterEncoding("UTF-8"); 
 	    response.reset(); 
 		/*
 		 * Si aucune erreur de validation n'a eu lieu, alors ajout du bean Utilisateur à

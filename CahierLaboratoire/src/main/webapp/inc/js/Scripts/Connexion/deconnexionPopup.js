@@ -1,9 +1,3 @@
-/**
- * 
- */
-
-
-
 function popupDeconnexion(){
 
 	var popupName= popupCreation("deconnexionPopup");
@@ -35,22 +29,11 @@ function popupDeconnexion(){
 	
 	
 	$("#buttonYDeco").click(function() {
-		window.location.href = "../deconnexion";
+		console.log("dans la deco");
+		window.location.href = "./deconnexion";
 		
 	});
 
-//	$("#buttonRechercheTag").click(function() {
-//
-//		
-//			$("#reponse").text("Resultat");
-//			//deconne
-//			$("#buttonRechercheTag").text("Close");
-//			$("#buttonRechercheTag").click(function() {
-//				$("#deconnexionPopup").fadeOut();
-//			});
-//			
-//	
-//	});
 
 
 	$("#deconnexionPopup").fadeIn();
