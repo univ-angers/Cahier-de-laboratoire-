@@ -31,54 +31,24 @@
 <link href="<c:url value="./inc/css/searchBar.css"/>" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500"
 	rel="stylesheet">
+	
 <script type="text/javascript">
+/*
 	function exportPDF() {
 		var doc = new jsPDF('p', 'pt', 'a4');
 		doc.internal.scaleFactor = 2.25;
-		/*
-		var specialElementHandlers = {
-				'.btn-group': function(element, renderer){
-					return true;
-				}
-			};
-
-   */
-var width = doc.internal.pageSize.getWidth();
-var height = doc.internal.pageSize.getHeight();
-
-$('.btn-group').hide(); //before the addHTML()
-$('.addTagToBilletButton').hide(); //before the addHTML()
-   var toExport = $(".tagToPrint");
-   console.log(toExport);
-
-	
-	doc.addHTML( toExport,  {dim:{'w':width, 'h':height}},  function() {
-
-		//'elementHandlers': specialElementHandlers 
-		//doc.internal.scaleFactor = 0.25; 
-		//doc.internal.scaleFactor = 30; 
-		doc.save('web.pdf');
-
-	});
-		
-	 $('.btn-group').show();
-	 $('.addTagToBilletButton').show(); //before the addHTML()
-		/*
-		tagToPrint.each(function() {
-		    var currentElement = $(this);
-			console.log(currentElement);
-			doc.text(20, 20, currentElement.html());
-		
-			doc.fromHTML( currentElement.html(), 15, 15, {
-				'width' : 170
-			});
-			
+		var width = doc.internal.pageSize.getWidth();
+		var height = doc.internal.pageSize.getHeight();
+		$('.btn-group').hide(); //before the addHTML()
+		$('.addTagToBilletButton').hide(); //before the addHTML()
+		var toExport = $(".tagToPrint");
+		doc.addHTML( toExport,  {dim:{'w':width, 'h':height}},  function() {
+				doc.save('web.pdf');
 		});
-	*/
-
-
-
+		$('.btn-group').show();
+		$('.addTagToBilletButton').show(); //before the addHTML()
 	}
+	*/
 </script>
 
 

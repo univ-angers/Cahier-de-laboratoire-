@@ -19,13 +19,8 @@ public class Accueil extends HttpServlet {
 	public static final String ATT_FORM = "form";
 	public static final String VUE = "/WEB-INF/accueil.jsp";
 
-
-
 	public void init() throws ServletException {
-
-
 	}
-
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);

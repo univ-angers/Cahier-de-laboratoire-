@@ -4,13 +4,8 @@ function exportPDF() {
 	var height = doc.internal.pageSize.getHeight();
 	var toExport = $(".tagToPrint");
 		doc.addHTML( toExport,  {dim:{'w':width, 'h':height}},  function() {
-		//doc.internal.scaleFactor = 0.25; 
 		doc.save('web.pdf');
-	
 	});
-
-	 $('.btn-group').show();
-	 $('.addTagToBilletButton').show(); //before the addHTML()
-
-
+	$('.btn-group').show();
+	$('.addTagToBilletButton').show(); //before the addHTML()
 }
