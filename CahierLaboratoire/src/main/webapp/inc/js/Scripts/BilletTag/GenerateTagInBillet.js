@@ -14,7 +14,7 @@ function getTagsInBillet(idB){
 	
 				}
 				
-				updatePopover();
+				updatePopoverOnBillet();
 				
 			return true;
 		},

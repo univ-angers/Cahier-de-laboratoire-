@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.groupe6.beans.Billet_Tag;
 import com.groupe6.beans.Categorie;
 import com.groupe6.beans.Manager;
 import com.groupe6.beans.Tag;
@@ -128,6 +129,52 @@ public class TagController {
 		boolean result=false;
 		Tag t= manager.selectTagByID(idTag);
 		result=manager.deleteTag(t);
+		manager.exit();
+		return result;
+	}
+	@RequestMapping(value = "/removeTagBillet", method = RequestMethod.POST, headers = "Accept=application/json")
+	public @ResponseBody boolean billetTagRemove(@RequestBody String data) {
+		System.out.println("Remove called");
+		Manager manager = new Manager(); 
+		JsonFactory factory = new JsonFactory();
+		Long idTag=(long) 0;
+		Long idBillet=(long)0;
+		
+		try {
+			JsonParser j= factory.createJsonParser(data);
+			while(!j.isClosed()){
+				JsonToken jsonToken = j.nextToken();
+
+				if(JsonToken.FIELD_NAME.equals(jsonToken)){
+					String fieldName = j.getCurrentName();
+					System.out.println(fieldName);
+
+					jsonToken = j.nextToken();
+
+					if("idTag".equals(fieldName)){
+						idTag= j.getValueAsLong();
+					}
+					if("idBillet".equals(fieldName)){
+						idBillet= j.getValueAsLong();
+					}
+				}
+			}
+			
+			
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		manager = new Manager(); 
+		boolean result=false;
+		//Tag t= manager.selectTagByID(idTag);
+		//result=manager.deleteTag(t);
+		Billet_Tag bt = manager.selectBilletTag(manager.selectBilletByID(idBillet), manager.selectTagByID(idTag));
+		result = manager.deleteBilletTag(bt);
 		manager.exit();
 		return result;
 	}
