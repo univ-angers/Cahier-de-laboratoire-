@@ -2,14 +2,14 @@ package com.groupe6.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.Collections;
 
 import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonToken;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,13 +50,23 @@ public class TagController {
         return  alo;
     }   
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<String> saveTag(@RequestParam(value = "categorie", required = true) String categorie,@RequestParam(value = "nomTag", required = true) String nomTag) 
+    public @ResponseBody Map saveTag(@RequestParam(value = "categorie", required = true) String categorie,@RequestParam(value = "nomTag", required = true) String nomTag) 
     {
     	Manager manager = new Manager(); 
     	Categorie c;
+    	
+    	//On controle si la catégorie existe déjà. Dans le cas contraire on en crée une nouvelle. 
+    	
     	if (manager.selectCategory(categorie) == null) {
     		c= new Categorie(categorie);
-    		manager.createCategory(c);
+    		
+            try {
+            	manager.createCategory(c);
+    		}
+    		catch (Exception e) { 
+    			System.out.println("Erreur lors de la création de la catégorie");
+    			return Collections.singletonMap("flag", false);
+    		}	
     	}
     	else {
     		c =  manager.selectCategory(categorie);
@@ -65,9 +75,20 @@ public class TagController {
         String nom = nomTag; 
         Tag tag = new Tag(idC,nom);
         tag.setIdC(idC);
-        manager.createTag(tag);
+        
+        //On crée le tag et on retourne vrai si tout s'est bien passé. 
+        
+        try {
+        	
+    		if (manager.createTag(tag)==0) {
+    			return Collections.singletonMap("flag", false);
+    		}
+		}
+		catch (Exception e) { 
+			System.out.println("Erreur lors de la création du tag");
+		}
         manager.exit();
-        return new ResponseEntity<String>(HttpStatus.OK);    
+    	return Collections.singletonMap("flag", true);     
     }
 
 	@RequestMapping(value = "/remove", method = RequestMethod.POST, headers = "Accept=application/json")

@@ -1,12 +1,7 @@
-function addTagInBilletToDatabase(idB, nomTag, nomCategorie){
-
-
-
-
-
-}
-
 function popupAddTagToBillet(idB){
+	
+	//Popup pour créer un tag dans un billet. 
+	
 	var popupName= popupCreation("popupAddTagToBillet");
 
 	$(".modal").css("background-color","rgb(0,0,0,0.4)");
@@ -38,15 +33,13 @@ function popupAddTagToBillet(idB){
 	});
 	
 	$("#buttonAjouterTagInBillet").click(function() {
-		//searchBilletsByName(  document.getElementById('searchNomTag').value)
-		
-		//addTagInBilletToDatabase( idB, document.getElementById('searchNomTag').value,document.getElementById('searchCategorie').value);
+
 		var nomTag = document.getElementById('searchNomTag').value;
 		var nomCategorie = document.getElementById('searchCategorie').value;
-		
+		//Méthode Ajax pour ajouter un tag dans le billet
 		
 		$.ajax({
-			type : "GET",
+			type : "GET", 
 			contentType : "application/json",
 			url : "./billetTag/add",
 			data : {
@@ -62,6 +55,7 @@ function popupAddTagToBillet(idB){
 				console.log
 				if (data.flag==true){
 
+					// Si le retour est vrai on génère le tag dans le billet. 
 					generateTagInBillet(idB,document.getElementById('searchNomTag').value);
 					
 					var popupName2 = "popupAjoutTagInBillet";
@@ -87,19 +81,8 @@ function popupAddTagToBillet(idB){
 				return true;
 			}
 		});
-		
-		
-
-		
-
-		
-		
-	});
 	
-
-
-
-
+	});
 	
 	$("#popupAddTagToBillet").fadeIn();
 }

@@ -16,6 +16,9 @@ import com.groupe6.beans.Tag;
 @Controller()
 @RequestMapping("/search")
 public class SearchEngine {
+	
+	//On récupère une liste billets depuis un nom de tag dans la BDD. 
+	
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public  @ResponseBody List<Billet > searchBillets(@RequestParam(value = "nomTag", required = true) String nomTag) { 
     	Manager manager = new Manager(); 
@@ -25,8 +28,7 @@ public class SearchEngine {
 			try {
 				lb.addAll( manager.selectBilletsByTag(t));
 			}
-			catch (NullPointerException e) {
-				
+			catch (NullPointerException e) {	
 			}
 		}
         manager.exit();

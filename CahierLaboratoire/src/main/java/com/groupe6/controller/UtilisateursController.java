@@ -15,6 +15,7 @@ import com.groupe6.beans.Utilisateur;
 @Controller()
 public class UtilisateursController {
 	
+	//Ce controleur n'est pas utilisé pour le moment. Il renvoi la liste des utilisateurs lorsqu'on lui demande. 
 	//@Autowired
     Manager manager; 
     protected final Log logger = LogFactory.getLog(getClass());

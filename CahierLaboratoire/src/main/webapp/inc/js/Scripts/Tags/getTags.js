@@ -1,3 +1,4 @@
+//Fonction qui fait appel au controleur pour récupérer les tags puis les générer
 function getAllTags(){
 	var data = {}
 	$.ajax({

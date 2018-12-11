@@ -4,7 +4,7 @@
 
 function removeBillet(id){
 	$.ajax({
-		url: "/billet/billetRemove",
+		url: "./billet/billetRemove",
 		type: 'POST',
         dataType: 'json',
         contentType: 'application/json',

@@ -23,14 +23,23 @@ import com.groupe6.beans.Tag;
 @RequestMapping("/billetTag")
 public class BilletTagController {
     protected final Log logger = LogFactory.getLog(getClass());
+    
+    //On renvoi une liste de tag pour un billet donné
+    
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public  @ResponseBody List<Tag> listTagBillets(@RequestParam(value = "idB", required = true) Long idB) { 
     	Manager manager = new Manager(); 
-        List<Tag> lt;
-        lt = manager.selectTagsByBilletId(idB);
+        List<Tag> lt = null; //Si lt est null alors aucuns tags ne seront chargés dans le billet
+        try{
+        	lt = manager.selectTagsByBilletId(idB);
+        }
+    	catch (Exception e) { 
+    	}
         manager.exit();
         return  lt;
     }
+    
+    //On ajoute un tag dans la BDD. On retourne un booleen pour le succes. 
     
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public @ResponseBody Map saveBilletTag(/*@ModelAttribute Tag t, BindingResult result,*/
@@ -39,6 +48,7 @@ public class BilletTagController {
     														@RequestParam(value = "nomCategorie", required = true) String nomCategorie) 
     {
     	Manager manager = new Manager(); 
+    	//On essaye de creer le billet et on lève une erreure dans le cas contraire. 
     	try{
     		Categorie c = manager.selectCategory(nomCategorie);
     		Tag tag = manager.selectTag(c.getIdC(), nomTag);
