@@ -11,9 +11,13 @@ L'application est restreinte. Il faut obligatoirement être enregistré.
     - Utilisateur : 
         - Mail : n@n.n
         - Mot de passe : normal
-2. Inscription nouvel utilisateur (uniquement administrateur) : http://localhost:8080/CahierLaboratoire/inscription
+        
+2. Accueil  : http://localhost:8080/CahierLaboratoireMaven/accueil
 
-## Spring + Hibernate
-Après connexion, une page listant les utilisateurs via Spring + Hibernate est disponible à cette adresse:
-http://localhost:8080/CahierLaboratoire/utilisateurs
+## Hiérarchie :
+- l'accueil se trouve sous WEBINF
+- Les scripts JS et appel AJAX se trouve dans /inc/script
+- La gestion de la page principale se fait sous script/MainPageManagement/mainPageManagement.js
+- Hibernate, classes et contrôleurs dans les classes java
+
 
