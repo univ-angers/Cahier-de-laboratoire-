@@ -1,7 +1,5 @@
-
-//Fonction de connexion
 $.getScript("inc/js/Scripts/Popup/Popup.js");
-
+//connexion via post
 function connexion(popupName,name, mdp){
 	 $.ajax({
          type : 'POST',

@@ -1,3 +1,5 @@
+//Création de popup
+
 function setOnclickClose(name){
     $(".modal-content").append("<span class='close'>&times;</span>");
     var span = document.getElementsByClassName("close")[0];

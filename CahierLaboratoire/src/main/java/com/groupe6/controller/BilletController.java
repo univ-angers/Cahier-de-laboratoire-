@@ -38,6 +38,7 @@ public class BilletController {
 		JsonFactory factory = new JsonFactory();
 		Long idBillet=(long) 0;
 		String content="";
+		//parsing en json du content recu
 		try {
 			JsonParser j= factory.createJsonParser(data);
 			//System.out.println(j);

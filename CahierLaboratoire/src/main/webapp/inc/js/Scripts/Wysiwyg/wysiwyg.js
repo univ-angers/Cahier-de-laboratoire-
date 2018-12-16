@@ -1,6 +1,7 @@
-
+//permet de creer un objet quill en lui fournissant un ID
+//Cet id permet de communiquer avec le bon objet quill de chaque billet
 function quillEnable(strId){
-
+	
 	var quill = new Quill('#'+strId+'editor-container', {
 		modules: {
 			toolbar: [
@@ -9,16 +10,14 @@ function quillEnable(strId){
 				['image', 'code-block']
 				]
 		},
-		theme: 'snow'  // or 'bubble'
+		theme: 'snow'
 	});
-	console.log("On met a jour le contenu du editor quill "+$( "#"+strId+"Content" ).html())
-	
-	//quill.setText();
+
 	$( "#"+strId+"editor-container" ).find('.ql-editor').html($( "#"+strId+"Content" ).html());
 	$( "#"+strId+"Content" ).text('');
 	$('.ql-toolbar','#'+strId+'content-container').hide();
 	quill.disable();
-	
+	//on ajoute à la map contenant les objets quill dans le mainPage.js
 	AllQuillObjects.set(strId,quill);
 
 	return quill;

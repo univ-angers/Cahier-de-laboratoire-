@@ -1,12 +1,11 @@
+//requete ajax effectuant une recherche au près du serveur
 function searchBilletsByName( name){
 	if (name.length > 0){
 		$.ajax({
 			type : "GET",
 			contentType : "application/json",
 			url : "./search/get",
-			data : {
-					"nomTag" : name
-	        },
+			data : { "nomTag" : name },
 		
 			dataType : 'json',
 			timeout : 100000,
@@ -17,12 +16,10 @@ function searchBilletsByName( name){
 					return false; 
 				}
 				else{
-					//console.log(data);
 					$("#reponse").text("Resultats trouvés.");
 					$("#billetsList").empty();
 					for (var i = 0; i < data.length; i++){
 					    var obj = data[i];
-					    console.log(obj);
 					    generateBillet( obj['idB'], obj["text"] );
 					}
 					$("#buttonRechercheTag").text("Close");
@@ -33,8 +30,6 @@ function searchBilletsByName( name){
 					updateQuill();
 		        }
 				return true;
-				
-				
 			},
 			error : function(e) {
 				return false;

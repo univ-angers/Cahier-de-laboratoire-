@@ -1,5 +1,4 @@
-//$.getScript("inc/js/Scripts/Popup/Popup.js");
-
+//popup de mot de passe oublié 
 
 function forgotPopup(name){
     $(".modal").css("background-color","rgb(0,0,0,0.4)");
@@ -22,13 +21,13 @@ function forgotPopup(name){
         $("#"+name).hide();
         resetPopup();
     };
+    
     var modal = document.getElementById(name);
     window.onclick = function (event) {
         if (event.target === modal) {
             $("#"+name).hide();
             resetPopup();
         }
-
     }
 
     $("#"+name).fadeIn();

@@ -93,11 +93,4 @@ function popupAddTag(){
 	});			
 	$("#addtagpopup").fadeIn();
 }
-//ANCIENNE METHODE
-/*
-function addTagInList(name){
-	console.log("dans le addtagInList")
-	//Fonction pour ajouter le tag dans le front
-	$("#taglist").append('<a href="#" class="badge badge-primary">'+name+'</a>');
-}
-*/
+

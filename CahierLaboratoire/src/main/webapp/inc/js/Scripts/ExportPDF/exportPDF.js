@@ -18,7 +18,6 @@ function exportPDF() {
 
 function exportPDFMono(id) {
 	//Exporter un seul billet
-	console.log(id)
 	var doc = new jsPDF('p', 'pt', 'a4');
 	var width = doc.internal.pageSize.getWidth();
 	var height = doc.internal.pageSize.getHeight();
@@ -29,7 +28,7 @@ function exportPDFMono(id) {
 		doc.addHTML( toExport,  {dim:{'w':width, 'h':height}},  function() {
 		doc.save('billet.pdf');
 	});
-		console.log(toExport)
+
 	$('.btn-group').show();
 	$('.addTagToBilletButton').show(); 
 }

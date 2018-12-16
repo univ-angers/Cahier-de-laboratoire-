@@ -1,6 +1,4 @@
-/**
- * 
- */
+// Fichier contenant les actions effectuées sur un tag en communiquant vers l'api spring
 
 function removeTag(id){
 	console.log("RemoveTag called");
@@ -11,7 +9,6 @@ function removeTag(id){
         contentType: 'application/json',
 		success : function(data) {
 			
-			console.log("success");
 			return true;
 		},
 		error : function(e) {
@@ -34,7 +31,6 @@ function removeTagBillet(idB,idT){
         contentType: 'application/json',
 		success : function(data) {
 			
-			console.log("success");
 			return true;
 		},
 		error : function(e) {
@@ -55,7 +51,6 @@ function updateTag(id,content){
         dataType: 'json',
         contentType: 'application/json',
 		success : function(data) {
-			console.log("success")
 			return true;
 		},
 		error : function(e) {

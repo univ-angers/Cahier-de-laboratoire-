@@ -9,12 +9,10 @@ function getAllTags(){
 		timeout : 100000,
 		success : function(data) {
 			//print all tags
-
 			for (var i = 0; i < data.length; i++){
 				var obj = data[i];
 				generateOneTag(obj[1], obj[0], obj[2]);
 			}
-
 			updatePopover();
 
 			return true;

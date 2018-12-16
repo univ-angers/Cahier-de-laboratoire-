@@ -1,4 +1,4 @@
-			
+//fonctionnalité permettant d'affilier les différentes fonctions sur les boutons d'un billet
 function updateQuill(){
 	$(".buttonQuill").click(
 			function() {
@@ -26,12 +26,8 @@ function updateQuill(){
 				$('.ql-toolbar',
 						'#' + strId + 'content-container')
 						.hide();
-				// must save in database
 				$(this).prop("disabled", true);
 				$("#" + strId + "Modify").prop("disabled",false);
-				//console.log(strId.replace('billet',''));
-				
-				//console.log($("#billet"+id+"editor-container").find( ".ql-editor" ).html())
 				
 				updateBillet(strId.replace('billet',''), $("#billet"+strId.replace('billet','')+"editor-container").find( ".ql-editor" ).html());
 			});
@@ -48,7 +44,6 @@ function updateQuill(){
 			function() {
 				
 				strId = this.id.substring(0,this.id.length - 6);// on récupère
-				console.log("remove pressed "+strId);
 				//removing in data base 
 				removeBillet(strId.replace('billet',''));
 				//removing from ui
@@ -60,10 +55,7 @@ function updateQuill(){
 
 			function() {
 				strId = this.id.substring(0,this.id.length - 14);// on récupère
-				console.log("+ pressed "+strId);
 				popupAddTagToBillet(strId.replace('billet',''));
-
-
 
 			});
 

@@ -1,5 +1,5 @@
 /**
- * 
+ * Création de la popup de recherche
  */
 
 function popupRechercheTag(){
@@ -14,12 +14,6 @@ function popupRechercheTag(){
 			'<span class="close">&times;</span>'+
 			'<p>Rerchercher Tag : </p>'+
 			'<div class="text-center w-100" style="margin:auto">'+
-			
-			/*
-			'<div class="form-group ">' +
-			'      	<input id="searchCategorie" type="search" placeholder="Catégorie" style="">' +
-			'</div>' +
-			*/
 			'<div class="form-group ">' +
 			'      	<input  id="searchNomTag" type="search" placeholder="Nom tag" style="">' +
 				'</div>'+
@@ -36,18 +30,9 @@ function popupRechercheTag(){
 		$("#rechercheTag").fadeOut();
 	});
 
-
-
 	$("#buttonRechercheTag").click(function() {
-		
-		
 		searchBilletsByName(  document.getElementById('searchNomTag').value);
-
-
-		
-	
-	});
-	
+	});	
 
 	$("#rechercheTag").fadeIn();
 

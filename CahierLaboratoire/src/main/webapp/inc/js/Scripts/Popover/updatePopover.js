@@ -1,5 +1,5 @@
 /**
- * 
+ * Permet de fournir les fonctionnalités aux boutons des popovers des tags
  */
 
 function updatePopover(){

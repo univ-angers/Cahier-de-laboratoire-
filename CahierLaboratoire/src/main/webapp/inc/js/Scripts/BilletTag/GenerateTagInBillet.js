@@ -11,9 +11,7 @@ function getTagsInBillet(idB){
 				for (var i = 0; i < data.length; i++){
 				    var obj = data[i];
 				   generateTagInBillet(idB,obj["nomTag"],obj["idT"]);
-	
 				}
-				
 				updatePopoverOnBillet();
 				
 			return true;

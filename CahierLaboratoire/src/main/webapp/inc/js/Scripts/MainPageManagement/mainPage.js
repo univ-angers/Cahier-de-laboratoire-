@@ -1,3 +1,7 @@
+
+//script de la page principale
+
+//map contenant tous les objets quills
 var AllQuillObjects = new Map();
 
 
