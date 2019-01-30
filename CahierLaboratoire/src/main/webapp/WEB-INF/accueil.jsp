@@ -54,10 +54,12 @@
 				<li class="nav-item active"><a class="nav-link" href="accueil">Accueil
 						<span class="sr-only">(current)</span> 
 				</a></li>
+				
 				<c:if test="${ sessionScope.sessionUtilisateur.isAdmin== 1}">
 					<li class="nav-item"><a class="nav-link"
 						href="./inscription">Ajouter un utilisateur</a></li>
 				</c:if>
+			    <li id="utilisateur" style="display:none;">${sessionScope.sessionUtilisateur.id}</li>
 
 
 			</ul>
@@ -78,12 +80,16 @@
 		<div class="col-sm-3" style="margin-left: 0%;">
 			<button id="buttonRechercherTag" type="button"
 				class="btn btn-info w-100" style="margin-bottom: 5%; margin-top: 5%">Rechercher
-				tag</button>
-
+				tag</button>	  
+			  
+			  <select id="tags" multiple class=form-control>
+				
+		
+			  </select>
+			  
 			<button id="buttonIdTag" type="button" class="btn btn-info w-100"
 				style="margin-bottom: 5%; margin-top: 5%">+ Ajouter tag</button>
-
-
+        
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
 					<h4 class="my-0 font-weight-normal ">Tags</h4>
@@ -105,7 +111,6 @@
 				</button>
 				
 			</div>
-			
 			<div id="billetsList" class="tagToPrint"></div>
 		</div>
 		
@@ -194,4 +199,3 @@
 <script type="text/javascript"
 	src="<c:url value="./inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
 </html>
-

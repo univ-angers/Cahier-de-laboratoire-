@@ -16,6 +16,7 @@
    <mapping class="com.groupe6.beans.Categorie"/>
    <mapping class="com.groupe6.beans.Tag"/>
    <mapping class="com.groupe6.beans.Utilisateur" />
+   <mapping class="com.groupe6.beans.Permission" />
 
  </session-factory>
 

@@ -31,7 +31,7 @@ function getTagsInBillet(idB){
 function generateTagInBillet(idBillet,tag,id){
 	//Pour ajouter dans le front
 	$("#tag"+idBillet).append(
-			'	<p  id="billetTag'+id+'" class="badge badge-dark">'+tag+'</p> '
+			'	<button  id="billetTag'+id+'" type="button" class="badge badge-dark" style="color:white;border-color: #3B3B3B">'+tag+'</button> '
 	);
 	
 	

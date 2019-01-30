@@ -97,3 +97,38 @@ function createBillets(idOrig,data){
 			getTagsInBillet(idOrig); 
 			
 }
+
+function btnDisable(){
+
+	$.ajax({
+		url: "./billet/controlP",
+		method: "POST",
+		dataType: "json",
+		contentType: 'application/json',
+		success : function(data) {
+
+			for(var i in data)
+			{
+				if (data[i].startsWith("false"))
+				{
+
+					var n = data[i].split(" ");
+					var id = "billet"+n[1];
+					$("#"+id+"Remove").prop("disabled",true);
+					$("#"+id+"Modify").prop("disabled",true);
+
+				}
+
+			};
+			return true;
+		},
+		error : function(e) {
+			return false;
+		},
+		done : function(e) {
+			return true;
+		},
+		data:  JSON.stringify({ idUtilisateur : $("#utilisateur").text()})
+	});
+
+}

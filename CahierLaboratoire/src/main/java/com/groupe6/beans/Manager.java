@@ -345,18 +345,27 @@ public class Manager {
     /*
      * Ajoute un billet à la table Billet puis renvoie son id généré
      */
-    public Long createBillet(Billet billet) {
+    public Long createBillet(Billet billet,Long utilisateur) {
         Session session = sessionFactory.openSession();
-        Long idB;
+        Long idB = (long) 0;
         try {
-	        session.beginTransaction();
-		    session.save(billet);
-	    	session.getTransaction().commit();
-	    	idB = selectAllBillets().get(selectAllBillets().size()-1).getIdB();
+        	// session.beginTransaction();
+        	session.save(billet);
+
+        	idB=billet.getIdB();
+        	System.out.println("xxxxxxxxxxx"+billet.getIdB());
+        	initPermission(utilisateur,billet.getIdB(),session);
+        	//session.getTransaction().commit();   
+        	session.close();
+   
+	    
         } catch (Exception e) {
-        	return Long.valueOf(0);
+        	
+        	System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx " + e);
+        	return idB;
         }
-    	session.close();
+    	
+    
     	return idB;
     } 
     
@@ -405,26 +414,52 @@ public class Manager {
     	session.close();
     	return results;
 	}
- 
+    
+    @SuppressWarnings("unchecked")
+	public List<Permission> selectAllPermisions() {
+    	Session session = sessionFactory.openSession();
+    	CriteriaBuilder cBuilder = session.getCriteriaBuilder();
+    	CriteriaQuery<Permission> criteriaQuery = cBuilder.createQuery(Permission.class);
+    	Root<Permission> root = criteriaQuery.from(Permission.class);
+    	criteriaQuery.select(root);
+    	Query query = session.createQuery(criteriaQuery);
+    	List<Permission> results = query.getResultList();
+    	session.close();
+    	return results;
+	}
+    
+    
     /*
      * Modifie le premier billet pris en paramètre en lui passant les valeurs des attributs du deuxième billet pris en paramètre
      * Met également à jour la date de modification du billet
      */
-    public boolean updateBillet(Billet updateBillet, Billet newBillet) {
+    public boolean updateBillet(Billet updateBillet, Billet newBillet,Long idUser) {
     	Session session = sessionFactory.openSession();
         try{
-        	session.beginTransaction();
-        	Billet billet = (Billet)session.get(Billet.class, updateBillet.getIdB()); 
-            billet.setText(newBillet.getText());
-            billet.setCreation(newBillet.getCreation());
-            billet.setModification(new Date(new java.util.Date().getTime()));
-            session.update(billet); 
-            session.getTransaction().commit();
-            return true;
+        	
+        	if (updateBillet==null)
+        	{
+        		updateBillet= selectAllBillets().get(selectAllBillets().size()-1);
+        	}
+       
+        //	session.beginTransaction();
+        	if (hasPermission(idUser,updateBillet.getIdB(),"update",session))
+        	{
+        		session.beginTransaction();
+            	Billet billet = (Billet)session.get(Billet.class, updateBillet.getIdB()); 
+                billet.setText(newBillet.getText());
+                billet.setCreation(newBillet.getCreation());
+                billet.setModification(new Date(new java.util.Date().getTime()));
+                session.update(billet); 
+                session.getTransaction().commit();
+                return true;
+        	}
+        	//session.getTransaction().commit();
+        	return false;
+        	
          } catch (HibernateException e) {
-            if (session.getTransaction()!=null) 
-            	session.getTransaction().rollback();
-            e.printStackTrace(); 
+           // if (session.getTransaction()!=null) 
+            //	session.getTransaction().rollback();
             return false;
          }finally {
             session.close(); 
@@ -434,16 +469,24 @@ public class Manager {
     /*
      * Supprime le billet pris en paramètre de la table Billet
      */
-    public boolean deleteBillet(Billet billet) {
-        Session session = sessionFactory.openSession();
+    public boolean deleteBillet(Billet billet,Long idUser) {
+        Session session = sessionFactory.openSession();  
+        
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx deleBillet"+billet.getIdB()+" user : "+ idUser );
         try{
-        	session.beginTransaction();
-	        session.delete(billet);
-	        session.getTransaction().commit();
-	        return true;
+        	
+         if (hasPermission(idUser,billet.getIdB(),"delete",session))
+         {
+        	 System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx hasPermission,");
+	        	session.beginTransaction();
+		        session.delete(billet);
+		        session.getTransaction().commit();
+		        return true;
+         }
+         return false;
         } catch (HibernateException e) {
-        	if(session.getTransaction()!=null)
-        		session.getTransaction().rollback();
+        	//if(session.getTransaction()!=null)
+        		//session.getTransaction().rollback();
         	e.printStackTrace();
         	return false;
 		} finally {
@@ -454,14 +497,14 @@ public class Manager {
     /*
      * Supprime l'ensemble des billets de la table Billet
      */
-    public boolean deleteAllBillets() {
+   /* public boolean deleteAllBillets() {
     	List<Billet> listBillets = selectAllBillets();
     	for (Billet billet : listBillets) {
 			if(!deleteBillet(billet))
 				return false;
 		}
     	return true;
-    }
+    }*/
     
 
     /*
@@ -815,6 +858,62 @@ public class Manager {
     		System.out.println(bTag.toString());
     	}
     }
+    
+    /**
+     * Initialiser les droits pour un utilisateur sur un billet 
+     * @param idUtilisateur
+     * @param idBillet
+     * @param session
+     */
+    public void initPermission(Long idUtilisateur,Long idBillet,Session session) {
+
+    	Permission permission = new Permission("delete",idBillet, idUtilisateur);
+    	Permission permission2 = new Permission("update",idBillet, idUtilisateur);
+    	session.save(permission);
+    	session.save(permission2);
+    
+
+    }
+    
+	public boolean hasPermission(Long idUser,Long idBillet,String permission,Session session){
+    	
+    	try {
+    
+	    	TypedQuery<Permission> query = session.createQuery("SELECT p FROM Permission p WHERE p.name = :permission "
+	    			+ "AND p.idUser = :idUser AND p.idBillet = :idBillet ",Permission.class);
+	    	query.setParameter("permission", permission);
+	    	query.setParameter("idUser", idUser);
+	    	query.setParameter("idBillet", idBillet);
+	    	
+	    	List<Permission> p = query.getResultList();
+    		if (!p.isEmpty())
+    		{
+    			  
+    			return true;
+    		}
+    		return false;
+    		
+    	} catch (NoResultException nre) {
+        		return false;
+    	}
+    	
+	}
+
+	public boolean hasPermission(Long idUser,Long idBillet,List<Permission> permissions){
+    	
+		
+		for (Permission p : permissions) {
+		
+			if(p.getIdBillet().equals(idBillet) && p.getIdUser().equals(idUser))
+			{
+				return true;
+			}
+		
+		}
+    	return false;
+    	
+	}
+
 
     /*
      * Méthode privée ayant pour but de tester l'ensemble des méthodes de la classe Manager

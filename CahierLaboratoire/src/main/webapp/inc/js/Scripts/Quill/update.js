@@ -1,5 +1,6 @@
 0//fonctionnalité permettant d'affilier les différentes fonctions sur les boutons d'un billet
 function updateQuill(){
+	btnDisable()
 	$(".buttonQuill").click(
 			function() {
 				strId = this.id.substring(0,

@@ -8,8 +8,8 @@ var AllQuillObjects = new Map();
 $(document).ready(
 		function() {
 			
-			
 		getAllTags();
+
 		
 			$("#buttonAjoutBillet").click(
 					function() {
@@ -41,7 +41,8 @@ $(document).ready(
 
 
 			$("#buttonRechercherTag").click(function() {
-				popupRechercheTag();
+				 searchBilletsByNames(""+$("#tags").val()+"");
+				//popupRechercheTag();
 			});
 
 			$("#buttonIdTag").click(function() {
@@ -58,9 +59,39 @@ $(document).ready(
 				exportPDF();
 			});
 
-				
-				
+			
 			affcherBilletsAccueilAndLast();
+			getTags();
+			
 
 
 		});
+
+// Remplir la liste déroulante par les noms des tags
+
+function getTags(){
+	var data = {}
+	$.ajax({
+		type : "GET",
+		url : "./tag/get", 
+		data : data,
+		dataType : 'json',
+		timeout : 100000,
+		success : function(data) {
+			//print all tags
+			for (var i = 0; i < data.length; i++){
+				  var obj = data[i];	
+				  var select = $("#tags");     
+			      select.append('<option value="' +  obj[0]  +'">' + obj[0] + '</option>');                        
+			}
+			return true;
+		},
+		error : function(e) {
+			return false;
+		},
+		done : function(e) {
+			return true;
+		},
+	});
+}
+

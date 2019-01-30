@@ -1,9 +1,15 @@
 package com.groupe6.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.JsonFactory;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.JsonToken;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +30,8 @@ public class SearchEngine {
     	Manager manager = new Manager(); 
         List<Billet> lb = new ArrayList<Billet>();
 		List<Tag> lt = manager.selectAllTagsLike(nomTag);
+		
+
 		for (Tag t : lt) {
 			try {
 				lb.addAll( manager.selectBilletsByTag(t));
@@ -31,6 +39,37 @@ public class SearchEngine {
 			catch (NullPointerException e) {	
 			}
 		}
+        manager.exit();
+    	return  lb;
+    }
+    
+    // selectAllBilletsTags()
+ 
+    @RequestMapping(value = "/getBillets", method = RequestMethod.GET)
+    public  @ResponseBody List<Billet > searchBilletsByTags(@RequestParam(value = "nomTag", required = true) String nomTag) { 
+
+    	Manager manager = new Manager(); 
+        List<Billet> lb = new ArrayList<Billet>();
+    	String names[] = nomTag.split(",");
+    	
+    	
+    	for(String name : names)
+    	{
+    		
+    		List<Tag> lt = manager.selectAllTagsLike(name);
+    		
+    		for (Tag t : lt) {
+    			try {
+    	
+    				lb.addAll( manager.selectBilletsByTag(t));
+    			
+    			}
+    			catch (NullPointerException e) {	
+    			}
+    		}
+    		
+    	}
+      
         manager.exit();
     	return  lb;
     }
