@@ -1,3 +1,4 @@
+
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -199,3 +200,4 @@
 <script type="text/javascript"
 	src="<c:url value="./inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
 </html>
+

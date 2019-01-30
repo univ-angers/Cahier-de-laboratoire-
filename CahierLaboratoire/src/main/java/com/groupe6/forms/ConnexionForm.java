@@ -77,6 +77,7 @@ public final class ConnexionForm {
 		/* Initialisation du résultat global de la validation. */
 		if (erreurs.isEmpty()) {
 			resultat = "Succès de la connexion.";
+			utilisateur.setId(utilisateur_bdd.getId());
 			utilisateur.setIsAdmin(utilisateur_bdd.getIsAdmin());
 			utilisateur.setNom(utilisateur_bdd.getNom());
 			utilisateur.setPrenom(utilisateur_bdd.getPrenom());

@@ -158,7 +158,7 @@ public class BilletController {
 	public @ResponseBody List<String> controlP(@RequestBody String data) throws JsonParseException, IOException{
 
 
-
+       
 		manager = new Manager();
 		List<String> result=new ArrayList<>();
 		List<Billet> listBillet=null;
@@ -178,7 +178,9 @@ public class BilletController {
 
 			if ("idUtilisateur".equals(fieldName) && j.getValueAsLong() != (long)0)
 			{
+				 
 				idUser=j.getValueAsLong();
+				System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "+ idUser );
 
 			}
 
