@@ -7,7 +7,8 @@ function quillEnable(strId){
 			toolbar: [
 				[{ header: [1, 2, false] }],
 				['bold', 'italic', 'underline'],
-				['image', 'code-block']
+				['image'],
+				['link', 'code-block']
 				]
 		},
 		theme: 'snow'
@@ -15,8 +16,8 @@ function quillEnable(strId){
 
 	$( "#"+strId+"editor-container" ).find('.ql-editor').html($( "#"+strId+"Content" ).html());
 	$( "#"+strId+"Content" ).text('');
-	$('.ql-toolbar','#'+strId+'content-container').hide();
-	quill.disable();
+	//$('.ql-toolbar','#'+strId+'content-container').hide();
+	//quill.disable();
 	//on ajoute à la map contenant les objets quill dans le mainPage.js
 	AllQuillObjects.set(strId,quill);
 

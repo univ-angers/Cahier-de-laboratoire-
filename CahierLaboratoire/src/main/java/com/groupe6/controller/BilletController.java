@@ -41,7 +41,7 @@ public class BilletController {
 		//parsing en json du content recu
 		try {
 			JsonParser j= factory.createJsonParser(data);
-			//System.out.println(j);
+			
 
 
 			while(!j.isClosed()){
@@ -50,7 +50,7 @@ public class BilletController {
 
 				if(JsonToken.FIELD_NAME.equals(jsonToken)){
 					String fieldName = j.getCurrentName();
-					System.out.println(fieldName);
+					
 
 					jsonToken = j.nextToken();
 
@@ -72,10 +72,12 @@ public class BilletController {
 		}
 
 		Billet newBillet= new Billet(content);
+		
 		manager = new Manager(); 
 		boolean result=false;
 		logger.info("Update du billet "+idBillet);
 		result=manager.updateBillet(manager.selectBilletByID(idBillet),newBillet);
+		System.out.println(result);
 		manager.exit();
 
 		return result;

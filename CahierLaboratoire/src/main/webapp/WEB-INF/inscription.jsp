@@ -73,10 +73,22 @@
                 </div>
                 
             </div>
-            <div class="col mt-3 mb-3">
-                <input id="email" type="text" name="email" class="form-control" placeholder="Email" value="<c:out value="${utilisateur.email}"/>">
-                 <span class="erreur">${form.erreurs['email']}</span>
+            <div class="form-row">
+            	<div class="col mt-3 mb-3">
+                	<input id="email" type="text" name="email" class="form-control" placeholder="Email" value="<c:out value="${utilisateur.email}"/>">
+                 	<span class="erreur">${form.erreurs['email']}</span>
+            	</div>
             </div>
+            <div class="form-row">
+           		<div class="col mt-3 mb-3">
+                	<input id="tag" type="text" name="tag" class="form-control" placeholder="Tag" value="<c:out value=""/>">
+                 	<span class="erreur">${form.erreurs['nom']}</span>
+            	</div>
+            </div>
+            <div class="mt-5 mb-3">
+    			<input type="checkbox" class="form-check-input" name="admincheck" id="admincheck">
+            	<label class="form-check-label" for="admincheck">Administrateur</label>
+  			</div>
             <div class="mt-5 mb-3">
                 <button id="loginButton" class="btn-lg btn-primary" type="submit">Créer utilisateur</button>
             </div>

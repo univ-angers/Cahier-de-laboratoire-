@@ -1,5 +1,6 @@
 package com.groupe6.forms;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,8 @@ public final class InscriptionForm {
 	private static final String CHAMP_PASS = "motdepasse";
 	private static final String CHAMP_CONF = "confirmation";
 	private static final String CHAMP_EMAIL = "email";
-
+	private static final String CHAMP_ADMIN = "admincheck";
+	private static final String CHAMP_TAG = "tag";
 	private static final String ALGO_CHIFFREMENT = "SHA-256";
 
 	private String resultat;
@@ -42,7 +44,19 @@ public final class InscriptionForm {
 		String motDePasse = getValeurChamp(request, CHAMP_PASS);
 		String confirmation = getValeurChamp(request, CHAMP_CONF);
 		String email = getValeurChamp(request, CHAMP_EMAIL);
+		String admin = getValeurChamp(request,CHAMP_ADMIN);
+		String nomTag = getValeurChamp(request, CHAMP_TAG); 
 		int isadmin = 0;
+		try {
+			if(admin.equals("on")) {
+				isadmin = 1;
+			}
+			else 
+				isadmin = 0;
+
+		} catch (Exception e1) {
+		//e1.printStackTrace();
+		}
 
 		Utilisateur utilisateur = new Utilisateur();
 		try {
@@ -55,6 +69,15 @@ public final class InscriptionForm {
 			if (erreurs.isEmpty()) {
 				utilisateurDao.creer(utilisateur);
 				resultat = "Succes";
+				System.out.println(utilisateur.getId());
+				Manager manager = new Manager(); 
+		        try{
+					Tag tag = new Tag(manager.selectCategory("Utilisateur").getIdC(), nomTag);
+					manager.createTag(tag);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 			} else {
 				resultat = "Echec";
 			}
@@ -62,9 +85,11 @@ public final class InscriptionForm {
 			resultat = "Echec de l'inscription : une erreur impr�vue est survenue, merci de r�essayer dans quelques instants.";
 			e.printStackTrace();
 		}
+		
 
 		return utilisateur;
 	}
+	
 
 	/*
 	 * Appel à la validation de l'adresse email reçue et initialisation de la
