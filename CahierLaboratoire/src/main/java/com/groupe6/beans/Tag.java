@@ -12,6 +12,7 @@ import javax.persistence.Table;
 public class Tag {
 	private Long idT;
 	private Long idC;
+	private Long idU;
 	private String nomTag;
 	
 	public Tag() {}
@@ -43,6 +44,14 @@ public class Tag {
 	public void setIdC(Long idC) {
 		this.idC = idC;
 	}
+	@Column(name="id_u")
+	public Long getIdU() {
+		return idU;
+	}
+
+	public void setIdU(Long idU) {
+		this.idU = idU;
+	}
 
 	@Column(name="nom_tag")
 	public String getNomTag() {
@@ -57,6 +66,7 @@ public class Tag {
 	public String toString() {
 		String description = "Id Tag : " + getIdT() + "\n";
 		description += " ID Catégorie : " + getIdC() + "\n";
+		description += " ID User : " + getIdU() + "\n";
 		description += "Nom du tag : " + getNomTag() + "\n";
 		return description;
 	}

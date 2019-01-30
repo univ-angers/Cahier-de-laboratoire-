@@ -46,7 +46,9 @@ function updateBillet(id, content){
 function createBillet(){
 
 	var id=0;
-
+	var d = new Date();
+	d =  d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+	
 	$.post( "./billet/billetCreation")
 	.done(function( data ) {
 		id=data;
@@ -54,8 +56,8 @@ function createBillet(){
 
 		$("#buttonAjoutBillet").prop("disabled",false);
 
-		generateBillet(data,"");
-
+		createBillets(data,d);
+		
 		updateQuill();
 
 
@@ -69,9 +71,8 @@ function affcherBilletsAccueilAndLast(){
 		dataType: "json",
 		contentType: 'application/json',
 		success : function(data) {
-			
 			$.each(data, function() {
-				generateBillet(this.idB,this.text, this.idB);
+				generateBillet(this.idB,this.text, this.creation);
 			});
 			
 			updateQuill();

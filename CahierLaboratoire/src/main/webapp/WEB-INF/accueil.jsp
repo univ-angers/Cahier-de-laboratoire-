@@ -1,4 +1,3 @@
-
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -106,6 +105,7 @@
 				</button>
 				
 			</div>
+			
 			<div id="billetsList" class="tagToPrint"></div>
 		</div>
 		

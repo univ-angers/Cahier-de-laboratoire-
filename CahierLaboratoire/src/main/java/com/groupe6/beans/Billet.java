@@ -17,7 +17,7 @@ import org.hibernate.annotations.CreationTimestamp;
 public class Billet{
 	private Long id;
     private String text;
-    private Timestamp creation;
+    private Date creation;
     private Date modification;
     
     public Billet() {
@@ -50,11 +50,11 @@ public class Billet{
 
 	@CreationTimestamp
 	@Column(name = "creation")
-	public Timestamp getCreation() {
+	public Date getCreation() {
 		return creation;
 	}
 
-	public void setCreation(Timestamp creation) {
+	public void setCreation(Date creation) {
 		this.creation = creation;
 	}
 
