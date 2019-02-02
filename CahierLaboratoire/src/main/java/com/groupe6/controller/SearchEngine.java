@@ -42,10 +42,10 @@ public class SearchEngine {
         manager.exit();
     	return  lb;
     }
-    
-    // selectAllBilletsTags()
+  
+
  
-    @RequestMapping(value = "/getBillets", method = RequestMethod.GET)
+   @RequestMapping(value = "/getBillets", method = RequestMethod.GET)
     public  @ResponseBody List<Billet > searchBilletsByTags(@RequestParam(value = "nomTag", required = true) String nomTag) { 
 
     	Manager manager = new Manager(); 
@@ -53,15 +53,26 @@ public class SearchEngine {
     	String names[] = nomTag.split(",");
     	
     	
-    	for(String name : names)
+		
+		for (Tag t : manager.selectAllTagsLike(names[0])) {
+			try {
+	
+				lb.addAll( manager.selectBilletsByTag(t));
+			
+			}
+			catch (NullPointerException e) {	
+			}
+		}
+		
+    	for(int i=1;i<names.length;i++)
     	{
     		
-    		List<Tag> lt = manager.selectAllTagsLike(name);
+    		List<Tag> lt = manager.selectAllTagsLike(names[i]);
     		
     		for (Tag t : lt) {
     			try {
     	
-    				lb.addAll( manager.selectBilletsByTag(t));
+    				lb.retainAll( manager.selectBilletsByTag(t));
     			
     			}
     			catch (NullPointerException e) {	

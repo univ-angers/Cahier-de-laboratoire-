@@ -75,4 +75,15 @@ public class Billet{
 		description += "Modifié le : " + getModification() + "\n";
 		return description;
 	}
+	
+	 @Override
+	    public boolean equals(Object obj) {
+	       if (!(obj instanceof Billet))
+	            return false;
+	        if (obj == this)
+	            return true;
+
+	        Billet billet = (Billet) obj;
+	        return id.equals(billet.getIdB());
+	    }
 }

@@ -48,7 +48,9 @@ function searchBilletsByName( name){
 // Chercher les billets par plusieurs tags
 function searchBilletsByNames(nom){
 
-
+		if (nom.length==0){
+			return false;
+		}
 		$.ajax({
 			type : "GET",
 			contentType : "application/json",
@@ -60,7 +62,6 @@ function searchBilletsByNames(nom){
 				
 				if (data.length==0){
 					alert("Aucun résultat trouvé");
-					//$("#reponse").text("Aucun résultat trouvé. Veuillez réessayer");
 					return false; 
 				}
 				else{

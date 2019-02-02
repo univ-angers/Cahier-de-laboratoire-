@@ -178,9 +178,7 @@ public class BilletController {
 
 			if ("idUtilisateur".equals(fieldName) && j.getValueAsLong() != (long)0)
 			{
-				 
 				idUser=j.getValueAsLong();
-				System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "+ idUser );
 
 			}
 

@@ -739,6 +739,7 @@ public class Manager {
     	} 
 	}
     
+    
     /*
      * Renvoie la liste de tous les couples Billet-Tag présents dans la table Billet_tag
      */
