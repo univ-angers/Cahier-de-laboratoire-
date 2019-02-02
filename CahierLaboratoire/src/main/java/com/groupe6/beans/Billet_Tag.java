@@ -57,15 +57,4 @@ public class Billet_Tag {
 		description += "Tag : " + getIdT() + "\n";
 		return description;
 	}
-	
-	 @Override
-	    public boolean equals(Object obj) {
-	       if (!(obj instanceof Billet))
-	            return false;
-	        if (obj == this)
-	            return true;
-
-	        Billet billet = (Billet) obj;
-	        return idB.equals(billet.getIdB());
-	    }
 }
