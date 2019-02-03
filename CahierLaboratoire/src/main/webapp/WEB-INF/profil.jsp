@@ -36,6 +36,9 @@
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+		<DIV>				
+	    	 <img src="<c:url value='./inc/assets/Mitolab.png'/>" style="height: 60px;width : 300px"/>
+		</DIV>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
@@ -68,11 +71,9 @@
             </div>
             <div class="form-row mt-3">
                 <div class="col">
-                	<p> Mot de passe : </p>
                     <input id="motdepasse" name="motdepasse" type="password" class="form-control" placeholder="Password">
                 </div>
                 <div class="col">
-                    <p> Confirmer mot de passe : </p>
                     <input id="confirmation" name="confirmation" type="password" class="form-control" placeholder="Confirm Password">
                 </div>
                 

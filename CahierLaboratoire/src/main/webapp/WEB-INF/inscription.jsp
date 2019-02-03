@@ -36,6 +36,9 @@
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+		<DIV >				
+	    	 <img src="<c:url value='./inc/assets/Mitolab.png'/>" style="height: 60px;width : 300px"/>
+	    </DIV>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">

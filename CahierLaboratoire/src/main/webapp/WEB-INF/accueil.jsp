@@ -39,8 +39,8 @@
 <body class="container-fluid"
 	style="font-family: 'Roboto Mono', monospace;">
 
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand" href="#"
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" >
+		<a class="navbar-brand" href="/CahierLaboratoireMaven/accueil"
 			style="font-family: 'Roboto Mono', monospace;"> <img
 			src="<c:url value="./inc/assets/agenda2.png"/>" alt="" width="40"
 			height="40">
@@ -50,7 +50,11 @@
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+		<DIV>				
+	    	 <img src="<c:url value='./inc/assets/Mitolab.png'/>" style="height: 60px;width : 300px"/>
+		</DIV>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
+	
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link" href="accueil">Accueil
 						<span class="sr-only">(current)</span> 
@@ -64,7 +68,7 @@
 				</c:if>
 			    <li id="utilisateur" style="display:none;">${sessionScope.sessionUtilisateur.id}</li>
 
-
+			
 			</ul>
 
 			<button type="button" class="btn btn-info navbar-btn" id="buttonAjoutBillet" data-toggle="modal" data-target="" style="margin-left: 2%;">Creer un billet</button>
