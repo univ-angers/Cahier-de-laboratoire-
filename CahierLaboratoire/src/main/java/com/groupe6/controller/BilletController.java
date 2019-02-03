@@ -188,7 +188,6 @@ public class BilletController {
 		listPermissions=manager2.selectAllPermisions();
 
 		for (Billet billet : listBillet) {
-
 			if (!manager2.hasPermission(idUser, billet.getIdB(), listPermissions))
 				result.add("false "+billet.getIdB());
 			result.add("true "+ billet.getIdB());

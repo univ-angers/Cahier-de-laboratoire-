@@ -26,7 +26,7 @@
 
 <body class="text-center" style="font-family: 'Roboto Mono', monospace;">
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand" href="/CahierLaboratoire/accueil"
+		<a class="navbar-brand" href="/CahierLaboratoireMaven/accueil"
 			style="font-family: 'Roboto Mono', monospace;"> <img
 			src="<c:url value="/inc/assets/agenda2.png"/>" alt="" width="40" 
 			height="40">
@@ -48,7 +48,7 @@
 				</li>
 			</ul>
 
-			<button class="btn btn-danger navbar-btn" style="margin-left: 2%;">Déconnexion</button>
+			<button  type="button" class="btn btn-danger navbar-btn" id="buttonDeco" data-toggle="modal" data-target="#exampleModalCenter" style="margin-left: 2%;">Déconnexion</button>
 
 		</div>
 		
@@ -106,8 +106,20 @@
 </body>
 <!-- jquery -->
 
- <script type="text/javascript" src="<c:url value="/inc/js/Bootstrap/bootstrap.min.js"/>"></script>
 
+<script type="text/javascript"
+	src="<c:url value="./inc/js/Scripts/Billet/GenerateBillet.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="./inc/js/Scripts/Connexion/deconnexionPopup.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="./inc/js/Scripts/Tags/getTags.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="./inc/js/Scripts/Quill/update.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value="./inc/js/Bootstrap/bootstrap.min.js"/>"></script>
+
+<script type="text/javascript"
+	src="<c:url value="./inc/js/Scripts/MainPageManagement/mainPage.js"/>"></script>
 </html>
 
 
