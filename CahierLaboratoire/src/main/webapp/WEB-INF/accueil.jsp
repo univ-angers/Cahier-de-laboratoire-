@@ -55,7 +55,9 @@
 				<li class="nav-item active"><a class="nav-link" href="accueil">Accueil
 						<span class="sr-only">(current)</span> 
 				</a></li>
-				
+				<li class="nav-item active"><a class="nav-link" href="./profil">Profil
+						<span class="sr-only">(current)</span> 
+				</a></li>
 				<c:if test="${ sessionScope.sessionUtilisateur.isAdmin== 1}">
 					<li class="nav-item"><a class="nav-link"
 						href="./inscription">Ajouter un utilisateur</a></li>

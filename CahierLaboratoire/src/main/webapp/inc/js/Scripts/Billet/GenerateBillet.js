@@ -129,7 +129,6 @@ function btnDisable(){
 			return true;
 		},
 		
-		data:  JSON.stringify({ idUtilisateur : $("#utilisateur").text()})
 	});
 
 }

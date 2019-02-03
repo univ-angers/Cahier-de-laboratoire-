@@ -145,16 +145,16 @@ public class Manager {
         try{
         	session.beginTransaction();
             Utilisateur user = (Utilisateur)session.get(Utilisateur.class, updateUser.getId()); 
-            Tag tag = selectTag(Long.valueOf(2), "Utilisateur " + user.getNom() + " " + user.getPrenom());
+            //Tag tag = selectTag(Long.valueOf(2), "Utilisateur " + user.getNom() + " " + user.getPrenom());
             user.setNom(newUser.getNom());
             user.setPrenom(newUser.getPrenom());
             user.setEmail(newUser.getEmail());
             user.setMotDePasse(newUser.getMotDePasse());
-            user.setIsAdmin(newUser.getIsAdmin());            
+            user.setIsAdmin(updateUser.getIsAdmin());            
             session.update(user); 
             //Modification du tag lié à l'utilisateur
-            tag.setNomTag("Utilisateur " + user.getNom() + " " +  user.getPrenom());
-            session.update(tag);
+            //tag.setNomTag("Utilisateur " + user.getNom() + " " +  user.getPrenom());
+            //session.update(tag);
             session.getTransaction().commit();
             return true;
          } catch (HibernateException e) {
@@ -162,9 +162,9 @@ public class Manager {
             	session.getTransaction().rollback();
             e.printStackTrace(); 
             return false;
-         }finally {
+         }/*finally {
             session.close(); 
-         }
+         }*/
     }
  
     /*
@@ -738,7 +738,6 @@ public class Manager {
     		return null;
     	} 
 	}
-    
     
     /*
      * Renvoie la liste de tous les couples Billet-Tag présents dans la table Billet_tag

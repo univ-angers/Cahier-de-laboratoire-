@@ -14,6 +14,7 @@ import com.groupe6.beans.Utilisateur;
 public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	private static final String SQL_SELECT_PAR_EMAIL = "SELECT * FROM utilisateur WHERE email = ?";
+	private static final String SQL_SELECT_PAR_Id = "SELECT * FROM utilisateur WHERE id = ?";
 	private static final String SQL_INSERT = "INSERT INTO utilisateur (nom , prenom , motdepasse , email , isadmin) VALUES (?, ?, ?, ?, ?)";
 
 	private DAOFactory daoFactory;
@@ -103,6 +104,4 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		utilisateur.setIsAdmin((resultSet.getString("isadmin").equals("1") ? 1 : 0 ));
 		return utilisateur;
 	}
-
-
 }
