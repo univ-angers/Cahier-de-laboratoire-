@@ -1,6 +1,5 @@
 package com.groupe6.forms;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -73,6 +72,7 @@ public final class InscriptionForm {
 				Manager manager = new Manager(); 
 		        try{
 					Tag tag = new Tag(manager.selectCategory("Utilisateur").getIdC(), nomTag);
+					tag.setIdU(utilisateur.getId());
 					manager.createTag(tag);
 				} catch (Exception e) {
 					e.printStackTrace();
