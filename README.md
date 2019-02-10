@@ -27,7 +27,7 @@ Afin d'avoir la base de données sur son local, pensez à modifier ces deux fich
     
     3.pwd (root)
 2. Faire la même chose dans le fichier : /CahierLaboratoire/src/main/java/com/groupe6/dao/dao.properties
-Pensez à bien créer votre base de données en local et à importer dessus celle qu'il y a dans le dossier (dump.sql)
+Pensez à bien créer votre base de données en local et à importer dessus celle qu'il y a dans le dossier (c1cahierlabbdd.sql)
 
 ## Inscription / Connexion
 L'application est restreinte. Il faut obligatoirement être enregistré.  
